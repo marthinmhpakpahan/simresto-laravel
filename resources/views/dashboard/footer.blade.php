@@ -32,5 +32,32 @@
         </div>
         </div>
     </footer>
+    <script>
+        $(document).ready(function(){
+            console.log("READY");
+            $('input[name=photo], input[name=identity_card]').change(function(event) {
+                console.log("showSelectedImage");
+                var image_element = $(this).data("img_element");
+                var files = event.target.files;
+                if (event.target.files) {
+                    // FileReader support
+                    if (FileReader && files && files.length) {
+                        var fr = new FileReader();
+                        fr.onload = function () {
+                            console.log(image_element);
+                            console.log(files[0].size);
+
+                            $('#' + image_element).attr("src", fr.result);
+                            $('#' + image_element).attr("height", 450);
+                            $('#' + image_element).removeClass("visually-hidden");
+                        }
+                        fr.readAsDataURL(files[0]);
+                    }
+                } else {
+                    console.log("No image uploaded");
+                }
+            });
+        });
+    </script>
 </main>
 @include('common.footer')
