@@ -34,7 +34,12 @@ class User extends Authenticatable
         'photo',
         'identity_card',
         'salary',
-        'joined_since'
+        'joined_since',
+        'status'
+    ];
+
+    protected $nullable = [
+        'password',
     ];
 
     /**

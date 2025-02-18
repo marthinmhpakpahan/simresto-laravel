@@ -36,9 +36,9 @@
                                             <th class="text-secondary text-xs font-weight-bolder">{{ $karyawan->email }}</th>
                                             <th class="text-uppercase text-secondary text-xs font-weight-bolder">{{ $karyawan->joined_since }}</th>
                                             <th class="text-uppercase text-secondary">
-                                                <i class="btn btn-success btn-xs text-md fa fa-search" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Lihat Detail Karyawan"></i>
-                                                <i class="btn btn-primary btn-xs text-md fa fa-edit" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Ubah Data Karyawan"></i>
-                                                <i class="btn btn-danger btn-xs text-md fa fa-trash" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Hapus Data Karyawan"></i>
+                                                <a href="{{ route('karyawan.edit', $karyawan->id) }}"><i class="btn btn-primary btn-xs text-md fa fa-edit" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Ubah Data Karyawan"></i></a>
+                                                <i class="btn btn-danger btn-xs text-md fa fa-trash btn-delete-karyawan" data-full_name="{{ $karyawan->full_name }}" data-phone_no="{{ $karyawan->phone_no }}" data-email="{{ $karyawan->email }}" data-url="{{ route('karyawan.delete', $karyawan->id) }}" data-bs-toggle="modal"
+                                                    data-bs-target="#modalDeleteConfirmation"></i>
                                             </th>
                                         </tr>
                                     @endforeach
@@ -51,4 +51,58 @@
         </div>
     </div>
 </main>
+<div class="modal fade" id="modalDeleteConfirmation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-center">
+                <h1 class="modal-title fs-5 text-center text-white" id="staticBackdropLabel">Konfirmasi</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4>Apakah anda yakin ingin menghapus data karyawan ini?</h4><br />
+                <table>
+                    <tr>
+                        <td>Nama</td>
+                        <td>&nbsp;&nbsp;&nbsp;</td>
+                        <td>&nbsp;:&nbsp;</td>
+                        <td><span class="modal-karyawan-full_name"></span></td>
+                    </tr>
+                    <tr>
+                        <td>No Telepon</td>
+                        <td>&nbsp;&nbsp;&nbsp;</td>
+                        <td>&nbsp;:&nbsp;</td>
+                        <td><span class="modal-karyawan-phone_no"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>&nbsp;&nbsp;&nbsp;</td>
+                        <td>&nbsp;:&nbsp;</td>
+                        <td><span class="modal-karyawan-email"></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <a class="modal-btn-confirm-delete" href=""><button type="button"
+                        class="btn btn-danger">Yakin!</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        console.log("Index Karyawan Page!");
+        $(".btn-delete-karyawan").on("click", function() {
+            var data_fullname = $(this).data("full_name");
+            $(".modal-karyawan-full_name").text(data_fullname);
+            var data_phone_no = $(this).data("phone_no");
+            $(".modal-karyawan-phone_no").text(data_phone_no);
+            var data_email = $(this).data("email");
+            $(".modal-karyawan-email").text(data_email);
+            var data_url = $(this).data("url");
+            $(".modal-btn-confirm-delete").attr("href", data_url);
+        });
+    });
+</script>
 @include('dashboard.footer')
