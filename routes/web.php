@@ -20,6 +20,16 @@ Route::get('/karyawan/edit/{karyawan_id}', [KaryawanController::class, 'edit'])-
 Route::post('/karyawan/edit/{karyawan_id}', [KaryawanController::class, 'edit'])->name('karyawan.edit')->middleware('auth');
 Route::get('/karyawan/delete/{karyawan_id}', [KaryawanController::class, 'delete'])->name('karyawan.delete')->middleware('auth');
 
+// Bahan / Material
+Route::get('/bahan', [MaterialController::class, 'index'])->name('bahan.index')->middleware('auth');
+Route::get('/bahan/create', [MaterialController::class, 'create'])->name('bahan.create')->middleware('auth');
+Route::post('/bahan/create', [MaterialController::class, 'create'])->name('bahan.create')->middleware('auth');
+Route::get('/bahan/edit/{karyawan_id}', [MaterialController::class, 'edit'])->name('bahan.edit')->middleware('auth');
+Route::post('/bahan/edit/{karyawan_id}', [MaterialController::class, 'edit'])->name('bahan.edit')->middleware('auth');
+Route::get('/bahan/delete/{karyawan_id}', [MaterialController::class, 'delete'])->name('bahan.delete')->middleware('auth');
+
+// Menu / Resep
+
 // Dashboard
 Route::resource('dashboard', 'DashboardController')->except(['show'])->middleware('auth');
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index')->middleware('auth');
