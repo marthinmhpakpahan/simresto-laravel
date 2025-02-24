@@ -19,6 +19,24 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link {{ Route::current()->getName() == "material.index" ? "active" : "" }}" href="{{ route('material.index') }}">
+                <div
+                    class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fa fa-list text-dark text-sm opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Manage Bahan</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{ Route::current()->getName() == "menu.index" ? "active" : "" }}" href="{{ route('menu.index') }}">
+                <div
+                    class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fa fa-sticky-note text-dark text-sm opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Manage Resep</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link {{ Route::current()->getName() == "profile" ? "active" : "" }}" href="{{ route('profile') }}">
                 <div
                     class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">

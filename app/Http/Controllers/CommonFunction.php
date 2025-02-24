@@ -15,6 +15,7 @@ class CommonFunction
             $FOLDER_DESTINATION = [
                 'PHOTO' => "assets/img/karyawan/photos/",
                 'IDENTITY_CARD' => "assets/img/karyawan/identity_cards/",
+                'MATERIAL_IMAGE' => "assets/img/material/images/",
             ];
     
             $file_extension = $file->getClientOriginalExtension();
@@ -28,5 +29,14 @@ class CommonFunction
             return $file_paths;
         }
         return $file_paths[0];
+    }
+
+    public static function convertWeight($total, $unit_source, $unit_target) {
+        $UNIT_CONVERTION = [
+
+        ];
+        $new_total = 0;
+
+        return $new_total;
     }
 }

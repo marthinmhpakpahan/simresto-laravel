@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('material', function (Blueprint $table) {
             $table->id();
-            $table->integer("material_category_id");
             $table->string("name");
             $table->string("description");
             $table->string("image");

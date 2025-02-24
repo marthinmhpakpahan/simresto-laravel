@@ -14,12 +14,15 @@ class Material extends Model
     const UPDATED_AT = 'updated_at';
 
     protected $fillable = [
-        'material_category_id',
         'name',
         'description',
         'image',
         'unit',
         'price',
         'weight'
+    ];
+
+    protected $nullable = [
+        'description',
     ];
 }
