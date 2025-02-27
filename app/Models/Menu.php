@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Menu extends Model
 {
@@ -18,4 +20,12 @@ class Menu extends Model
         'name',
         'description'
     ];
+
+    /**
+     * Get the phone associated with the user.
+     */
+    public function menu_category(): BelongsTo
+    {
+        return $this->belongsTo(MenuCategory::class, "menu_category_id");
+    }
 }

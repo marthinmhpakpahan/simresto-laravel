@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MenuRecipeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
@@ -26,17 +27,22 @@ Route::get('/karyawan/delete/{karyawan_id}', [KaryawanController::class, 'delete
 Route::get('/bahan', [MaterialController::class, 'index'])->name('material.index')->middleware('auth');
 Route::get('/bahan/create', [MaterialController::class, 'create'])->name('material.create')->middleware('auth');
 Route::post('/bahan/create', [MaterialController::class, 'create'])->name('material.create')->middleware('auth');
-Route::get('/bahan/edit/{karyawan_id}', [MaterialController::class, 'edit'])->name('material.edit')->middleware('auth');
-Route::post('/bahan/edit/{karyawan_id}', [MaterialController::class, 'edit'])->name('material.edit')->middleware('auth');
-Route::get('/bahan/delete/{karyawan_id}', [MaterialController::class, 'delete'])->name('material.delete')->middleware('auth');
+Route::get('/bahan/edit/{material_id}', [MaterialController::class, 'edit'])->name('material.edit')->middleware('auth');
+Route::post('/bahan/edit/{material_id}', [MaterialController::class, 'edit'])->name('material.edit')->middleware('auth');
+Route::get('/bahan/delete/{material_id}', [MaterialController::class, 'delete'])->name('material.delete')->middleware('auth');
 
 // Menu / Resep
-Route::get('/resep', [MenuController::class, 'index'])->name('menu.index')->middleware('auth');
-Route::get('/resep/create', [MenuController::class, 'create'])->name('menu.create')->middleware('auth');
-Route::post('/resep/create', [MenuController::class, 'create'])->name('menu.create')->middleware('auth');
-Route::get('/resep/edit/{karyawan_id}', [MenuController::class, 'edit'])->name('menu.edit')->middleware('auth');
-Route::post('/resep/edit/{karyawan_id}', [MenuController::class, 'edit'])->name('menu.edit')->middleware('auth');
-Route::get('/resep/delete/{karyawan_id}', [MenuController::class, 'delete'])->name('menu.delete')->middleware('auth');
+Route::get('/menu', [MenuController::class, 'index'])->name('menu.index')->middleware('auth');
+Route::get('/menu/show/{menu_id}', [MenuController::class, 'show'])->name('menu.show')->middleware('auth');
+Route::get('/menu/create', [MenuController::class, 'create'])->name('menu.create')->middleware('auth');
+Route::post('/menu/create', [MenuController::class, 'create'])->name('menu.create')->middleware('auth');
+Route::get('/menu/edit/{menu_id}', [MenuController::class, 'edit'])->name('menu.edit')->middleware('auth');
+Route::post('/menu/edit/{menu_id}', [MenuController::class, 'edit'])->name('menu.edit')->middleware('auth');
+Route::get('/menu/delete/{menu_id}', [MenuController::class, 'delete'])->name('menu.delete')->middleware('auth');
+
+// Resep - Bahan
+Route::post('/recipe/create/{menu_id}', [MenuRecipeController::class, 'create'])->name('menurecipe.create')->middleware('auth');
+Route::post('/recipe/edit/{menu_id}', [MenuRecipeController::class, 'edit'])->name('menurecipe.edit')->middleware('auth');
 
 // Dashboard
 Route::resource('dashboard', 'DashboardController')->except(['show'])->middleware('auth');

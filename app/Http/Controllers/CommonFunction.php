@@ -16,6 +16,7 @@ class CommonFunction
                 'PHOTO' => "assets/img/karyawan/photos/",
                 'IDENTITY_CARD' => "assets/img/karyawan/identity_cards/",
                 'MATERIAL_IMAGE' => "assets/img/material/images/",
+                'MENU_IMAGE' => "assets/img/menu/images/",
             ];
     
             $file_extension = $file->getClientOriginalExtension();
@@ -32,9 +33,23 @@ class CommonFunction
     }
 
     public static function convertWeight($total, $unit_source, $unit_target) {
-        $UNIT_CONVERTION = [
+        if($unit_source == "KG" && $unit_target == "G") {
+            $new_total = $total * 1000;
+        } else if($unit_source == "OZ" && $unit_target == "G") {
+            $new_total = $total * 100;
+        } else if($unit_source == "MG" && $unit_target == "G") {
+            $new_total = $total / 10;
+        } else if($unit_source == "KW" && $unit_target == "G") {
+            $new_total = $total * 100000;
+        } else if($unit_source == "T" && $unit_target == "G") {
+            $new_total = $total * 1000000;
+        } else if($unit_source == "G" && $unit_target == "MG") {
+            $new_total = $total * 10;
+        }
 
-        ];
+        if($unit_source == "L" && $unit_target == "ML") {
+            $new_total = $total * 1000;
+        } 
         $new_total = 0;
 
         return $new_total;
