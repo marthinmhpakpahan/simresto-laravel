@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Attendance;
 use App\Models\Leave;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 
 class KaryawanController extends Controller
 {
@@ -256,11 +259,22 @@ class KaryawanController extends Controller
 
     public function calendar() {
         $user_id = Auth::id();
+        $current_date = date("Y-m-d");
+        $calendar = new Calendar($current_date);
+        
+        $leaves = Leave::where("status", "Accepted")->get();
+        foreach($leaves as $leave) {
+            $date_range = CarbonPeriod::create($leave->start_date, $leave->end_date);
+            foreach ($date_range as $date) {
+                $calendar->add_event("[" . $leave->title . "] " . $leave->user->full_name, $date->format('Y-m-d'), 1, 'red');
+            }
+        }
 
         return view('karyawan.calendar', [
             "title" => env("APP_NAME") . " - Manage Karyawan",
             "page_title" => "Manage Karyawan",
             "user_id" => $user_id,
+            "calendar" => $calendar
         ]);
     }
 }

@@ -22,4 +22,7 @@
   <script src="/assets/js/jquery.min.js" crossorigin="anonymous"></script>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
+
+  <link href="/assets/css/style.css" rel="stylesheet" type="text/css">
+  <link href="/assets/css/calendar.css" rel="stylesheet" type="text/css">
 </head>
