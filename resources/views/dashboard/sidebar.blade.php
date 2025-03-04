@@ -66,12 +66,21 @@
             </a>
         </li>
         <li class="nav-item {{ auth()->user()->role_id == 2 ? "d-none" : "" }}">
-            <a class="nav-link {{ Route::current()->getName() == "karyawan.leave" ? "active" : "" }}" href="{{ route('karyawan.index') }}">
+            <a class="nav-link {{ Route::current()->getName() == "karyawan.admin_leave" ? "active" : "" }}" href="{{ route('karyawan.admin_leave') }}">
                 <div
                     class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                     <i class="fa fa-calendar text-dark text-lg opacity-10"></i>
                 </div>
                 <span class="nav-link-text ms-1">Cuti/Ijin Karyawan</span>
+            </a>
+        </li>
+        <li class="nav-item {{ auth()->user()->role_id == 2 ? "d-none" : "" }}">
+            <a class="nav-link {{ Route::current()->getName() == "karyawan.calendar" ? "active" : "" }}" href="{{ route('karyawan.calendar') }}">
+                <div
+                    class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="fa fa-calendar text-dark text-lg opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Daftar Hadir Karyawan</span>
             </a>
         </li>
         <div class="mx-4 my-2 mt-4 font-weight-bolder text-uppercase {{ auth()->user()->role_id == 2 ? "d-none" : "" }}">Manajemen Bahan / Material</div>

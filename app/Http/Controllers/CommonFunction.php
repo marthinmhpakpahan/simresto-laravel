@@ -18,6 +18,7 @@ class CommonFunction
                 'MATERIAL_IMAGE' => "assets/img/material/images/",
                 'MENU_IMAGE' => "assets/img/menu/images/",
                 'ATTENDANCE' => "assets/img/karyawan/attendances/",
+                'LEAVE' => "assets/img/karyawan/leaves/",
             ];
     
             $file_extension = $file->getClientOriginalExtension();

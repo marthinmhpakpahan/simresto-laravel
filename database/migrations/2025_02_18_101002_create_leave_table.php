@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer("user_id");
             $table->integer("admin_id")->nullable();
+            $table->string("title");
             $table->date("start_date");
             $table->date("end_date");
             $table->text("description");

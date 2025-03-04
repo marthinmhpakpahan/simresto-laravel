@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attendance;
+use App\Models\Leave;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -149,11 +150,25 @@ class KaryawanController extends Controller
 
     public function leave() {
         $user_id = Auth::id();
+        $leaves = Leave::where("user_id", $user_id)->orderBy("created_at", "desc")->get();
 
         return view('karyawan.leave', [
             "title" => env("APP_NAME") . " - Manage Leave",
             "page_title" => "Manage Leave",
-            "user_id" => $user_id
+            "user_id" => $user_id,
+            "leaves" => $leaves
+        ]);
+    }
+
+    public function admin_leave() {
+        $user_id = Auth::id();
+        $leaves = Leave::where("status", "!=", "Canceled")->orderBy("created_at", "desc")->get();
+
+        return view('karyawan.admin-leave', [
+            "title" => env("APP_NAME") . " - Manage Leave",
+            "page_title" => "Manage Leave",
+            "user_id" => $user_id,
+            "leaves" => $leaves
         ]);
     }
 
@@ -183,5 +198,69 @@ class KaryawanController extends Controller
         $attendance->status = "Declined";
         $attendance->save();
         return redirect()->route('karyawan.show', $karyawan_id);
+    }
+
+    public function create_leave(Request $request) {
+        $user_id = Auth::id();
+        $karyawan = User::where("id", $user_id)->first();
+
+        if($request->method() == "POST") {
+            $credentials = $request->validate([
+                'start_date' => 'required',
+                'end_date' => 'required',
+                'title' => 'required',
+                'description' => 'required',
+                'attachment' => 'required',
+            ]);
+
+            $result = Leave::create([
+                'user_id' => $user_id,
+                'start_date' => $request->start_date,
+                'end_date' => $request->end_date,
+                'title' => $request->title,
+                'description' => $request->description,
+                'attachment' => CommonFunction::uploadFiles($request->file('attachment'), "LEAVE"),
+                'status' => "Pending"
+            ]);
+
+            if(!$result) {
+                return back()->withInput()->with('failed','Gagal menambahkan cuti!');
+            }
+            return redirect()->route("karyawan.leave")->with('success', 'Berhasil menambahkan cuti anda!');
+
+        } else {
+            return view('karyawan.create-leave', [
+                "title" => env("APP_NAME") . " - Manage Karyawan",
+                "page_title" => "Manage Karyawan",
+                "user_id" => $user_id,
+                "karyawan" => $karyawan,
+            ]);
+        }
+    }
+
+    public function leave_action($leave_id, $action) {
+        $user_id = Auth::id();
+        $user = User::where("id", $user_id)->first();
+        $leave = Leave::where('id', $leave_id)->first();
+        if($user->role_id == 1) {
+            $leave->admin_id = $user_id;
+        }
+        $leave->status = $action;
+        $leave->save();
+        if($user->role_id == 1) {
+            return redirect()->route('karyawan.admin_leave');
+        } else {
+            return redirect()->route('karyawan.leave');
+        }
+    }
+
+    public function calendar() {
+        $user_id = Auth::id();
+
+        return view('karyawan.calendar', [
+            "title" => env("APP_NAME") . " - Manage Karyawan",
+            "page_title" => "Manage Karyawan",
+            "user_id" => $user_id,
+        ]);
     }
 }

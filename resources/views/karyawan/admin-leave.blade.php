@@ -9,11 +9,6 @@
                             <div class="col-md-6">
                                 <h3 class="text-uppercase">Daftar Cuti</h3>
                             </div>
-                            <div class="col-6 text-end">
-                                <a href="{{ route('karyawan.create_leave') }}">
-                                    <div class="btn btn-success">Tambah Cuti Baru</div>
-                                </a>
-                            </div>
                         </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
@@ -43,7 +38,8 @@
                                             <td class="font-weight-bolder text-uppercase">{{ $leave->status }}</td>
                                             <td>
                                                 @if ($leave->status == "Pending")
-                                                    <a href="{{ route("karyawan.leave_action", [$leave->id, 'Canceled']) }}"><i class="fa fa-close btn btn-xs btn-danger"></i></a>
+                                                    <a href="{{ route("karyawan.leave_action", [$leave->id, 'Accepted']) }}"><i class="fa fa-check btn btn-xs btn-success"></i></a>
+                                                    <a href="{{ route("karyawan.leave_action", [$leave->id, 'Declined']) }}"><i class="fa fa-close btn btn-xs btn-danger"></i></a>
                                                 @endif
                                             </td>
                                         </tr>

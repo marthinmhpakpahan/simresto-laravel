@@ -16,6 +16,7 @@ class Leave extends Model
     protected $fillable = [
         'user_id',
         'admin_id',
+        'title',
         'start_date',
         'end_date',
         'description',

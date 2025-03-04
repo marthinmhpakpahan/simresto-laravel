@@ -28,6 +28,11 @@ Route::post('/karyawan/attendance', [KaryawanController::class, 'validate_attend
 Route::get('/karyawan/attendance/confirm/{karyawan_id}/{attendance_id}', [KaryawanController::class, 'confirm_attendance'])->name('karyawan.confirm_attendance')->middleware('auth');
 Route::get('/karyawan/attendance/decline/{karyawan_id}/{attendance_id}', [KaryawanController::class, 'decline_attendance'])->name('karyawan.decline_attendance')->middleware('auth');
 Route::get('/karyawan/leave', [KaryawanController::class, 'leave'])->name('karyawan.leave')->middleware('auth');
+Route::get('/karyawan/leave/create', [KaryawanController::class, 'create_leave'])->name('karyawan.create_leave')->middleware('auth');
+Route::post('/karyawan/leave/create', [KaryawanController::class, 'create_leave'])->name('karyawan.create_leave')->middleware('auth');
+Route::get('/karyawan/leave/{leave_id}/{action}', [KaryawanController::class, 'leave_action'])->name('karyawan.leave_action')->middleware('auth');
+Route::get('/karyawan/admin-leave', [KaryawanController::class, 'admin_leave'])->name('karyawan.admin_leave')->middleware('auth');
+Route::get('/karyawan/calendar', [KaryawanController::class, 'calendar'])->name('karyawan.calendar')->middleware('auth');
 
 // Bahan / Material
 Route::get('/bahan', [MaterialController::class, 'index'])->name('material.index')->middleware('auth');

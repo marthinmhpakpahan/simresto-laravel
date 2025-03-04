@@ -62,7 +62,7 @@
                                     @foreach ($attendances as $index => $attendance)
                                         <tr class="text-center text-sm  {{ $attendance->status == 'Confirmed' ? "table-success" : ($attendance->status == "Declined" ? 'table-danger' : '') }}">
                                             <td>{{ ($index+1) }}</td>
-                                            <td>{{ new DateTime($attendance->created_at)->format('d M Y') }}</td>
+                                            <td>{{ new DateTime($attendance->created_at)->format('d F Y') }}</td>
                                             <td>
                                                 {{ new DateTime($attendance->started_at)->format('H:i:s') }} 
                                                 @if ($attendance->started_at)
