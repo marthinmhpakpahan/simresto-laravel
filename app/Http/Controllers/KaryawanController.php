@@ -156,4 +156,32 @@ class KaryawanController extends Controller
             "user_id" => $user_id
         ]);
     }
+
+    public function show($karyawan_id) {
+        $user_id = Auth::id();
+        $attendances = Attendance::where('user_id', $karyawan_id)->orderByDesc("created_at")->get();
+        $karyawan = User::where("id", $karyawan_id)->first();
+
+        return view('karyawan.show', [
+            "title" => env("APP_NAME") . " - Manage Karyawan",
+            "page_title" => "Manage Karyawan",
+            "user_id" => $user_id,
+            "karyawan" => $karyawan,
+            "attendances" => $attendances,
+        ]);
+    }
+
+    public function confirm_attendance($karyawan_id, $attendance_id) {
+        $attendance = Attendance::where('id', $attendance_id)->first();
+        $attendance->status = "Confirmed";
+        $attendance->save();
+        return redirect()->route('karyawan.show', $karyawan_id);
+    }
+
+    public function decline_attendance($karyawan_id, $attendance_id) {
+        $attendance = Attendance::where('id', $attendance_id)->first();
+        $attendance->status = "Declined";
+        $attendance->save();
+        return redirect()->route('karyawan.show', $karyawan_id);
+    }
 }

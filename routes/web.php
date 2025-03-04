@@ -21,9 +21,12 @@ Route::get('/karyawan/create', [KaryawanController::class, 'create'])->name('kar
 Route::post('/karyawan/create', [KaryawanController::class, 'create'])->name('karyawan.create')->middleware('auth');
 Route::get('/karyawan/edit/{karyawan_id}', [KaryawanController::class, 'edit'])->name('karyawan.edit')->middleware('auth');
 Route::post('/karyawan/edit/{karyawan_id}', [KaryawanController::class, 'edit'])->name('karyawan.edit')->middleware('auth');
+Route::get('/karyawan/show/{karyawan_id}', [KaryawanController::class, 'show'])->name('karyawan.show')->middleware('auth');
 Route::get('/karyawan/delete/{karyawan_id}', [KaryawanController::class, 'delete'])->name('karyawan.delete')->middleware('auth');
 Route::get('/karyawan/attendance', [KaryawanController::class, 'attendance'])->name('karyawan.attendance')->middleware('auth');
 Route::post('/karyawan/attendance', [KaryawanController::class, 'validate_attendance'])->name('karyawan.validate_attendance')->middleware('auth');
+Route::get('/karyawan/attendance/confirm/{karyawan_id}/{attendance_id}', [KaryawanController::class, 'confirm_attendance'])->name('karyawan.confirm_attendance')->middleware('auth');
+Route::get('/karyawan/attendance/decline/{karyawan_id}/{attendance_id}', [KaryawanController::class, 'decline_attendance'])->name('karyawan.decline_attendance')->middleware('auth');
 Route::get('/karyawan/leave', [KaryawanController::class, 'leave'])->name('karyawan.leave')->middleware('auth');
 
 // Bahan / Material

@@ -36,6 +36,7 @@
                                             <th class="text-secondary text-xs font-weight-bolder">{{ $karyawan->email }}</th>
                                             <th class="text-uppercase text-secondary text-xs font-weight-bolder">{{ $karyawan->joined_since }}</th>
                                             <th class="text-uppercase text-secondary">
+                                                <a href="{{ route('karyawan.show', $karyawan->id) }}"><i class="btn btn-success btn-xs text-md fa fa-eye" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Detail Data Karyawan"></i></a>
                                                 <a href="{{ route('karyawan.edit', $karyawan->id) }}"><i class="btn btn-primary btn-xs text-md fa fa-edit" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Ubah Data Karyawan"></i></a>
                                                 <i class="btn btn-danger btn-xs text-md fa fa-trash btn-delete-karyawan" data-full_name="{{ $karyawan->full_name }}" data-phone_no="{{ $karyawan->phone_no }}" data-email="{{ $karyawan->email }}" data-url="{{ route('karyawan.delete', $karyawan->id) }}" data-bs-toggle="modal"
                                                     data-bs-target="#modalDeleteConfirmation"></i>

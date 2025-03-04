@@ -10,7 +10,7 @@
                 <span class="nav-link-text ms-1">Dashboard</span>
             </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {{ auth()->user()->role_id == 1 ? "d-none" : "" }}">
             <a class="nav-link {{ Route::current()->getName() == "profile" ? "active" : "" }}" href="{{ route('profile') }}">
                 <div
                     class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -19,7 +19,7 @@
                 <span class="nav-link-text ms-1">Profile</span>
             </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {{ auth()->user()->role_id == 1 ? "d-none" : "" }}">
             <a class="nav-link {{ Route::current()->getName() == "karyawan.attendance" ? "active" : "" }}" href="{{ route('karyawan.attendance') }}">
                 <div
                     class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -28,7 +28,7 @@
                 <span class="nav-link-text ms-1">Daftar Hadir</span>
             </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {{ auth()->user()->role_id == 1 ? "d-none" : "" }}">
             <a class="nav-link {{ Route::current()->getName() == "karyawan.leave" ? "active" : "" }}" href="{{ route('karyawan.leave') }}">
                 <div
                     class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">

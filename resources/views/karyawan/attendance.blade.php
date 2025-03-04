@@ -60,7 +60,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($attendances as $index => $attendance)
-                                        <tr class="text-center text-sm">
+                                        <tr class="text-center text-sm  {{ $attendance->status == 'Confirmed' ? "table-success" : ($attendance->status == "Declined" ? 'table-danger' : '') }}">
                                             <td>{{ ($index+1) }}</td>
                                             <td>{{ new DateTime($attendance->created_at)->format('d M Y') }}</td>
                                             <td>
@@ -77,7 +77,7 @@
                                                         data-bs-target="#modalDetailImage"></i>
                                                 @endif
                                             </td>
-                                            <td>{{ $attendance->status }}</td>
+                                            <td class="font-weight-bolder">{{ $attendance->status }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
