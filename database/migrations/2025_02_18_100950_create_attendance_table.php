@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id();
             $table->integer("user_id");
             $table->datetime("started_at")->nullable();
+            $table->string("started_path")->nullable();
             $table->datetime("finished_at")->nullable();
+            $table->string("finished_path")->nullable();
+            $table->string("status")->default("Pending");
             $table->timestamps();
         });
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attendance;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -89,7 +90,6 @@ class KaryawanController extends Controller
             if($request->file("identity_card")) {
                 $karyawan->identity_card = CommonFunction::uploadFiles($request->file('identity_card'), "IDENTITY_CARD");
             }
-            $karyawan->password = $request->password;
             $karyawan->salary = $request->salary;
             $karyawan->joined_since = $request->joined_since;
             $result = $karyawan->save();
@@ -113,5 +113,47 @@ class KaryawanController extends Controller
         $karyawan->status = 0;
         $karyawan->save();
         return redirect('/karyawan')->with('success', 'Berhasil menghapus data karyawan!');
+    }
+
+    public function attendance() {
+        $user_id = Auth::id();
+        $attendance = Attendance::whereRaw('DATE(created_at) = ?', [date("Y-m-d")])->orderByDesc("created_at")->first();
+        $attendances = Attendance::where('user_id', $user_id)->orderByDesc("created_at")->get();
+
+        return view('karyawan.attendance', [
+            "title" => env("APP_NAME") . " - Manage Attendance",
+            "page_title" => "Manage Attendance",
+            "user_id" => $user_id,
+            "attendance" => $attendance,
+            "attendances" => $attendances,
+        ]);
+    }
+
+    public function validate_attendance(Request $request) {
+        $user_id = Auth::id();
+        $attendance = Attendance::where("user_id", $user_id)->whereRaw('DATE(created_at) = ?', [date("Y-m-d")])->orderByDesc("created_at")->first();
+        date_default_timezone_set("Asia/Jakarta");
+        if(!$attendance) {
+            $result = Attendance::create([
+                'user_id' => $user_id,
+                'started_at' => date("Y-m-d H:i:s"),
+                'started_path' => CommonFunction::uploadFiles($request->file('image'), "ATTENDANCE")
+            ]);
+        } else {
+            $attendance->finished_at = date("Y-m-d h:i:s");
+            $attendance->finished_path = CommonFunction::uploadFiles($request->file('image'), "ATTENDANCE");
+            $attendance->save();
+        }
+        return redirect()->route('karyawan.attendance');
+    }
+
+    public function leave() {
+        $user_id = Auth::id();
+
+        return view('karyawan.leave', [
+            "title" => env("APP_NAME") . " - Manage Leave",
+            "page_title" => "Manage Leave",
+            "user_id" => $user_id
+        ]);
     }
 }

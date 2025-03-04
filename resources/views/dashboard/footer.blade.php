@@ -39,7 +39,7 @@
     <script>
         $(document).ready(function() {
             console.log("READY");
-            $('input[name=photo], input[name=identity_card]').change(function(event) {
+            $('input[name=photo], input[name=identity_card], input[name=image]').change(function(event) {
                 console.log("showSelectedImage");
                 var image_element = $(this).data("img_element");
                 var files = event.target.files;

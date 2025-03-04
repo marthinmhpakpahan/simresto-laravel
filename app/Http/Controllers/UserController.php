@@ -23,7 +23,13 @@ class UserController extends Controller
 
         if (Auth::guard('web')->attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('dashboard');
+            $user_id = Auth::id();
+            $user = User::where('id', $user_id)->first();
+            if($user->role_id == 1) {
+                return redirect()->intended('dashboard');
+            } else {
+                return redirect()->intended(default: 'profile');
+            }
         }
 
         return back()->withInput()->with('failed','Login Failed!');

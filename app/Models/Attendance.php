@@ -16,6 +16,9 @@ class Attendance extends Model
     protected $fillable = [
         'user_id',
         'started_at',
-        'finished_at'
+        'finished_at',
+        'started_path',
+        'finished_path',
+        'status'
     ];
 }

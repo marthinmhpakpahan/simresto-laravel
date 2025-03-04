@@ -22,6 +22,9 @@ Route::post('/karyawan/create', [KaryawanController::class, 'create'])->name('ka
 Route::get('/karyawan/edit/{karyawan_id}', [KaryawanController::class, 'edit'])->name('karyawan.edit')->middleware('auth');
 Route::post('/karyawan/edit/{karyawan_id}', [KaryawanController::class, 'edit'])->name('karyawan.edit')->middleware('auth');
 Route::get('/karyawan/delete/{karyawan_id}', [KaryawanController::class, 'delete'])->name('karyawan.delete')->middleware('auth');
+Route::get('/karyawan/attendance', [KaryawanController::class, 'attendance'])->name('karyawan.attendance')->middleware('auth');
+Route::post('/karyawan/attendance', [KaryawanController::class, 'validate_attendance'])->name('karyawan.validate_attendance')->middleware('auth');
+Route::get('/karyawan/leave', [KaryawanController::class, 'leave'])->name('karyawan.leave')->middleware('auth');
 
 // Bahan / Material
 Route::get('/bahan', [MaterialController::class, 'index'])->name('material.index')->middleware('auth');
@@ -49,5 +52,7 @@ Route::resource('dashboard', 'DashboardController')->except(['show'])->middlewar
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index')->middleware('auth');
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', [
+        "title" => "SIMResto"
+    ]);
 });

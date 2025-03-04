@@ -17,6 +17,7 @@ class CommonFunction
                 'IDENTITY_CARD' => "assets/img/karyawan/identity_cards/",
                 'MATERIAL_IMAGE' => "assets/img/material/images/",
                 'MENU_IMAGE' => "assets/img/menu/images/",
+                'ATTENDANCE' => "assets/img/karyawan/attendances/",
             ];
     
             $file_extension = $file->getClientOriginalExtension();
