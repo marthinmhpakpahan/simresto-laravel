@@ -7,38 +7,75 @@
                     <div class="card-header pb-0">
                         <div class="row">
                             <div class="col-6">
-                                <h3 class="text-uppercase">List Menu</h3>
+                                <span
+                                    class="text-uppercase font-bold text-4xl border-b-[4px] border-red-700 text-red-700">List
+                                    Menu</span>
                             </div>
-                            <div class="col-6 text-end"><a href="{{ route('menu.create') }}">
-                                    <div class="btn btn-primary">Tambah Menu Baru</div>
-                                </a></div>
+                            <div class="col-6 text-end">
+                                <a href="{{ route('menu.create') }}"
+                                    class="font-bold border-2 border-red-700 rounded-lg px-3 py-[3px] bg-red-700 text-white hover:bg-red-800 cursor-pointer">
+                                    <i class="fa fa-plus"></i>&nbsp;Tambah Menu Baru
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-4">
-                            <table class="table table-hover">
+                            <table class="">
                                 <thead>
                                     <tr class="text-center">
-                                        <th class="text-uppercase text-xs font-weight-bolder">No</th>
-                                        <th class="text-uppercase text-xs font-weight-bolder">Kategori</th>
-                                        <th class="text-uppercase text-xs font-weight-bolder">Nama</th>
-                                        <th class="text-center text-uppercase text-xs font-weight-bolder">Deskripsi</th>
-                                        <th class="text-center text-uppercase text-xs font-weight-bolder">#</th>
+                                        <th
+                                            class="text-uppercase text-md font-weight-bolder border-[1px] border-red-700 px-3 py-2 text-red-700">
+                                            No</th>
+                                        <th
+                                            class="text-uppercase text-md font-weight-bolder w-1/7 border-[1px] border-red-700 text-red-700">
+                                            Kategori</th>
+                                        <th
+                                            class="text-uppercase text-md font-weight-bolder w-1/6 border-[1px] border-red-700 text-red-700">
+                                            Nama</th>
+                                        <th
+                                            class="text-center text-uppercase text-md font-weight-bolder w-3/6 border-[1px] border-red-700 text-red-700">
+                                            Deskripsi</th>
+                                        <th
+                                            class="text-center text-uppercase text-md font-weight-bolder border-[1px] border-red-700 text-red-700">
+                                            #</th>
                                     </tr>
                                 </thead>
                                 <tbody class="align-items-center">
                                     @foreach ($menus as $index => $menu)
                                         <tr class="text-center">
-                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder">{{ ($index+1) }}</th>
-                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder">{{ ($menu->menu_category->name) }}</th>
-                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder">{{ ($menu->name) }}</th>
-                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder">{{ ($menu->description) }}</th>
-                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder">
-                                                <a href="{{ route('menu.show', $menu->id) }}"><i class="btn btn-success btn-xs text-md fa fa-eye" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Detail Data Bahan"></i></a>
-                                                <a href="{{ route('menu.edit', $menu->id) }}"><i class="btn btn-primary btn-xs text-md fa fa-edit" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Ubah Data Bahan"></i></a>
-                                                <i class="btn btn-danger btn-xs text-md fa fa-trash btn-delete-karyawan" data-name="{{ $menu->name }}" data-url="{{ route('menu.delete', $menu->id) }}" data-bs-toggle="modal"
-                                                    data-bs-target="#modalDeleteConfirmation"></i>
-                                            </th>
+                                            <td
+                                                class="text-secondary border-[1px] border-red-700 px-3 py-2">
+                                                {{ $index + 1 }}</td>
+                                            <td
+                                                class="text-secondary border-[1px] border-red-700 px-3 py-2">
+                                                {{ $menu->menu_category->name }}</td>
+                                            <td
+                                                class="text-secondary border-[1px] border-red-700 px-3 py-2">
+                                                {{ $menu->name }}</td>
+                                            <td
+                                                class="text-secondary text-wrap text-start border-[1px] border-red-700 px-3 py-2">
+                                                {{ $menu->description }}</td>
+                                            <td class="border-[1px] border-red-700 px-3 py-2">
+                                                <div class="flex flex-row justify-center">
+                                                    <a href="{{ route('menu.show', $menu->id) }}" data-bs-toggle="tooltip"
+                                                        class="border text-white bg-red-700 hover:bg-red-800 px-2 py-1 rounded-lg text-md mx-[1px]"
+                                                        data-bs-placement="top" data-bs-title="Detail Data Bahan">
+                                                        <i class="text-md fa fa-eye"></i>&nbsp; Detail
+                                                    </a>
+                                                    <a href="{{ route('menu.edit', $menu->id) }}" data-bs-toggle="tooltip"
+                                                        class="border text-white bg-red-700 hover:bg-red-800 px-2 py-1 rounded-lg text-md mx-[1px]"
+                                                        data-bs-placement="top" data-bs-title="Ubah Data Bahan">
+                                                        <i class="text-md fa fa-edit"></i>&nbsp; Edit
+                                                    </a>
+                                                    <a class="border text-white bg-red-700 hover:bg-red-800 px-2 py-1 rounded-lg text-md btn-delete-karyawan mx-[1px]"
+                                                        data-name="{{ $menu->name }}"
+                                                        data-url="{{ route('menu.delete', $menu->id) }}"
+                                                        data-bs-toggle="modal" data-bs-target="#modalDeleteConfirmation">
+                                                        <i class="fa fa-trash"></i>&nbsp; Delete
+                                                    </a>
+                                                </div>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

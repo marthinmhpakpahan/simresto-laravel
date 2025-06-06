@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\MenuImageController;
 
 // $password = Hash::make('admin');
 // echo $password; exit;
@@ -40,6 +41,7 @@ Route::get('/bahan/create', [MaterialController::class, 'create'])->name('materi
 Route::post('/bahan/create', [MaterialController::class, 'create'])->name('material.create')->middleware('auth');
 Route::get('/bahan/edit/{material_id}', [MaterialController::class, 'edit'])->name('material.edit')->middleware('auth');
 Route::post('/bahan/edit/{material_id}', [MaterialController::class, 'edit'])->name('material.edit')->middleware('auth');
+Route::get('/bahan/show/{material_id}', [MaterialController::class, 'show'])->name('material.show')->middleware('auth');
 Route::get('/bahan/delete/{material_id}', [MaterialController::class, 'delete'])->name('material.delete')->middleware('auth');
 
 // Menu / Resep
@@ -55,12 +57,16 @@ Route::get('/menu/delete/{menu_id}', [MenuController::class, 'delete'])->name('m
 Route::post('/recipe/create/{menu_id}', [MenuRecipeController::class, 'create'])->name('menurecipe.create')->middleware('auth');
 Route::post('/recipe/edit/{menu_id}', [MenuRecipeController::class, 'edit'])->name('menurecipe.edit')->middleware('auth');
 
+// Menu Image
+Route::get('/menu/delete/{menu_id}/{menu_image_id}', [MenuImageController::class, 'delete'])->name('menu_image.delete')->middleware('auth');
+
 // Dashboard
 Route::resource('dashboard', 'DashboardController')->except(['show'])->middleware('auth');
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index')->middleware('auth');
 
 Route::get('/', function () {
     return view('welcome', [
-        "title" => "SIMResto"
+        "title" => "SIMResto",
+        "body_class" => "bg-gray-300"
     ]);
 });

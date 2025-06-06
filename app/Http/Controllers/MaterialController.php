@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Material;
+use App\Models\Unit;
 
 class MaterialController extends Controller
 {
@@ -58,46 +59,55 @@ class MaterialController extends Controller
         }
     }
 
-    public function edit(Request $request, $karyawan_id) {
-        $karyawan = User::where('id', $karyawan_id)->first();
+    public function edit(Request $request, $material_id) {
+        $material = Material::where('id', $material_id)->first();
+        $units = Unit::get();
 
         if($request->method() == "POST") {
             $credentials = $request->validate([
-                    'full_name' => 'required',
-                    'username' => 'required',
-                    'phone_no' => 'required',
-                    'email' => 'required',
-                    'salary' => 'required',
-                    'joined_since' => 'required',
+                'name' => 'required',
+                'weight' => 'required',
+                'price' => 'required',
+                'unit' => 'required'
             ]);
 
-            $karyawan->full_name = $request->full_name;
-            $karyawan->username = $request->username;
-            $karyawan->phone_no = $request->phone_no;
-            $karyawan->email = $request->email;
-            if($request->file("photo")) {
-                $karyawan->photo = CommonFunction::uploadFiles($request->file('photo'), "PHOTO");
-            }
-            if($request->file("identity_card")) {
-                $karyawan->identity_card = CommonFunction::uploadFiles($request->file('identity_card'), "IDENTITY_CARD");
-            }
-            $karyawan->password = $request->password;
-            $karyawan->salary = $request->salary;
-            $karyawan->joined_since = $request->joined_since;
-            $result = $karyawan->save();
+            $material->name = $request->name;
+            $material->weight = $request->weight;
+            $material->price = $request->price;
+            $material->unit = $request->unit;
+            $material->description = $request->description;
 
+            if($request->file("image")) {
+                $material->image = CommonFunction::uploadFiles($request->file('image'), "MATERIAL_IMAGE");
+            }
+
+            $result = $material->save();
+            
             if(!$result) {
-                return back()->withInput()->with('failed','Gagal menambahkan karyawan!');
+                return back()->withInput()->with('failed','Gagal mengubah data Bahan!');
             }
-            return redirect('/karyawan')->with('success', 'Berhasil menambahkan karyawan anda!');
-
+            return redirect('/bahan')->with('success', 'Berhasil mengubah data Bahan!');
         } else {
-            return view('karyawan.edit', [
-                "title" => env("APP_NAME") . " - Manage karyawan",
-                "page_title" => "Edit Data Karyawan",
-                "karyawan" => $karyawan
+            return view('material.edit', [
+                "title" => env("APP_NAME") . " - Edit Bahan",
+                "page_title" => "Edit Data Bahan",
+                "material" => $material,
+                "units" => $units
             ]);
         }
+    }
+
+    public function show($material_id) {
+        $user_id = Auth::id();
+        $user = User::where('id', $user_id)->first();
+        $material = Material::where('id', $material_id)->first();
+
+        return view('material.view', [
+            "title" => env("APP_NAME") . " - Detail Bahan",
+            "page_title" => "Detail Bahan",
+            "material" => $material,
+            "user_id" => $user_id
+        ]);
     }
 
     public function delete($karyawan_id) {

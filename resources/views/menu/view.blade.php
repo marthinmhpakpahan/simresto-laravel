@@ -6,21 +6,31 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <div class="row">
-                            <div class="col-6">
-                                <h3 class="text-uppercase">Detail Menu</h3>
+                            <div class="col-6 flex flex-row items-center">
+                                <span class="text-uppercase text-3xl font-bold border-b-[4px] border-red-700 text-red-700">Detail Menu {{ $menu->id }}</span>
+                                <a href="{{ route('menu.edit', $menu->id) }}" class="ml-4 border px-3 py-[1px] rounded-lg bg-green-600 hover:bg-green-800 cursor-pointer text-white"><i class="fa fa-edit"></i>&nbsp;Edit</a>
                             </div>
                             <div class="col-6 text-end">
-                                <a href="{{ route('menu.index') }}">
-                                    <div class="btn btn-primary">Lihat Semua Menu</div>
-                                </a>
+                                <a class="border-2 border-red-700 rounded-lg px-4 py-2 bg-red-700 text-white font-bold cursor-pointer hover:bg-red-800"
+                                    href="{{ route('menu.index') }}">
+                                    <i class="fa fa-list"></i>&nbsp;
+                                    Lihat Semua Menu</a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body px-4 pt-5 pb-4">
-                        <div class="row flex-nowrap overflow-auto">
+                        <div class="row flex flex-row items-center">
                             @foreach ($menu_images as $index => $menu_image)
-                                <div class="col-3 border rounded {{ $index == 0 ? "active" : "" }}">
-                                    <img src="/{{ $menu_image->path }}" class="d-block" alt="..." height="180">
+                                <div class="w-1/4 relative flex justify-end">
+                                    <img src="/{{ $menu_image->path }}"
+                                        class="rounded-lg border-3 object-cover block border-red-700 mt-3"
+                                        alt="..." height="180" />
+                                    <a href="{{ route('menu_image.delete', [$menu->id, $menu_image->id]) }}">
+                                        <i class="absolute text-lg bg-red-800 rounded-3xl text-white text-md fa fa-trash btn-delete-karyawan bottom-0 right-0 mr-5 mb-2 py-2 px-3 hover:bg-red-600 cursor-pointer"
+                                            data-name="{{ $menu->name }}"
+                                            data-url="{{ route('menu.delete', $menu->id) }}" data-bs-toggle="modal"
+                                            data-bs-target="#modalDeleteConfirmation"></i>
+                                    </a>
                                 </div>
                             @endforeach
                         </div>
@@ -60,36 +70,48 @@
                     <div class="card-header pb-0">
                         <div class="row">
                             <div class="col-6">
-                                <h5 class="text-uppercase">List Bahan (Resep)</h5>
+                                <span
+                                    class="text-uppercase text-2xl font-bold border-b-[4px] border-red-700 text-red-700">Daftar
+                                    Bahan</span>
                             </div>
                             <div class="col-6 text-end">
-                                <div class="btn btn-success" data-bs-toggle="collapse" data-bs-target="#collapseFormAdd" aria-expanded="false" aria-controls="collapseFormAdd"><i class="fa fa-plus-square text-white text-md"></i>  Tambah Bahan Resep</div>
+                                <a class="border-2 border-red-700 rounded-lg px-4 py-2 bg-red-700 text-white font-bold cursor-pointer hover:bg-red-800"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseFormAdd" aria-expanded="false"
+                                    aria-controls="collapseFormAdd">
+                                    <i class="fa fa-plus-square text-white text-md"></i>
+                                    Tambah Bahan Resep
+                                </a>
                             </div>
                             <div class="collapse col-12 mt-2" id="collapseFormAdd">
                                 <div class="card card-body border">
                                     <h5 class="text-uppercase">Form Bahan</h5>
-                                    <form role="form" class="row" method="POST" action={{ route('menurecipe.create', $menu->id) }}>
+                                    <form role="form" class="row" method="POST"
+                                        action={{ route('menurecipe.create', $menu->id) }}>
                                         @csrf
                                         <div class="col-3">
                                             <label class="form-label">Bahan</label>
                                             <select class="form-control" name="bahan">
                                                 @foreach ($materials as $material)
-                                                    <option value="{{ $material->id }}" data-weight="{{ $material->weight }}" data-price="{{ $material->price }}" data-unit="{{ $material->unit }}">{{ $material->name }}</option>
+                                                    <option value="{{ $material->id }}"
+                                                        data-weight="{{ $material->weight }}"
+                                                        data-price="{{ $material->price }}"
+                                                        data-unit="{{ $material->unit }}">{{ $material->name }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                         </div>
                                         <div class="col-3">
                                             <label class="form-label">Berat</label>
-                                            <input type="text" name="weight"
-                                                class="form-control"
-                                                placeholder="..." aria-label="Weight"
-                                                aria-describedby="invalidCheckWeight">
+                                            <input type="text" name="weight" class="form-control" placeholder="..."
+                                                aria-label="Weight" aria-describedby="invalidCheckWeight">
                                         </div>
                                         <div class="col-3">
                                             <label class="form-label">Satuan</label>
                                             <select class="form-control" name="unit">
                                                 @foreach ($units as $unit)
-                                                    <option value="{{ $unit->code }}" {{ $unit->code == "G" ? "selected" : "" }}>{{ $unit->name }}</option>
+                                                    <option value="{{ $unit->code }}"
+                                                        {{ $unit->code == 'G' ? 'selected' : '' }}>{{ $unit->name }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -105,39 +127,60 @@
                     <div class="card-body px-4 pb-4">
                         <div class="row">
                             <div class="col-12">
-                                <table class="table">
+                                <table class="">
                                     <thead class="text-center">
                                         <tr>
-                                            <th class="font-weight-bolder text-uppercase text-sm">No</th>
-                                            <th class="font-weight-bolder text-uppercase text-sm">Nama</th>
-                                            <th class="font-weight-bolder text-uppercase text-sm">Berat</th>
-                                            <th class="font-weight-bolder text-uppercase text-sm">Total Biaya</th>
-                                            <th class="font-weight-bolder text-uppercase text-sm">#</th>
+                                            <th
+                                                class="border-[1px] border-black px-4 py-1 font-weight-bolder text-uppercase text-lg">
+                                                No</th>
+                                            <th
+                                                class="border-[1px] border-black px-4 py-1 font-weight-bolder text-uppercase text-lg">
+                                                Nama</th>
+                                            <th
+                                                class="border-[1px] border-black px-4 py-1 font-weight-bolder text-uppercase text-lg">
+                                                Berat</th>
+                                            <th
+                                                class="border-[1px] border-black px-4 py-1 font-weight-bolder text-uppercase text-lg">
+                                                Total Biaya</th>
+                                            <th
+                                                class="border-[1px] border-black px-4 py-1 font-weight-bolder text-uppercase text-lg">
+                                                Action</th>
                                         </tr>
                                     </thead>
                                     <tbody class="text-center text-xs">
                                         @foreach ($menu_recipes as $index => $menu_recipe)
                                             <tr>
                                                 <th colspan="5">
-                                                    <div class="collapse col-12" id="collapseFormAdd-{{ $menu_recipe->id }}">
+                                                    <div class="collapseFormAdd hidden col-12 border-[1px] border-gray-500 border-t-[2px] border-b-[5px] border-r-[5px] border-l-[5px] mb-1 mt-3"
+                                                        data-id="collapseFormAdd-{{ $menu_recipe->id }}">
                                                         <div class="card card-body">
-                                                            <h5 class="text-uppercase py-2 font-weight-bolder">Edit Bahan {{ $menu_recipe->id }}</h5>
-                                                            <form role="form" class="row" method="POST" action={{ route('menurecipe.edit', $menu->id) }}>
+                                                            <h5 class="text-uppercase py-2 font-weight-bolder">Edit
+                                                                Bahan ({{ $menu_recipe->id }})</h5>
+                                                            <form role="form" class="row" method="POST"
+                                                                action={{ route('menurecipe.edit', $menu->id) }}>
                                                                 @csrf
-                                                                <input type="hidden" name="menu_recipe_id" value="{{ $menu_recipe->id }}">
-                                                                <input type="hidden" name="menu_id" value="{{ $menu_recipe->menu_id }}">
+                                                                <input type="hidden" name="menu_recipe_id"
+                                                                    value="{{ $menu_recipe->id }}">
+                                                                <input type="hidden" name="menu_id"
+                                                                    value="{{ $menu_recipe->menu_id }}">
                                                                 <div class="col-3">
                                                                     <label class="form-label">Bahan</label>
                                                                     <select class="form-control" name="bahan">
                                                                         @foreach ($materials as $material)
-                                                                            <option value="{{ $material->id }}" data-weight="{{ $material->weight }}" data-price="{{ $material->price }}" data-unit="{{ $material->unit }}" {{ $menu_recipe->material_id == $material->id ? "selected" : "" }}>{{ $material->name }}</option>
+                                                                            <option value="{{ $material->id }}"
+                                                                                data-weight="{{ $material->weight }}"
+                                                                                data-price="{{ $material->price }}"
+                                                                                data-unit="{{ $material->unit }}"
+                                                                                {{ $menu_recipe->material_id == $material->id ? 'selected' : '' }}>
+                                                                                {{ $material->name }}</option>
                                                                         @endforeach
                                                                     </select>
                                                                 </div>
                                                                 <div class="col-3">
                                                                     <label class="form-label">Berat</label>
                                                                     <input type="text" name="weight"
-                                                                        class="form-control" value="{{ $menu_recipe->weight }}"
+                                                                        class="form-control"
+                                                                        value="{{ $menu_recipe->weight }}"
                                                                         placeholder="..." aria-label="Weight"
                                                                         aria-describedby="invalidCheckWeight">
                                                                 </div>
@@ -145,13 +188,17 @@
                                                                     <label class="form-label">Satuan</label>
                                                                     <select class="form-control" name="unit">
                                                                         @foreach ($units as $unit)
-                                                                            <option value="{{ $unit->code }}" {{ $unit->code == $menu_recipe->unit ? "selected" : "" }}>{{ $unit->name }}</option>
+                                                                            <option value="{{ $unit->code }}"
+                                                                                {{ $unit->code == $menu_recipe->unit ? 'selected' : '' }}>
+                                                                                {{ $unit->name }}</option>
                                                                         @endforeach
                                                                     </select>
                                                                 </div>
                                                                 <div class="col-3">
-                                                                    <label class="form-label">&nbsp;&nbsp;</label><br/>
-                                                                    <button type="submit" class="form-control btn btn-success">Simpan</button>
+                                                                    <label
+                                                                        class="form-label">&nbsp;&nbsp;</label><br />
+                                                                    <button type="submit"
+                                                                        class="form-control btn btn-success">Simpan</button>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -159,15 +206,33 @@
                                                 </th>
                                             </tr>
                                             <tr>
-                                                <th class="font-weight-bolder text-uppercase text-sm">{{ ($index + 1) }}</th>
-                                                <th class="font-weight-bolder text-uppercase text-sm">{{ $menu_recipe->material->name }}</th>
-                                                <th class="font-weight-bolder text-uppercase text-sm">{{ $menu_recipe->weight }} {{ $menu_recipe->unit }}</th>
-                                                <th class="font-weight-bolder text-sm">Rp. {{ number_format($menu_recipe->total_cost) }}</th>
-                                                <th class="font-weight-bolder text-uppercase text-sm">
-                                                    <i class="btn btn-primary btn-xs text-md fa fa-edit btn-edit-recipe" data-bs-toggle="collapse" data-bs-target="#collapseFormAdd-{{ $menu_recipe->id }}" aria-expanded="false" aria-controls="collapseFormAdd-{{ $menu_recipe->id }}" data-menu-id="{{ $menu_recipe->menu_id }}" data-material-id="{{ $menu_recipe->material_id }}" data-weight={{ $menu_recipe->weight }} data-unit="{{ $menu_recipe->unit }}"></i>
-                                                    <i class="btn btn-danger btn-xs text-md fa fa-trash btn-delete-recipe" data-name="{{ $menu->name }}" data-url="{{ route('menu.delete', $menu->id) }}" data-bs-toggle="modal"
-                                                    data-bs-target="#modalDeleteConfirmation"></i>
-                                                </th>
+                                                <td class="border-[1px] border-black px-4 py-2 text-sm">
+                                                    {{ $index + 1 }}</td>
+                                                <td class="border-[1px] border-black px-6 py-1 text-sm">
+                                                    {{ $menu_recipe->material->name }}</td>
+                                                <td class="border-[1px] border-black px-6 py-1 text-sm">
+                                                    {{ $menu_recipe->weight }} {{ $menu_recipe->unit }}</td>
+                                                <td class="border-[1px] border-black px-4 py-1 text-sm">
+                                                    Rp.
+                                                    {{ number_format($menu_recipe->total_cost) }}</td>
+                                                <td
+                                                    class="border-[1px] border-black px-4 py-1 font-weight-bolder text-uppercase text-sm">
+                                                    <a class="text-md btn-edit-recipe border-2 bg-green-600 hover:bg-green-800 text-white px-2 py-[1px] rounded-lg cursor-pointer"
+                                                        data-target="collapseFormAdd-{{ $menu_recipe->id }}"
+                                                        data-menu-id="{{ $menu_recipe->menu_id }}"
+                                                        data-material-id="{{ $menu_recipe->material_id }}"
+                                                        data-weight={{ $menu_recipe->weight }}
+                                                        data-unit="{{ $menu_recipe->unit }}">
+                                                        <i class="fa fa-edit"></i>&nbsp; Edit
+                                                    </a>
+                                                    <a class="text-md border-2 bg-red-600 hover:bg-red-800 text-white px-2 py-[1px] rounded-lg btn-delete-recipe cursor-pointer"
+                                                        data-name="{{ $menu->name }}"
+                                                        data-url="{{ route('menu.delete', $menu->id) }}"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#modalDeleteConfirmation">
+                                                        <i class="fa fa-trash"></i>&nbsp; Delete
+                                                    </a>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -180,8 +245,8 @@
         </div>
     </div>
 </main>
-<div class="modal fade" id="modalDeleteConfirmation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="modalDeleteConfirmation" data-bs-backdrop="static" data-bs-keyboard="false"
+    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header bg-danger text-center">
@@ -223,12 +288,25 @@
     $(document).ready(function() {
         console.log("View Menu Page!");
         $(".btn-edit-recipe").on("click", function(event) {
+            console.log("btn-edit-recipe invoked!")
             event.preventDefault();
             var data_menu_id = $(this).data("menu-id");
             var data_material_id = $(this).data("material-id");
             var data_weight = $(this).data("weight");
             var data_unit = $(this).data("unit");
-            console.log(data_menu_id, data_material_id, data_weight, data_unit);
+            var data_target = $(this).data("target");
+            console.log("btn-edit-recipe", "=>", data_menu_id, data_material_id, data_weight, data_unit);
+
+            $(".collapseFormAdd").each(function(index) {
+                var collapseElement = $(this);
+                var collapseElementID = collapseElement.data("id");
+                if(collapseElementID == data_target) {
+                    collapseElement.removeClass("hidden");
+                } else {
+                    collapseElement.addClass("hidden");
+                }
+                console.log("data-id", collapseElement.data("id"), data_target)
+            });
         });
     });
 </script>

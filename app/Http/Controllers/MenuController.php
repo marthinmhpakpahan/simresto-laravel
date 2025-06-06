@@ -15,7 +15,8 @@ use App\Models\MenuCategory;
 
 class MenuController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $user_id = Auth::id();
         $user = User::where('id', $user_id)->first();
         $menus = Menu::get();
@@ -28,7 +29,8 @@ class MenuController extends Controller
         ]);
     }
 
-    public function show(Request $request, $menu_id) {
+    public function show(Request $request, $menu_id)
+    {
         $user_id = Auth::id();
         $user = User::where('id', $user_id)->first();
         $menu = Menu::where('id', $menu_id)->first();
@@ -38,7 +40,7 @@ class MenuController extends Controller
         $units = Unit::get();
 
         $total_cost = 0;
-        foreach($menu_recipes as $menu_recipe) {
+        foreach ($menu_recipes as $menu_recipe) {
             $menu_recipe["total_cost"] = ($menu_recipe->convertWeight($menu_recipe->weight, $menu_recipe->unit, $menu_recipe->material->weight, $menu_recipe->material->unit) * $menu_recipe->material->price);
             $total_cost += $menu_recipe["total_cost"];
         }
@@ -56,17 +58,18 @@ class MenuController extends Controller
         ]);
     }
 
-    public function create(Request $request) {
+    public function create(Request $request)
+    {
         $user_id = Auth::id();
         $user = User::where('id', $user_id)->first();
         $menu_categories = MenuCategory::get();
 
-        if($request->method() == "POST") {
+        if ($request->method() == "POST") {
             $credentials = $request->validate([
-                    'name' => 'required',
-                    'menu_category_id' => 'required',
-                    'image-multiple' => 'required',
-                    'description' => 'required',
+                'name' => 'required',
+                'menu_category_id' => 'required',
+                'image-multiple' => 'required',
+                'description' => 'required',
             ]);
 
             $result = Menu::create([
@@ -75,18 +78,17 @@ class MenuController extends Controller
                 'description' => $request->description ?: "",
             ]);
             $image_paths = CommonFunction::uploadFiles($request->file('image-multiple'), "MENU_IMAGE");
-            foreach($image_paths as $image) {
+            foreach ($image_paths as $image) {
                 MenuImages::create([
                     "menu_id" => $result->id,
                     "path" => $image
                 ]);
             }
 
-            if(!$result) {
-                return back()->withInput()->with('failed','Gagal menambahkan Menu!');
+            if (!$result) {
+                return back()->withInput()->with('failed', 'Gagal menambahkan Menu!');
             }
             return redirect('/resep')->with('success', 'Berhasil menambahkan Menu baru!');
-
         } else {
             return view('menu.create', [
                 "title" => env("APP_NAME") . " - Manage Menu",
@@ -97,49 +99,53 @@ class MenuController extends Controller
         }
     }
 
-    public function edit(Request $request, $karyawan_id) {
-        $karyawan = User::where('id', $karyawan_id)->first();
+    public function edit(Request $request, $menu_id)
+    {
+        $menu = Menu::where('id', $menu_id)->first();
+        $user_id = Auth::id();
+        $user = User::where('id', $user_id)->first();
+        $menu_categories = MenuCategory::get();
 
-        if($request->method() == "POST") {
+        if ($request->method() == "POST") {
             $credentials = $request->validate([
-                    'full_name' => 'required',
-                    'username' => 'required',
-                    'phone_no' => 'required',
-                    'email' => 'required',
-                    'salary' => 'required',
-                    'joined_since' => 'required',
+                "name" => "required",
+                'menu_category_id' => 'required',
+                "description" => "required",
             ]);
 
-            $karyawan->full_name = $request->full_name;
-            $karyawan->username = $request->username;
-            $karyawan->phone_no = $request->phone_no;
-            $karyawan->email = $request->email;
-            if($request->file("photo")) {
-                $karyawan->photo = CommonFunction::uploadFiles($request->file('photo'), "PHOTO");
-            }
-            if($request->file("identity_card")) {
-                $karyawan->identity_card = CommonFunction::uploadFiles($request->file('identity_card'), "IDENTITY_CARD");
-            }
-            $karyawan->password = $request->password;
-            $karyawan->salary = $request->salary;
-            $karyawan->joined_since = $request->joined_since;
-            $result = $karyawan->save();
+            $menu->name = $request->name;
+            $menu->menu_category_id = $request->menu_category_id;
+            $menu->description = $request->description;
 
-            if(!$result) {
-                return back()->withInput()->with('failed','Gagal menambahkan karyawan!');
+            if ($request->file('image-multiple')) {
+                $image_paths = CommonFunction::uploadFiles($request->file('image-multiple'), "MENU_IMAGE");
+                // delete all images first
+                foreach ($image_paths as $image) {
+                    MenuImages::create([
+                        "menu_id" => $menu->id,
+                        "path" => $image
+                    ]);
+                }
             }
-            return redirect('/karyawan')->with('success', 'Berhasil menambahkan karyawan anda!');
 
+            $result = $menu->save();
+
+            if (!$result) {
+                return back()->withInput()->with('failed', 'Gagal mengubah Menu!');
+            }
+            return redirect('/menu')->with('success', 'Berhasil mengubah Menu!');
         } else {
-            return view('karyawan.edit', [
-                "title" => env("APP_NAME") . " - Manage karyawan",
-                "page_title" => "Edit Data Karyawan",
-                "karyawan" => $karyawan
+            return view('menu.edit', [
+                "title" => env("APP_NAME") . " - Edit Menu",
+                "page_title" => "Edit Data Menu",
+                "menu" => $menu,
+                "menu_categories" => $menu_categories
             ]);
         }
     }
 
-    public function delete($karyawan_id) {
+    public function delete($karyawan_id)
+    {
         $karyawan = User::where('id', $karyawan_id)->first();
         $karyawan->status = 0;
         $karyawan->save();

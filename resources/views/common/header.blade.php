@@ -2,27 +2,33 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
-  <title>
-    {{ $title }}
-  </title>
-  <!--     Fonts and icons     -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-  <!-- Nucleo Icons -->
-  <link href="/assets/css/nucleo-icons.css" rel="stylesheet" />
-  <link href="/assets/css/nucleo-svg.css" rel="stylesheet" />
-  <!-- Font Awesome Icons -->
-  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-  <link href="/assets/css/nucleo-svg.css" rel="stylesheet" />
-  <!-- CSS Files -->
-  <link id="pagestyle" href="/assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
-  <script src="/assets/js/jquery.min.js" crossorigin="anonymous"></script>
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+    <title>
+        {{ $title }}
+    </title>
+    
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    
+    <!-- Nucleo Icons -->
+    <link href="{{ asset('assets/css/nucleo-icons.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
+    
+    <!-- Font Awesome Icons -->
+    {{-- <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script> --}}
+    <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
+    
+    <!-- CSS Files -->
+    <link id="pagestyle" href="{{ asset('assets/css/argon-dashboard.css') }}" rel="stylesheet" />
+    <script src="{{ asset('assets/js/jquery.min.js') }}" crossorigin="anonymous"></script>
 
-  <link href="/assets/css/style.css" rel="stylesheet" type="text/css">
-  <link href="/assets/css/calendar.css" rel="stylesheet" type="text/css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}" />
+    <link href="{{ asset('assets/css/calendar.css') }}" rel="stylesheet" type="text/css">
+    @vite('resources/css/app.css')
 </head>
+
+<body class="bg-primary">

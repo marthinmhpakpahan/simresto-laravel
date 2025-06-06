@@ -30,17 +30,35 @@
                                 <tbody class="align-items-center">
                                     @foreach ($materials as $index => $material)
                                         <tr class="text-center">
-                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder">{{ ($index+1) }}</th>
                                             <th class="text-uppercase text-secondary text-xs font-weight-bolder">
+                                                {{ $index + 1 }}</th>
+                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder w-24">
                                                 <img src="{{ $material->image }}" height="80" alt="" />
                                             </th>
-                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder">{{ $material->name }}</th>
-                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder">{{ $material->weight }} {{ $material->unit }}</th>
-                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder">Rp. {{ $material->price }}</th>
+                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder">
+                                                {{ $material->name }}</th>
+                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder">
+                                                {{ $material->weight }} {{ $material->unit }}</th>
+                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder">Rp.
+                                                {{ $material->price }}</th>
                                             <th class="text-uppercase text-secondary">
-                                                <a href="{{ route('material.edit', $material->id) }}"><i class="btn btn-primary btn-xs text-md fa fa-edit" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Ubah Data Bahan"></i></a>
-                                                <i class="btn btn-danger btn-xs text-md fa fa-trash btn-delete-karyawan" data-name="{{ $material->name }}" data-url="{{ route('karyawan.delete', $material->id) }}" data-bs-toggle="modal"
-                                                    data-bs-target="#modalDeleteConfirmation"></i>
+                                                <a href="{{ route('material.show', $material->id) }}"
+                                                    class="btn btn-success btn-xs text-md px-4 py-2" class="" data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    data-bs-title="Ubah Data Bahan">
+                                                    <i class="fa fa-search"></i>&nbsp;&nbsp;Detail
+                                                </a>
+                                                <a href="{{ route('material.edit', $material->id) }}"
+                                                    class="btn btn-primary btn-xs text-md px-4 py-2" class="" data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    data-bs-title="Ubah Data Bahan">
+                                                    <i class="fa fa-edit"></i>&nbsp;&nbsp;Edit
+                                                </a>
+                                                <a class="btn btn-danger btn-xs text-md btn-delete-karyawan px-4 py-2"
+                                                data-name="{{ $material->name }}"
+                                                data-url="{{ route('karyawan.delete', $material->id) }}"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#modalDeleteConfirmation">
+                                                    <i class="fa fa-trash"></i>&nbsp;&nbsp;Delete
+                                                </a>
                                             </th>
                                         </tr>
                                     @endforeach

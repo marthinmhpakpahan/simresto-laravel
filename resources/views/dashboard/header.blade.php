@@ -1,16 +1,14 @@
 @include('common.header')
-<body class="g-sidenav-show bg-gray-100">
   <div class="min-height-300 bg-primary position-absolute w-100"></div>
   <aside
-    class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 "
+    class="sidenav bg-primary navbar navbar-vertical navbar-expand-xs border border-white border-radius-xl my-3 fixed-start ms-4 "
     id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
         aria-hidden="true" id="iconSidenav"></i>
-      <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/argon-dashboard/pages/dashboard.html "
-        target="_blank">
-        <img src="/assets/img/logos/rentstar_logo.png" class="navbar-brand-img h-100" alt="main_logo">
-        <span class="ms-1 font-weight-bold">{{ env("APP_NAME") }} Dashboard</span>
+      <a class="flex flex-col mt-3 mb-6" href="#">
+        <img src="/assets/img/icon_restaurant_white.png" width="80" class="mx-auto" alt="main_logo">
+        <span class="font-weight-bold text-white text-2xl mt-2 mx-auto">{{ env("APP_NAME") }} Dashboard</span>
       </a>
     </div>
     <hr class="horizontal dark mt-0">
@@ -20,7 +18,7 @@
   </aside>
   <main class="main-content position-relative border-radius-lg ">
     <!-- Navbar -->
-    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur"
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
       data-scroll="false">
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
