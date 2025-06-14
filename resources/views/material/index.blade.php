@@ -7,62 +7,66 @@
                     <div class="card-header pb-0">
                         <div class="row">
                             <div class="col-6">
-                                <h3 class="text-uppercase">List Bahan</h3>
+                                <h3 class=""><span
+                                        class="text-uppercase font-bold text-4xl border-b-[4px] border-red-700 text-red-700">List
+                                        Bahan</span></h3>
                             </div>
-                            <div class="col-6 text-end"><a href="{{ route('material.create') }}">
-                                    <div class="btn btn-success">Tambah Bahan Baru</div>
-                                </a></div>
+                            <div class="col-6 text-end">
+                                <a href="{{ route('material.create') }}"
+                                    class="font-bold border-2 border-red-700 rounded-lg px-3 py-[3px] bg-red-700 text-white hover:bg-red-800 cursor-pointer">
+                                    <i class="fa fa-plus"></i>&nbsp;Tambah Bahan Baru
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-4">
-                            <table class="table table-hover">
-                                <thead>
+                            <table class="">
+                                <tr class="text-center">
+                                    <td class="text-uppercase text-sm font-weight-bolder border-[2px] border-red-700 w-[50px] py-[12px]">No</td>
+                                    <td class="text-uppercase text-sm font-weight-bolder border-[2px] border-red-700 w-[150px]">Gambar</td>
+                                    <td class="text-uppercase text-sm font-weight-bolder border-[2px] border-red-700 w-[400px]">Nama</td>
+                                    <td class="text-uppercase text-sm font-weight-bolder border-[2px] border-red-700 w-[150px]">Berat</td>
+                                    <td class="text-uppercase text-sm font-weight-bolder border-[2px] border-red-700 w-[150px]">Harga</td>
+                                    <td class="text-uppercase text-sm font-weight-bolder border-[2px] border-red-700 w-[350px]">#</td>
+                                </tr>
+                                @foreach ($materials as $index => $material)
                                     <tr class="text-center">
-                                        <th class="text-uppercase text-xs font-weight-bolder">No</th>
-                                        <th class="text-uppercase text-xs font-weight-bolder">Gambar</th>
-                                        <th class="text-uppercase text-xs font-weight-bolder">Nama</th>
-                                        <th class="text-center text-uppercase text-xs font-weight-bolder">Berat</th>
-                                        <th class="text-center text-uppercase text-xs font-weight-bolder">Harga</th>
-                                        <th class="text-center text-uppercase text-xs font-weight-bolder">#</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="align-items-center">
-                                    @foreach ($materials as $index => $material)
-                                        <tr class="text-center">
-                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder">
-                                                {{ $index + 1 }}</th>
-                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder w-24">
-                                                <img src="{{ $material->image }}" height="80" alt="" />
-                                            </th>
-                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder">
-                                                {{ $material->name }}</th>
-                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder">
-                                                {{ $material->weight }} {{ $material->unit }}</th>
-                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder">Rp.
-                                                {{ $material->price }}</th>
-                                            <th class="text-uppercase text-secondary">
-                                                <a href="{{ route('material.show', $material->id) }}"
-                                                    class="btn btn-success btn-xs text-md px-4 py-2" class="" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    data-bs-title="Ubah Data Bahan">
-                                                    <i class="fa fa-search"></i>&nbsp;&nbsp;Detail
-                                                </a>
-                                                <a href="{{ route('material.edit', $material->id) }}"
-                                                    class="btn btn-primary btn-xs text-md px-4 py-2" class="" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    data-bs-title="Ubah Data Bahan">
-                                                    <i class="fa fa-edit"></i>&nbsp;&nbsp;Edit
-                                                </a>
-                                                <a class="btn btn-danger btn-xs text-md btn-delete-karyawan px-4 py-2"
+                                        <td
+                                            class="text-uppercase text-sm border-[1px] border-red-700 py-3">
+                                            {{ $index + 1 }}</td>
+                                        <td class="text-uppercase text-sm border-[1px] border-red-700">
+                                            <a class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800" href="{{ asset($material->image) }}" target="_blank"><i
+                                                class="fa fa-eye"></i></a>
+                                        </td>
+                                        <td class="text-uppercase text-sm border-[1px] border-red-700">
+                                            {{ $material->name }}</td>
+                                        <td class="text-uppercase text-sm border-[1px] border-red-700">
+                                            {{ $material->weight }} {{ $material->unit }}</td>
+                                        <td class="text-sm border-[1px] border-red-700">
+                                            Rp. {{ $material->price }}</td>
+                                        <td class="border-[1px] border-red-700">
+                                            <a href="{{ route('material.show', $material->id) }}"
+                                                class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 cursor-pointer" class=""
+                                                data-bs-toggle="tooltip" data-bs-placement="top"
+                                                data-bs-title="Ubah Data Bahan">
+                                                <i class="fa fa-search"></i>&nbsp;&nbsp;Detail
+                                            </a>
+                                            <a href="{{ route('material.edit', $material->id) }}"
+                                                class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 cursor-pointer" class=""
+                                                data-bs-toggle="tooltip" data-bs-placement="top"
+                                                data-bs-title="Ubah Data Bahan">
+                                                <i class="fa fa-edit"></i>&nbsp;&nbsp;Edit
+                                            </a>
+                                            <a class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 cursor-pointer"
                                                 data-name="{{ $material->name }}"
                                                 data-url="{{ route('karyawan.delete', $material->id) }}"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#modalDeleteConfirmation">
-                                                    <i class="fa fa-trash"></i>&nbsp;&nbsp;Delete
-                                                </a>
-                                            </th>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
+                                                data-bs-toggle="modal" data-bs-target="#modalDeleteConfirmation">
+                                                <i class="fa fa-trash"></i>&nbsp;&nbsp;Delete
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </table>
                         </div>
                     </div>

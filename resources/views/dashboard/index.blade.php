@@ -89,14 +89,14 @@
 
 <div class="flex flex-col flex-wrap bg-white mx-4 py-5 px-5 rounded-lg mt-4">
     <div class="w-max border-[2px] rounded-xl border-red-700 m-2 p-3">
-        <span class="font-bold text-xl border-b-2 border-red-700 text-red-700">Daftar Karyawan</span>
+        <span class="font-bold text-2xl border-b-2 border-red-700 text-red-700">Daftar Karyawan</span>
         <table class="mt-2">
-            <tr>
-                <td class="border-2 border-black px-3 py-1 font-bold">No</td>
-                <td class="border-2 border-black px-3 py-1 font-bold">Nama</td>
-                <td class="border-2 border-black px-3 py-1 font-bold">Email</td>
-                <td class="border-2 border-black px-3 py-1 font-bold">Status</td>
-                <td class="border-2 border-black px-3 py-1 font-bold">#</td>
+            <tr class="text-center">
+                <td class="border-2 border-black px-3 py-1 font-bold w-[50px]">No</td>
+                <td class="border-2 border-black px-3 py-1 font-bold w-[250px]">Nama</td>
+                <td class="border-2 border-black px-3 py-1 font-bold w-[350px]">Email</td>
+                <td class="border-2 border-black px-3 py-1 font-bold w-[150px]">Status</td>
+                <td class="border-2 border-black px-3 py-1 font-bold w-[150px]">#</td>
             </tr>
             @foreach ($karyawans as $index => $karyawan)
                 <tr>
@@ -106,9 +106,9 @@
                     <td class="border-[1px] border-black px-3 py-1 font-semibold">{{ $karyawan->email }}</td>
                     <td class="border-[1px] border-black px-3 py-1 font-semibold text-center">
                         {{ $karyawan->status ? 'Aktif' : 'Tidak Aktif' }}</td>
-                    <td class="border-[1px] border-black px-3 py-1 font-semibold">
-                      <a class="btn btn-sm btn-primary" href="/karyawan/show/{{ $karyawan->id }}" target="_blank">
-                        <i class="fa fa-eye"></i>&nbsp;&nbsp;Lihat Detail
+                    <td class="border-[1px] border-black px-3 py-1 font-semibold text-center">
+                      <a class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800" href="/karyawan/show/{{ $karyawan->id }}" target="_blank">
+                        <i class="fa fa-search"></i>
                       </a>
                     </td>
                 </tr>
@@ -116,32 +116,32 @@
         </table>
     </div>
     <div class="w-max border-[2px] rounded-xl border-green-700 m-2 p-3">
-        <span class="font-bold text-xl border-b-2 border-green-700 text-green-700">Daftar Bahan</span>
+        <span class="font-bold text-2xl border-b-2 border-green-700 text-green-700">Daftar Bahan</span>
         <table class="mt-2">
-            <tr>
-                <td class="border-2 border-black px-3 py-1 font-bold">No</td>
-                <td class="border-2 border-black px-3 py-1 font-bold">Nama</td>
-                <td class="border-2 border-black px-3 py-1 font-bold">Deskripsi</td>
-                <td class="border-2 border-black px-3 py-1 font-bold">Berat</td>
-                <td class="border-2 border-black px-3 py-1 font-bold">Gambar</td>
-                <td class="border-2 border-black px-3 py-1 font-bold">#</td>
+            <tr class="text-center">
+                <td class="border-2 border-black px-3 py-1 font-bold w-[50px]">No</td>
+                <td class="border-2 border-black px-3 py-1 font-bold w-[250px]">Nama</td>
+                <td class="border-2 border-black px-3 py-1 font-bold w-[350px]">Deskripsi</td>
+                <td class="border-2 border-black px-3 py-1 font-bold w-[100px]">Berat</td>
+                <td class="border-2 border-black px-3 py-1 font-bold w-[100px]">Gambar</td>
+                <td class="border-2 border-black px-3 py-1 font-bold w-[100px]">#</td>
             </tr>
             @foreach ($materials as $index => $material)
                 <tr>
                     <td class="border-[1px] border-black px-3 py-1 font-semibold text-center">{{ $index + 1 }}
                     </td>
                     <td class="border-[1px] border-black px-3 py-1 font-semibold">{{ $material->name }}</td>
-                    <td class="border-[1px] border-black px-3 py-1 font-semibold text-center">
+                    <td class="border-[1px] border-black px-3 py-1 font-semibold">
                         {{ $material->description ?: '-' }}</td>
                     <td class="border-[1px] border-black px-3 py-1 font-semibold text-center">
                         {{ $material->weight }} {{ $material->unit }}</td>
-                    <td class="border-[1px] border-black px-3 py-1 font-semibold">
-                        <a class="btn btn-sm btn-success" href="{{ asset($material->image) }}" target="_blank"><i
-                                class="fa fa-eye"></i>&nbsp;&nbsp;Lihat Gambar</a>
+                    <td class="border-[1px] border-black px-3 py-1 font-semibold text-center">
+                        <a class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800" href="{{ asset($material->image) }}" target="_blank"><i
+                                class="fa fa-eye"></i></a>
                     </td>
                     <td class="border-[1px] border-black px-3 py-1 font-semibold text-center">
-                      <a class="btn btn-sm btn-primary" href="/bahan/edit/{{ $material->id }}" target="_blank">
-                        <i class="fa fa-eye"></i>&nbsp;&nbsp;Lihat Detail
+                      <a class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800" href="/bahan/edit/{{ $material->id }}" target="_blank">
+                        <i class="fa fa-search"></i>
                       </a>
                     </td>
                 </tr>
@@ -149,22 +149,22 @@
         </table>
     </div>
     <div class="w-max border-[2px] rounded-xl border-yellow-700 m-2 p-3">
-        <span class="font-bold text-xl border-b-2 border-yellow-700 text-yellow-700">Daftar Menu</span>
+        <span class="font-bold text-2xl border-b-2 border-yellow-700 text-yellow-700">Daftar Menu</span>
         <table class="mt-2">
-            <tr>
-                <td class="border-2 border-black px-3 py-1 font-bold">No</td>
-                <td class="border-2 border-black px-3 py-1 font-bold">Nama</td>
-                <td class="border-2 border-black px-3 py-1 font-bold">Deskripsi</td>
-                <td class="border-2 border-black px-3 py-1 font-bold">#</td>
+            <tr class="text-center">
+                <td class="border-2 border-black px-3 py-1 font-bold w-[50px]">No</td>
+                <td class="border-2 border-black px-3 py-1 font-bold w-[250px]">Nama</td>
+                <td class="border-2 border-black px-3 py-1 font-bold w-[550px]">Deskripsi</td>
+                <td class="border-2 border-black px-3 py-1 font-bold w-[100px]">#</td>
             </tr>
             @foreach ($menus as $index => $menu)
                 <tr>
-                    <td class="border-[1px] border-black px-3 py-1 font-semibold">{{ $index + 1 }}</td>
+                    <td class="border-[1px] border-black px-3 py-1 font-semibold text-center">{{ $index + 1 }}</td>
                     <td class="border-[1px] border-black px-3 py-1 font-semibold">{{ $menu->name }}</td>
                     <td class="border-[1px] border-black px-3 py-1 font-semibold">{{ $menu->description }}</td>
                     <td class="border-[1px] border-black px-3 py-1 font-semibold">
-                      <a class="btn btn-sm btn-primary" href="" target="_blank">
-                        <i class="fa fa-eye"></i>&nbsp;&nbsp;Lihat Detail
+                      <a class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800" href="" target="_blank">
+                        <i class="fa fa-search"></i>
                       </a>
                     </td>
                 </tr>
@@ -172,20 +172,22 @@
         </table>
     </div>
     <div class="w-max border-[2px] rounded-xl border-blue-700 m-2 p-3">
-        <span class="font-bold text-xl border-b-2 border-blue-700 text-blue-700">Daftar Cuti</span>
+        <span class="font-bold text-2xl border-b-2 border-blue-700 text-blue-700">Daftar Cuti</span>
         <table class="mt-2">
             <tr>
-                <td class="border-2 border-black px-3 py-1 font-bold">No</td>
-                <td class="border-2 border-black px-3 py-1 font-bold">Nama</td>
-                <td class="border-2 border-black px-3 py-1 font-bold">Email</td>
-                <td class="border-2 border-black px-3 py-1 font-bold">Status</td>
+                <td class="border-2 border-black px-3 py-1 font-bold w-[50px]">No</td>
+                <td class="border-2 border-black px-3 py-1 font-bold w-[250px]">Nama</td>
+                <td class="border-2 border-black px-3 py-1 font-bold w-[300px]">Email</td>
+                <td class="border-2 border-black px-3 py-1 font-bold w-[250px]">No Telepon</td>
+                <td class="border-2 border-black px-3 py-1 font-bold w-[100px]">Status</td>
             </tr>
             @foreach ($karyawans as $index => $karyawan)
                 <tr>
                     <td class="border-[1px] border-black px-3 py-1 font-semibold">{{ $index + 1 }}</td>
                     <td class="border-[1px] border-black px-3 py-1 font-semibold">{{ $karyawan->full_name }}</td>
                     <td class="border-[1px] border-black px-3 py-1 font-semibold">{{ $karyawan->email }}</td>
-                    <td class="border-[1px] border-black px-3 py-1 font-semibold">
+                    <td class="border-[1px] border-black px-3 py-1 font-semibold">{{ $karyawan->phone_no }}</td>
+                    <td class="border-[1px] border-black px-3 py-1 font-semibold text-center">
                         {{ $karyawan->status ? 'Aktif' : 'Tidak Aktif' }}</td>
                 </tr>
             @endforeach

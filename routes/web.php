@@ -58,7 +58,10 @@ Route::post('/recipe/create/{menu_id}', [MenuRecipeController::class, 'create'])
 Route::post('/recipe/edit/{menu_id}', [MenuRecipeController::class, 'edit'])->name('menurecipe.edit')->middleware('auth');
 
 // Menu Image
-Route::get('/menu/delete/{menu_id}/{menu_image_id}', [MenuImageController::class, 'delete'])->name('menu_image.delete')->middleware('auth');
+Route::get('/menu/image/delete/{menu_id}/{menu_image_id}', [MenuImageController::class, 'delete'])->name('menu_image.delete')->middleware('auth');
+
+// Menu Recipe
+Route::get('/menu/recipe/delete/{menu_id}/{menu_image_id}', [MenuRecipeController::class, 'delete'])->name('menu_recipe.delete')->middleware('auth');
 
 // Dashboard
 Route::resource('dashboard', 'DashboardController')->except(['show'])->middleware('auth');
