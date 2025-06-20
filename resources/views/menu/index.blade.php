@@ -21,23 +21,23 @@
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-4">
-                            <table class="">
+                            <table class="w-full">
                                 <thead>
                                     <tr class="text-center">
                                         <th
                                             class="text-uppercase text-md font-weight-bolder border-[1px] border-red-700 px-3 py-2 text-red-700">
                                             No</th>
                                         <th
-                                            class="text-uppercase text-md font-weight-bolder w-1/7 border-[1px] border-red-700 text-red-700">
+                                            class="text-uppercase text-md font-weight-bolder tracking-wider border-[1px] border-red-700 text-red-700">
                                             Kategori</th>
                                         <th
-                                            class="text-uppercase text-md font-weight-bolder w-1/6 border-[1px] border-red-700 text-red-700">
+                                            class="text-uppercase text-md font-weight-bolder tracking-wider border-[1px] border-red-700 text-red-700">
                                             Nama</th>
                                         <th
-                                            class="text-center text-uppercase text-md font-weight-bolder w-3/6 border-[1px] border-red-700 text-red-700">
+                                            class="text-center text-uppercase text-md font-weight-bolder tracking-wider border-[1px] border-red-700 text-red-700">
                                             Deskripsi</th>
                                         <th
-                                            class="text-center text-uppercase text-md font-weight-bolder border-[1px] border-red-700 text-red-700">
+                                            class="text-center text-uppercase text-md font-weight-bolder tracking-wider border-[1px] border-red-700 text-red-700">
                                             #</th>
                                     </tr>
                                 </thead>
@@ -61,18 +61,18 @@
                                                     <a href="{{ route('menu.show', $menu->id) }}" data-bs-toggle="tooltip"
                                                         class="border text-white bg-red-700 hover:bg-red-800 px-2 py-1 rounded-lg text-md mx-[1px]"
                                                         data-bs-placement="top" data-bs-title="Detail Data Bahan">
-                                                        <i class="text-md fa fa-eye"></i>&nbsp; Detail
+                                                        <i class="text-md fa fa-eye"></i>
                                                     </a>
                                                     <a href="{{ route('menu.edit', $menu->id) }}" data-bs-toggle="tooltip"
                                                         class="border text-white bg-red-700 hover:bg-red-800 px-2 py-1 rounded-lg text-md mx-[1px]"
                                                         data-bs-placement="top" data-bs-title="Ubah Data Bahan">
-                                                        <i class="text-md fa fa-edit"></i>&nbsp; Edit
+                                                        <i class="text-md fa fa-edit"></i>
                                                     </a>
                                                     <a class="border text-white bg-red-700 hover:bg-red-800 px-2 py-1 rounded-lg text-md btn-delete-karyawan mx-[1px]"
                                                         data-name="{{ $menu->name }}"
                                                         data-url="{{ route('menu.delete', $menu->id) }}"
                                                         data-bs-toggle="modal" data-bs-target="#modalDeleteConfirmation">
-                                                        <i class="fa fa-trash"></i>&nbsp; Delete
+                                                        <i class="fa fa-trash"></i>
                                                     </a>
                                                 </div>
                                             </td>

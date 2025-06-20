@@ -21,14 +21,14 @@
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-4">
-                            <table class="">
+                            <table class="w-full">
                                 <tr class="text-center">
-                                    <td class="text-uppercase text-sm font-weight-bolder border-[2px] border-red-700 w-[50px] py-[12px]">No</td>
-                                    <td class="text-uppercase text-sm font-weight-bolder border-[2px] border-red-700 w-[150px]">Gambar</td>
-                                    <td class="text-uppercase text-sm font-weight-bolder border-[2px] border-red-700 w-[400px]">Nama</td>
-                                    <td class="text-uppercase text-sm font-weight-bolder border-[2px] border-red-700 w-[150px]">Berat</td>
-                                    <td class="text-uppercase text-sm font-weight-bolder border-[2px] border-red-700 w-[150px]">Harga</td>
-                                    <td class="text-uppercase text-sm font-weight-bolder border-[2px] border-red-700 w-[350px]">#</td>
+                                    <td class="text-uppercase text-sm font-weight-bolder border-[2px] border-red-700 tracking-wider py-[12px]">No</td>
+                                    <td class="text-uppercase text-sm font-weight-bolder border-[2px] border-red-700 tracking-wider">Gambar</td>
+                                    <td class="text-uppercase text-sm font-weight-bolder border-[2px] border-red-700 tracking-wider">Nama</td>
+                                    <td class="text-uppercase text-sm font-weight-bolder border-[2px] border-red-700 tracking-wider">Berat</td>
+                                    <td class="text-uppercase text-sm font-weight-bolder border-[2px] border-red-700 tracking-wider">Harga</td>
+                                    <td class="text-uppercase text-sm font-weight-bolder border-[2px] border-red-700 tracking-wider">#</td>
                                 </tr>
                                 @foreach ($materials as $index => $material)
                                     <tr class="text-center">
@@ -48,17 +48,17 @@
                                         <td class="border-[1px] border-red-700">
                                             <a href="{{ route('material.show', $material->id) }}"
                                                 class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 cursor-pointer">
-                                                <i class="fa fa-search"></i>&nbsp;&nbsp;Detail
+                                                <i class="fa fa-search"></i>
                                             </a>
                                             <a href="{{ route('material.edit', $material->id) }}"
                                                 class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 cursor-pointer">
-                                                <i class="fa fa-edit"></i>&nbsp;&nbsp;Edit
+                                                <i class="fa fa-edit"></i>
                                             </a>
                                             <a class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 cursor-pointer"
                                                 data-name="{{ $material->name }}"
                                                 data-url="{{ route('karyawan.delete', $material->id) }}"
                                                 data-bs-toggle="modal" data-bs-target="#modalDeleteConfirmation">
-                                                <i class="fa fa-trash"></i>&nbsp;&nbsp;Delete
+                                                <i class="fa fa-trash"></i>
                                             </a>
                                         </td>
                                     </tr>
