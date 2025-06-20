@@ -23,7 +23,7 @@ class Calendar {
         $first_day_of_week = array_search(date('D', strtotime($this->active_year . '-' . $this->active_month . '-1')), $days);
         $html = '<div class="calendar">';
         $html .= '<div class="header">';
-        $html .= '<div class="month-year">';
+        $html .= '<div class="month-year text-center mt-4">';
         $html .= date('F Y', strtotime($this->active_year . '-' . $this->active_month . '-' . $this->active_day));
         $html .= '</div>';
         $html .= '</div>';

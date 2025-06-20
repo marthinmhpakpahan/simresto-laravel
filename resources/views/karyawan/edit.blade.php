@@ -8,11 +8,11 @@
                     <div class="card-header pb-0">
                         <div class="row">
                             <div class="col-6">
-                            <h4>{{ $page_title }}</h4>
+                            <h4 class="text-uppercase text-3xl font-bold text-red-700">{{ $page_title }}</h4>
                             </div>
                             <div class="col-6 text-end">
-                                <a href="{{ route("karyawan.index") }}">
-                                    <div class="btn btn-success">List Karyawan</div>
+                                <a href="{{ route("karyawan.index") }}" class="font-bold text-red-800 w-max px-3 py-2 border-2 border-red-700 rounded-lg mt-2 hover:bg-red-900 hover:text-white cursor-pointer">
+                                    <i class="fa fa-list"></i>&nbsp;&nbsp;List Karyawan
                                 </a>
                             </div>
                         </div>
@@ -47,7 +47,7 @@
                                 @csrf
                                 <div class="row">
                                     <div class="mb-3 col-6">
-                                        <label class="form-label">Nama Lengkap</label>
+                                        <label class="form-label text-red-800 font-semibold text-base">Nama Lengkap</label>
                                         <input type="text" name="full_name"
                                             class="form-control {{ $errors->has('full_name') ? 'is-invalid' : '' }}"
                                             placeholder="Bill..." aria-label="FullName" value="{{$karyawan->full_name}}"
@@ -58,7 +58,7 @@
                                         @endif
                                     </div>
                                     <div class="mb-3 col-6">
-                                        <label class="form-label">Username</label>
+                                        <label class="form-label text-red-800 font-semibold text-base">Username</label>
                                         <input type="text" name="username"
                                             class="form-control {{ $errors->has('username') ? 'is-invalid' : '' }}"
                                             placeholder="username..." aria-label="Username"  value="{{$karyawan->username}}"
@@ -71,7 +71,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="mb-3 col-6">
-                                        <label class="form-label">Email</label>
+                                        <label class="form-label text-red-800 font-semibold text-base">Email</label>
                                         <input type="text" name="email"
                                             class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
                                             placeholder="Bill..." aria-label="Email"  value="{{$karyawan->email}}"
@@ -82,7 +82,7 @@
                                         @endif
                                     </div>
                                     <div class="mb-3 col-6">
-                                        <label class="form-label">No Telepon</label>
+                                        <label class="form-label text-red-800 font-semibold text-base">No Telepon</label>
                                         <input type="text" name="phone_no"
                                             class="form-control {{ $errors->has('phone_no') ? 'is-invalid' : '' }}"
                                             placeholder="0821..." aria-label="PhoneNo"  value="{{$karyawan->phone_no}}"
@@ -95,7 +95,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="mb-3 col-6">
-                                        <label class="form-label">Foto</label>
+                                        <label class="form-label text-red-800 font-semibold text-base">Foto</label>
                                         <img class="form-control img-fluid" id="img_photo" src="{{ env("APP_URL") . "/" . $karyawan->photo}}" alt="" />
                                         <input type="file" name="photo"
                                             class="form-control {{ $errors->has('photo') ? 'is-invalid' : '' }}"
@@ -109,7 +109,7 @@
                                         @endif
                                     </div>
                                     <div class="mb-3 col-6">
-                                        <label class="form-label">Kartu Identitas (KTP/SIM)</label>
+                                        <label class="form-label text-red-800 font-semibold text-base">Kartu Identitas (KTP/SIM)</label>
                                         <img class="form-control img-fluid" id="img_identity_card" src="{{ env("APP_URL") . "/" . $karyawan->identity_card}}" alt="" />
                                         <input type="file" name="identity_card"
                                             class="form-control {{ $errors->has('identity_card') ? 'is-invalid' : '' }}"
@@ -125,7 +125,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="mb-3 col-6">
-                                        <label class="form-label">Salary</label>
+                                        <label class="form-label text-red-800 font-semibold text-base">Salary</label>
                                         <input type="text" name="salary"
                                             class="form-control {{ $errors->has('salary') ? 'is-invalid' : '' }}"
                                             placeholder="" aria-label="Salary" value="{{$karyawan->salary}}"
@@ -136,7 +136,7 @@
                                         @endif
                                     </div>
                                     <div class="mb-3 col-6">
-                                        <label class="form-label">Tanggal Bergabung</label>
+                                        <label class="form-label text-red-800 font-semibold text-base">Tanggal Bergabung</label>
                                         <input type="date" name="joined_since"
                                             class="form-control {{ $errors->has('joined_since') ? 'is-invalid' : '' }}"
                                             placeholder="" aria-label="JoinedSince" value="{{$karyawan->joined_since}}"
@@ -148,7 +148,7 @@
                                     </div>
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Update</button>
+                                    <button type="submit" class="font-bold text-red-800 w-max px-3 py-2 border-2 border-red-700 rounded-lg mt-2 hover:bg-red-900 hover:text-white cursor-pointer"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan Data</button>
                                 </div>
                             </form>
                         </div>

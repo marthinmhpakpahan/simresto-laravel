@@ -7,11 +7,14 @@
                     <div class="card-header pb-0">
                         <div class="row">
                             <div class="col-6">
-                                <h3 class="text-uppercase text-4xl font-serif font-bold">Detail Bahan</h3>
+                                <h3 class="text-uppercase font-bold text-red-700 text-3xl">Detail Bahan</h3>
                             </div>
                             <div class="col-6 text-end">
-                                <a href="{{ route('material.index') }}">
-                                    <div class="btn btn-primary">Lihat Semua Bahan</div>
+                                <a class="font-bold text-red-800 w-max px-3 py-2 border-2 border-red-700 rounded-lg mt-2 hover:bg-red-900 hover:text-white cursor-pointer" href="{{ route('material.edit', $material->id) }}">
+                                    <i class="fa fa-edit"></i>&nbsp;&nbsp;Edit Bahan
+                                </a>
+                                <a class="ml-3 font-bold text-red-800 w-max px-3 py-2 border-2 border-red-700 rounded-lg mt-2 hover:bg-red-900 hover:text-white cursor-pointer" href="{{ route('material.index') }}">
+                                    <i class="fa fa-list"></i>&nbsp;&nbsp;Lihat Semua Bahan
                                 </a>
                             </div>
                         </div>

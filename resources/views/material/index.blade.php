@@ -36,7 +36,7 @@
                                             class="text-uppercase text-sm border-[1px] border-red-700 py-3">
                                             {{ $index + 1 }}</td>
                                         <td class="text-uppercase text-sm border-[1px] border-red-700">
-                                            <a class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800" href="{{ asset($material->image) }}" target="_blank"><i
+                                            <a class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 btn-detail-image" data-image="{{ asset($material->image) }}" data-bs-toggle="modal" data-bs-target="#modalDetailImage"><i
                                                 class="fa fa-eye"></i></a>
                                         </td>
                                         <td class="text-uppercase text-sm border-[1px] border-red-700">
@@ -47,15 +47,11 @@
                                             Rp. {{ $material->price }}</td>
                                         <td class="border-[1px] border-red-700">
                                             <a href="{{ route('material.show', $material->id) }}"
-                                                class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 cursor-pointer" class=""
-                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                data-bs-title="Ubah Data Bahan">
+                                                class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 cursor-pointer" class="">
                                                 <i class="fa fa-search"></i>&nbsp;&nbsp;Detail
                                             </a>
                                             <a href="{{ route('material.edit', $material->id) }}"
-                                                class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 cursor-pointer" class=""
-                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                data-bs-title="Ubah Data Bahan">
+                                                class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 cursor-pointer" class="">
                                                 <i class="fa fa-edit"></i>&nbsp;&nbsp;Edit
                                             </a>
                                             <a class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 cursor-pointer"
@@ -75,6 +71,16 @@
         </div>
     </div>
 </main>
+<div class="modal fade modal-lg" id="modalDetailImage" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <img class="modal-detail-image-image img-fluid" src="" alt="" />
+            </div>
+        </div>
+    </div>
+</div>
 <div class="modal fade" id="modalDeleteConfirmation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -117,6 +123,11 @@
 <script type="text/javascript">
     $(document).ready(function() {
         console.log("Index Karyawan Page!");
+        $(".btn-detail-image").on("click", function() {
+            var data_image = $(this).data("image");
+            $(".modal-detail-image-image").attr("src", data_image);
+        });
+
         $(".btn-delete-karyawan").on("click", function() {
             var data_fullname = $(this).data("full_name");
             $(".modal-karyawan-full_name").text(data_fullname);
