@@ -119,7 +119,7 @@
                             {{ $karyawan->status ? 'Aktif' : 'Tidak Aktif' }}</td>
                         <td class="px-1 sm:px-4 py-[10px] text-center">
                             <a class="rounded-xl border border-red-700 px-3 py-[1px] text-red-700 hover:bg-red-800 hover:text-white"
-                                href="/karyawan/show/{{ $karyawan->id }}" target="_blank">
+                                href="/karyawan/show/{{ $karyawan->id }}">
                                 <i class="fa fa-search"></i>
                             </a>
                         </td>
@@ -157,11 +157,11 @@
                             {{ $material->weight }} {{ $material->unit }}</td>
                         <td class="px-1 sm:px-4 py-[10px] text-center">
                             <a class="rounded-xl border border-red-700 px-3 py-[1px] text-red-700 hover:bg-red-800 hover:text-white"
-                                href="{{ asset($material->image) }}" target="_blank"><i class="fa fa-image"></i></a>
+                                href="{{ asset($material->image) }}"><i class="fa fa-image"></i></a>
                         </td>
                         <td class="px-1 sm:px-4 py-[10px] text-center">
                             <a class="rounded-xl border border-red-700 px-3 py-[1px] text-red-700 hover:bg-red-800 hover:text-white"
-                                href="/bahan/edit/{{ $material->id }}" target="_blank">
+                                href="/bahan/edit/{{ $material->id }}">
                                 <i class="fa fa-search"></i>
                             </a>
                         </td>
@@ -192,7 +192,7 @@
                         <td class="px-1 sm:px-4 py-[10px]">{{ substr($menu->description, 0, 100) }}{{ strlen($menu->description) < 100 ? "" : "..." }}</td>
                         <td class="px-1 sm:px-4 py-[10px]">
                             <a class="rounded-xl border border-red-700 px-3 py-[1px] text-red-700 hover:bg-red-800 hover:text-white"
-                                href="" target="_blank">
+                                href="{{ route('menu.show', $menu->id) }}">
                                 <i class="fa fa-search"></i>
                             </a>
                         </td>
