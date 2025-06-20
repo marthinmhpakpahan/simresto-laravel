@@ -10,7 +10,7 @@
                 <span class="nav-link-text text-white ms-1">Dashboard</span>
             </a>
         </li>
-        <li class="nav-item {{ auth()->user()->role_id == 1 ? "d-none" : "" }}">
+        <li class="nav-item hidden {{ auth()->user()->role_id == 1 ? "d-none" : "" }}">
             <a class="nav-link {{ Route::current()->getName() == "profile" ? "active" : "" }}" href="{{ route('profile') }}">
                 <div
                     class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">

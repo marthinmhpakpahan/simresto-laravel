@@ -5,7 +5,7 @@
       <div class="card">
         <div class="card-header pb-0">
           <div class="d-flex align-items-center">
-            <p class="mb-0">Edit Profile</p>
+            <p class="mb-0">Ubah Data Profile</p>
           </div>
         </div>
         <div class="card-body">

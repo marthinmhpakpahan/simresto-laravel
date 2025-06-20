@@ -28,7 +28,7 @@ class UserController extends Controller
             if($user->role_id == 1) {
                 return redirect()->intended('dashboard');
             } else {
-                return redirect()->intended(default: 'profile');
+                return redirect()->route("karyawan.attendance");
             }
         }
 

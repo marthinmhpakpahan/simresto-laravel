@@ -6,30 +6,30 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <div class="row">
-                            <div class="col-md-6 col-lg-6 col-xs-12 items-center.">
+                            <div class="col-md-6 col-lg-6 col-xs-12 items-center">
                                 <h3 class="text-uppercase {{ !$attendance ? "text-red-700 font-bold text-2xl" : ($attendance->finished_at ? "text-green-700 font-bold text-2xl" : "text-red-700 font-bold text-2xl")  }}">{{ !$attendance ? "Anda belum checkin hari ini !!!" : ($attendance->finished_at ? "Absensi hari ini sudah lengkap!" : "Anda belum checkout hari ini !!!") }}</h3>
                             </div>
-                            <div class="col-md-6 col-lg-6 col-xs-12 text-end {{ $attendance && $attendance->finished_at ? "d-none" : "" }}">
-                                <div class="btn btn-danger btn-check-in-out">{{ !$attendance ? "Check In Sekarang" : "Check Out Sekarang"  }}</div>
+                            <div class="col-md-6 col-lg-6 col-xs-12 flex justify-end {{ $attendance && $attendance->finished_at ? "d-none" : "" }}">
+                                <div class="btn-check-in-out font-bold text-red-800 w-max px-3 py-2 border-2 border-red-700 rounded-lg mt-2 hover:bg-red-900 hover:text-white cursor-pointer">
+                                    <i class="fa {{ !$attendance ? 'fa-right-to-bracket' : 'fa-right-from-bracket'  }}"></i> {{ !$attendance ? "Check In Sekarang" : "Check Out Sekarang"  }}
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="collapse col-12" id="collapseFormAdd">
                             <div class="card card-body">
-                                <h5 class="text-uppercase">Upload Foto Sebagai Bukti</h5>
+                                <h5 class="text-uppercase font-bold text-red-700 text-2xl text-center mt-2 mb-5">Upload Foto Sebagai Bukti</h5>
                                 <form role="form" class="row" method="POST" action={{ route("karyawan.validate_attendance") }} enctype="multipart/form-data">
                                     @csrf
-                                    <div class="col-md-6 col-xs-12">
+                                    <div class="col-md-6 col-xs-12 flex flex-col justify-center mx-auto">
                                         <img class="form-control visually-hidden img-thumbnail" id="img_checkin" src="#" alt="" />
                                         <input type="file" name="image"
-                                            class="form-control"
+                                            class="form-control my-3"
                                             data-img_element="img_checkin"
                                             placeholder="..." aria-label="Image"
                                             aria-describedby="invalidCheckImage">
-                                    </div>
-                                    <div class="col-md-6 col-xs-12">
-                                        <button type="submit" class="form-control btn btn-success">Upload</button>
+                                        <button type="submit" class="font-bold text-red-800 w-max mx-auto px-5 py-2 border-2 border-red-700 rounded-lg hover:bg-red-900 hover:text-white cursor-pointer">Upload</button>
                                     </div>
                                 </form>
                             </div>
@@ -42,7 +42,7 @@
                     <div class="card-header pb-0">
                         <div class="row">
                             <div class="col-md-6 col-xs-12">
-                                <h3 class="text-uppercase">Daftar Hadir</h3>
+                                <h3 class="text-uppercase text-3xl font-bold text-red-700">Daftar Hadir</h3>
                             </div>
                         </div>
                     </div>
@@ -66,14 +66,14 @@
                                             <td>
                                                 {{ new DateTime($attendance->started_at)->format('H:i:s') }} 
                                                 @if ($attendance->started_at)
-                                                    &nbsp; <i class="fa fa-photo btn btn-primary btn-xs btn-detail-image" data-image="/{{ $attendance->started_path }}" data-bs-toggle="modal"
+                                                    &nbsp; <i class="fa fa-image btn btn-primary btn-xs btn-detail-image" data-image="/{{ $attendance->started_path }}" data-bs-toggle="modal"
                                                         data-bs-target="#modalDetailImage"></i>
                                                 @endif
                                             </td>
                                             <td>
                                                 {{ $attendance && $attendance->finished_at ? new DateTime($attendance->finished_at)->format('H:i:s') : "-" }}
                                                 @if ($attendance->finished_at)
-                                                    &nbsp; <i class="fa fa-photo btn btn-primary btn-xs btn-detail-image" data-image="/{{ $attendance->finished_path }}" data-bs-toggle="modal"
+                                                    &nbsp; <i class="fa fa-image btn btn-primary btn-xs btn-detail-image" data-image="/{{ $attendance->finished_path }}" data-bs-toggle="modal"
                                                         data-bs-target="#modalDetailImage"></i>
                                                 @endif
                                             </td>

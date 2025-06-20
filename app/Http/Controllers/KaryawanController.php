@@ -121,7 +121,7 @@ class KaryawanController extends Controller
 
     public function attendance() {
         $user_id = Auth::id();
-        $attendance = Attendance::whereRaw('DATE(created_at) = ?', [date("Y-m-d")])->orderByDesc("created_at")->first();
+        $attendance = Attendance::whereRaw('DATE(created_at) = ?', [date("Y-m-d")])->where('user_id', $user_id)->orderByDesc("created_at")->first();
         $attendances = Attendance::where('user_id', $user_id)->orderByDesc("created_at")->get();
 
         return view('karyawan.attendance', [
@@ -261,12 +261,17 @@ class KaryawanController extends Controller
         $user_id = Auth::id();
         $current_date = date("Y-m-d");
         $calendar = new Calendar($current_date);
+
+        $attendances = Attendance::whereYear('created_at', '=', date("Y"))->whereMonth('created_at', '=', date("m"))->get();
+        foreach($attendances as $attendance) {
+            $calendar->add_event("<i class='fa fa-check'></i> " . $attendance->user->full_name, date('Y-m-d', strtotime($attendance->started_at)), 1, 'green');
+        }
         
         $leaves = Leave::where("status", "Accepted")->get();
         foreach($leaves as $leave) {
             $date_range = CarbonPeriod::create($leave->start_date, $leave->end_date);
             foreach ($date_range as $date) {
-                $calendar->add_event("[" . $leave->title . "] " . $leave->user->full_name, $date->format('Y-m-d'), 1, 'red');
+                $calendar->add_event("<i class='fa fa-leaf'></i> " . $leave->user->full_name, $date->format('Y-m-d'), 1, 'red');
             }
         }
 

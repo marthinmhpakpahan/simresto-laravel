@@ -10,8 +10,8 @@
                                 <h3 class="text-uppercase text-3xl font-bold text-red-700">Daftar Cuti Karyawan</h3>
                             </div>
                             <div class="col-6 text-end">
-                                <a href="{{ route('karyawan.create_leave') }}">
-                                    <div class="btn btn-success">Tambah Cuti Baru</div>
+                                <a class="font-bold text-red-800 w-max px-3 py-2 border-2 border-red-700 rounded-lg mt-2 hover:bg-red-900 hover:text-white cursor-pointer" href="{{ route('karyawan.create_leave') }}">
+                                    <i class="fa fa-plus"></i> Pengajuan Cuti
                                 </a>
                             </div>
                         </div>
