@@ -1,5 +1,5 @@
 @include('dashboard.header')
-<main class="main-content position-relative border-radius-lg mt-8">
+<main class="main-content position-relative border-radius-lg mt-2">
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
@@ -7,11 +7,13 @@
                     <div class="card-header pb-0">
                         <div class="row">
                             <div class="col-6">
-                                <h3 class="text-uppercase">List Karyawan</h3>
+                                <h3 class="text-uppercase text-3xl font-bold text-red-700">List Karyawan</h3>
                             </div>
-                            <div class="col-6 text-end"><a href="{{ route('karyawan.create') }}">
-                                    <div class="btn btn-success">Tambah Karyawan Baru</div>
-                                </a></div>
+                            <div class="col-6 text-end">
+                                <a class="font-bold border-2 border-red-700 rounded-lg px-3 py-[3px] bg-red-700 text-white hover:bg-red-800 cursor-pointer" href="{{ route('karyawan.create') }}">
+                                    <i class="fa fa-plus"></i> &nbsp; Karyawan Baru
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
@@ -19,28 +21,28 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr class="text-center">
-                                        <th class="text-uppercase text-xs font-weight-bolder">No</th>
-                                        <th class="text-uppercase text-xs font-weight-bolder">Nama</th>
-                                        <th class="text-uppercase text-xs font-weight-bolder">No. Telepon</th>
-                                        <th class="text-center text-uppercase text-xs font-weight-bolder">Email</th>
-                                        <th class="text-center text-uppercase text-xs font-weight-bolder">Bergabung Sejak</th>
-                                        <th class="text-center text-uppercase text-xs font-weight-bolder">#</th>
+                                        <th class="font-weight-bolder">No</th>
+                                        <th class="font-weight-bolder">Nama</th>
+                                        <th class="font-weight-bolder">No. Telepon</th>
+                                        <th class="font-weight-bolder">Email</th>
+                                        <th class="font-weight-bolder">Bergabung Sejak</th>
+                                        <th class="font-weight-bolder">#</th>
                                     </tr>
                                 </thead>
                                 <tbody class="align-items-center">
                                     @foreach ($karyawans as $index => $karyawan)
                                         <tr class="text-center">
-                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder">{{ ($index+1) }}</th>
-                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder">{{ $karyawan->full_name }}</th>
-                                            <th class="text-secondary text-xs font-weight-bolder">{{ $karyawan->phone_no }}</th>
-                                            <th class="text-secondary text-xs font-weight-bolder">{{ $karyawan->email }}</th>
-                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder">{{ $karyawan->joined_since }}</th>
-                                            <th class="text-uppercase text-secondary">
+                                            <td>{{ ($index+1) }}</td>
+                                            <td>{{ $karyawan->full_name }}</td>
+                                            <td>{{ $karyawan->phone_no }}</td>
+                                            <td>{{ $karyawan->email }}</td>
+                                            <td>{{ $karyawan->joined_since }}</td>
+                                            <td class="">
                                                 <a href="{{ route('karyawan.show', $karyawan->id) }}"><i class="btn btn-success btn-xs text-md fa fa-eye" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Detail Data Karyawan"></i></a>
                                                 <a href="{{ route('karyawan.edit', $karyawan->id) }}"><i class="btn btn-primary btn-xs text-md fa fa-edit" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Ubah Data Karyawan"></i></a>
                                                 <i class="btn btn-danger btn-xs text-md fa fa-trash btn-delete-karyawan" data-full_name="{{ $karyawan->full_name }}" data-phone_no="{{ $karyawan->phone_no }}" data-email="{{ $karyawan->email }}" data-url="{{ route('karyawan.delete', $karyawan->id) }}" data-bs-toggle="modal"
                                                     data-bs-target="#modalDeleteConfirmation"></i>
-                                            </th>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

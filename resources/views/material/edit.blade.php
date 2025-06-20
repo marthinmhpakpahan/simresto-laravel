@@ -20,15 +20,15 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
+    <div class="flex flex-row justify-between items-center">
+        <p class="font-bold text-red-800 text-4xl">Edit Bahan - {{ $material->id }}</p>
+        <a href="{{ route('material.index') }}"
+            class="font-bold text-red-800 w-max px-3 py-2 border-2 border-red-700 rounded-lg mt-2 hover:bg-red-900 hover:text-white cursor-pointer"><i
+                class="fa fa-list"></i>&nbsp;&nbsp;Lihat Daftar Bahan</a>
+    </div>
     <form role="form" method="POST" action="{{ route('material.edit', $material->id) }}"
         enctype="multipart/form-data">
         @csrf
-        <div class="flex flex-row justify-between items-center">
-            <p class="font-bold text-red-800 text-4xl">Edit Bahan - {{ $material->id }}</p>
-            <a href="{{ route('material.index') }}"
-                class="font-bold text-red-800 w-max px-3 py-2 border-2 border-red-700 rounded-lg mt-2 hover:bg-red-900 hover:text-white cursor-pointer"><i
-                    class="fa fa-list"></i>&nbsp;&nbsp;Lihat Daftar Bahan</a>
-        </div>
         <div class="flex flex-row w-full mt-6">
             <div class="flex flex-col w-full mr-2">
                 <div class="flex flex-col">

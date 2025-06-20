@@ -10,7 +10,8 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function index() {
-        $karyawans = User::where('role_id', 2)->where("status", 1)->get();
+        $active_karyawans = User::where('role_id', 2)->where("status", 1)->get();
+        $all_karyawan = User::where('role_id', 2)->get();
         $materials = Material::get();
         $menus = Menu::get();
 
@@ -19,9 +20,13 @@ class DashboardController extends Controller
             "title" => env("APP_NAME") . " - Dashboard",
             "page_title" => "Dashboard",
             "body_class" => "bg-primary",
-            "karyawans" => $karyawans,
+            "karyawans" => $all_karyawan,
+            "total_karyawan" => count($all_karyawan),
             "materials" => $materials,
-            "menus" => $menus
+            "total_material" => count($materials),
+            "menus" => $menus,
+            "total_menu" => count($menus),
+            "total_active_karyawan" => count($active_karyawans)
         ]);
     }
 }

@@ -2,16 +2,16 @@
 <div class="flex flex-row bg-white mx-4 p-5 rounded-lg">
     <div class="border-2 border-red-700 py-3 px-4 mx-3 rounded-lg w-1/4">
         <div class="flex flex-row">
-            <div class="mr-[5px] w-2/3">
-                <div class="numbers">
+            <div class="mr-[5px] w-2/3 items-center">
+                <div class="number">
                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Karyawan</p>
-                    <h5 class="font-weight-bolder">
-                        30 Orang
+                    <h5 class="font-weight-bolder text-3xl">
+                        {{ $total_karyawan }} Orang
                     </h5>
-                    <p class="mb-0">
+                    {{-- <p class="mb-0">
                         <span class="text-success text-sm font-weight-bolder">+15%</span>
                         sejak tahun lalu
-                    </p>
+                    </p> --}}
                 </div>
             </div>
             <div class="text-end flex items-center justify-center ml-3 w-1/3">
@@ -26,13 +26,13 @@
             <div class="mr-[5px] w-2/3">
                 <div class="numbers">
                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Bahan</p>
-                    <h5 class="font-weight-bolder">
-                        30 Orang
+                    <h5 class="font-weight-bolder text-3xl">
+                        {{ $total_material }} Bahan
                     </h5>
-                    <p class="mb-0">
+                    {{-- <p class="mb-0">
                         <span class="text-success text-sm font-weight-bolder">+15%</span>
                         sejak tahun lalu
-                    </p>
+                    </p> --}}
                 </div>
             </div>
             <div class="text-end flex items-center justify-center ml-3 w-1/3">
@@ -47,13 +47,13 @@
             <div class="mr-[5px] w-2/3">
                 <div class="numbers">
                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Menu</p>
-                    <h5 class="font-weight-bolder">
-                        30 Orang
+                    <h5 class="font-weight-bolder text-3xl">
+                        {{ $total_menu }} Menu
                     </h5>
-                    <p class="mb-0">
+                    {{-- <p class="mb-0">
                         <span class="text-success text-sm font-weight-bolder">+15%</span>
                         sejak tahun lalu
-                    </p>
+                    </p> --}}
                 </div>
             </div>
             <div class="text-end flex items-center justify-center ml-3 w-1/3">
@@ -69,13 +69,13 @@
             <div class="mr-[5px] w-2/3">
                 <div class="numbers">
                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Total User Aktif</p>
-                    <h5 class="font-weight-bolder">
-                        30 Orang
+                    <h5 class="font-weight-bolder text-2xl">
+                        {{ $total_active_karyawan }} Orang
                     </h5>
-                    <p class="mb-0">
+                    {{-- <p class="mb-0">
                         <span class="text-success text-sm font-weight-bolder">+15%</span>
                         sejak tahun lalu
-                    </p>
+                    </p> --}}
                 </div>
             </div>
             <div class="text-end flex items-center justify-center ml-3 w-1/3">
@@ -87,107 +87,139 @@
     </div>
 </div>
 
-<div class="flex flex-col flex-wrap bg-white mx-4 py-5 px-5 rounded-lg mt-4">
-    <div class="w-max border-[2px] rounded-xl border-red-700 m-2 p-3">
-        <span class="font-bold text-2xl border-b-2 border-red-700 text-red-700">Daftar Karyawan</span>
-        <table class="mt-2">
-            <tr class="text-center">
-                <td class="border-2 border-black px-3 py-1 font-bold w-[50px]">No</td>
-                <td class="border-2 border-black px-3 py-1 font-bold w-[250px]">Nama</td>
-                <td class="border-2 border-black px-3 py-1 font-bold w-[350px]">Email</td>
-                <td class="border-2 border-black px-3 py-1 font-bold w-[150px]">Status</td>
-                <td class="border-2 border-black px-3 py-1 font-bold w-[150px]">#</td>
+<div class="mt-4 px-4 w-full">
+    <div class="flex flex-col bg-white shadow-lg rounded-lg p-4">
+        <span class="font-bold text-2xl text-red-600 my-2">Daftar Karyawan</span>
+        <table class="w-full bg-white rounded-lg">
+            <thead>
+                <tr class="text-center bg-slate-200 text-slate-500">
+                    <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">
+                        No</td>
+                    <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">
+                        Nama</td>
+                    <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">
+                        Email</td>
+                    <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">
+                        No Telepon</td>
+                    <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">
+                        Status</td>
+                    <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">
+                        #</td>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+                @foreach ($karyawans as $index => $karyawan)
+                    <tr class="text-slate-500 border-t border-slate-400 bg-white text-center">
+                        <td class="px-1 sm:px-4 py-[10px] text-center">{{ $index + 1 }}
+                        </td>
+                        <td class="px-1 sm:px-4 py-[10px]">{{ $karyawan->full_name }}</td>
+                        <td class="px-1 sm:px-4 py-[10px]">{{ $karyawan->email }}</td>
+                        <td class="px-1 sm:px-4 py-[10px]">{{ $karyawan->phone_no }}</td>
+                        <td class="px-1 sm:px-4 py-[10px] text-center">
+                            {{ $karyawan->status ? 'Aktif' : 'Tidak Aktif' }}</td>
+                        <td class="px-1 sm:px-4 py-[10px] text-center">
+                            <a class="rounded-xl border border-red-700 px-3 py-[1px] text-red-700 hover:bg-red-800 hover:text-white"
+                                href="/karyawan/show/{{ $karyawan->id }}" target="_blank">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="mt-3 px-4 w-full">
+    <div class="flex flex-col bg-white shadow-lg rounded-lg p-4">
+        <span class="font-bold text-2xl text-green-600 my-2">Daftar Bahan</span>
+        <table class="w-full bg-white rounded-lg">
+            <thead>
+                <tr class="text-center bg-slate-200 text-slate-500">
+                    <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">No</td>
+                    <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">Nama</td>
+                    <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">Deskripsi
+                    </td>
+                    <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">Berat</td>
+                    <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">Gambar</td>
+                    <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">#</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($materials as $index => $material)
+                    <tr class="text-slate-500 border-t border-slate-400 bg-white text-center">
+                        <td class="px-1 sm:px-4 py-[10px] text-center">{{ $index + 1 }}
+                        </td>
+                        <td class="px-1 sm:px-4 py-[10px]">{{ $material->name }}</td>
+                        <td class="px-1 sm:px-4 py-[10px] text-wrap">
+                            {{ $material->description ? substr($material->description, 0, 100) : '-' }}</td>
+                        <td class="px-1 sm:px-4 py-[10px] text-center">
+                            {{ $material->weight }} {{ $material->unit }}</td>
+                        <td class="px-1 sm:px-4 py-[10px] text-center">
+                            <a class="rounded-xl border border-red-700 px-3 py-[1px] text-red-700 hover:bg-red-800 hover:text-white"
+                                href="{{ asset($material->image) }}" target="_blank"><i class="fa fa-image"></i></a>
+                        </td>
+                        <td class="px-1 sm:px-4 py-[10px] text-center">
+                            <a class="rounded-xl border border-red-700 px-3 py-[1px] text-red-700 hover:bg-red-800 hover:text-white"
+                                href="/bahan/edit/{{ $material->id }}" target="_blank">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="mt-3 px-4 w-full">
+    <div class="flex flex-col bg-white shadow-lg rounded-lg p-4">
+        <span class="font-bold text-2xl text-yellow-600 my-2">Daftar Menu</span>
+        <table class="w-full bg-white rounded-lg">
+            <thead>
+                <tr class="text-center bg-slate-200 text-slate-500">
+                    <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">No</td>
+                    <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">Nama</td>
+                    <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">Deskripsi</td>
+                    <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">#</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($menus as $index => $menu)
+                    <tr class="text-slate-500 border-t border-slate-400 bg-white text-center">
+                        <td class="px-1 sm:px-4 py-[10px] text-center">{{ $index + 1 }}
+                        </td>
+                        <td class="px-1 sm:px-4 py-[10px]">{{ $menu->name }}</td>
+                        <td class="px-1 sm:px-4 py-[10px]">{{ substr($menu->description, 0, 100) }}{{ strlen($menu->description) < 100 ? "" : "..." }}</td>
+                        <td class="px-1 sm:px-4 py-[10px]">
+                            <a class="rounded-xl border border-red-700 px-3 py-[1px] text-red-700 hover:bg-red-800 hover:text-white"
+                                href="" target="_blank">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="mt-3 px-4 w-full">
+    <div class="flex flex-col bg-white shadow-lg rounded-lg p-4">
+        <span class="font-bold text-2xl text-blue-600">Daftar Cuti</span>
+        <table class="table-auto">
+            <tr class="text-center bg-slate-200 text-slate-500">
+                <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">No</td>
+                <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">Nama</td>
+                <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">Email</td>
+                <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">No Telepon</td>
+                <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">Status</td>
             </tr>
             @foreach ($karyawans as $index => $karyawan)
-                <tr>
-                    <td class="border-[1px] border-black px-3 py-1 font-semibold text-center">{{ $index + 1 }}
-                    </td>
-                    <td class="border-[1px] border-black px-3 py-1 font-semibold">{{ $karyawan->full_name }}</td>
-                    <td class="border-[1px] border-black px-3 py-1 font-semibold">{{ $karyawan->email }}</td>
-                    <td class="border-[1px] border-black px-3 py-1 font-semibold text-center">
-                        {{ $karyawan->status ? 'Aktif' : 'Tidak Aktif' }}</td>
-                    <td class="border-[1px] border-black px-3 py-1 font-semibold text-center">
-                      <a class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800" href="/karyawan/show/{{ $karyawan->id }}" target="_blank">
-                        <i class="fa fa-search"></i>
-                      </a>
-                    </td>
-                </tr>
-            @endforeach
-        </table>
-    </div>
-    <div class="w-max border-[2px] rounded-xl border-green-700 m-2 p-3">
-        <span class="font-bold text-2xl border-b-2 border-green-700 text-green-700">Daftar Bahan</span>
-        <table class="mt-2">
-            <tr class="text-center">
-                <td class="border-2 border-black px-3 py-1 font-bold w-[50px]">No</td>
-                <td class="border-2 border-black px-3 py-1 font-bold w-[250px]">Nama</td>
-                <td class="border-2 border-black px-3 py-1 font-bold w-[350px]">Deskripsi</td>
-                <td class="border-2 border-black px-3 py-1 font-bold w-[100px]">Berat</td>
-                <td class="border-2 border-black px-3 py-1 font-bold w-[100px]">Gambar</td>
-                <td class="border-2 border-black px-3 py-1 font-bold w-[100px]">#</td>
-            </tr>
-            @foreach ($materials as $index => $material)
-                <tr>
-                    <td class="border-[1px] border-black px-3 py-1 font-semibold text-center">{{ $index + 1 }}
-                    </td>
-                    <td class="border-[1px] border-black px-3 py-1 font-semibold">{{ $material->name }}</td>
-                    <td class="border-[1px] border-black px-3 py-1 font-semibold">
-                        {{ $material->description ?: '-' }}</td>
-                    <td class="border-[1px] border-black px-3 py-1 font-semibold text-center">
-                        {{ $material->weight }} {{ $material->unit }}</td>
-                    <td class="border-[1px] border-black px-3 py-1 font-semibold text-center">
-                        <a class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800" href="{{ asset($material->image) }}" target="_blank"><i
-                                class="fa fa-eye"></i></a>
-                    </td>
-                    <td class="border-[1px] border-black px-3 py-1 font-semibold text-center">
-                      <a class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800" href="/bahan/edit/{{ $material->id }}" target="_blank">
-                        <i class="fa fa-search"></i>
-                      </a>
-                    </td>
-                </tr>
-            @endforeach
-        </table>
-    </div>
-    <div class="w-max border-[2px] rounded-xl border-yellow-700 m-2 p-3">
-        <span class="font-bold text-2xl border-b-2 border-yellow-700 text-yellow-700">Daftar Menu</span>
-        <table class="mt-2">
-            <tr class="text-center">
-                <td class="border-2 border-black px-3 py-1 font-bold w-[50px]">No</td>
-                <td class="border-2 border-black px-3 py-1 font-bold w-[250px]">Nama</td>
-                <td class="border-2 border-black px-3 py-1 font-bold w-[550px]">Deskripsi</td>
-                <td class="border-2 border-black px-3 py-1 font-bold w-[100px]">#</td>
-            </tr>
-            @foreach ($menus as $index => $menu)
-                <tr>
-                    <td class="border-[1px] border-black px-3 py-1 font-semibold text-center">{{ $index + 1 }}</td>
-                    <td class="border-[1px] border-black px-3 py-1 font-semibold">{{ $menu->name }}</td>
-                    <td class="border-[1px] border-black px-3 py-1 font-semibold">{{ $menu->description }}</td>
-                    <td class="border-[1px] border-black px-3 py-1 font-semibold">
-                      <a class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800" href="" target="_blank">
-                        <i class="fa fa-search"></i>
-                      </a>
-                    </td>
-                </tr>
-            @endforeach
-        </table>
-    </div>
-    <div class="w-max border-[2px] rounded-xl border-blue-700 m-2 p-3">
-        <span class="font-bold text-2xl border-b-2 border-blue-700 text-blue-700">Daftar Cuti</span>
-        <table class="mt-2">
-            <tr>
-                <td class="border-2 border-black px-3 py-1 font-bold w-[50px]">No</td>
-                <td class="border-2 border-black px-3 py-1 font-bold w-[250px]">Nama</td>
-                <td class="border-2 border-black px-3 py-1 font-bold w-[300px]">Email</td>
-                <td class="border-2 border-black px-3 py-1 font-bold w-[250px]">No Telepon</td>
-                <td class="border-2 border-black px-3 py-1 font-bold w-[100px]">Status</td>
-            </tr>
-            @foreach ($karyawans as $index => $karyawan)
-                <tr>
-                    <td class="border-[1px] border-black px-3 py-1 font-semibold">{{ $index + 1 }}</td>
-                    <td class="border-[1px] border-black px-3 py-1 font-semibold">{{ $karyawan->full_name }}</td>
-                    <td class="border-[1px] border-black px-3 py-1 font-semibold">{{ $karyawan->email }}</td>
-                    <td class="border-[1px] border-black px-3 py-1 font-semibold">{{ $karyawan->phone_no }}</td>
-                    <td class="border-[1px] border-black px-3 py-1 font-semibold text-center">
+                <tr class="text-slate-500 border-t border-slate-400 bg-white text-center">
+                    <td class="px-1 sm:px-4 py-[10px]">{{ $index + 1 }}</td>
+                    <td class="px-1 sm:px-4 py-[10px]">{{ $karyawan->full_name }}</td>
+                    <td class="px-1 sm:px-4 py-[10px]">{{ $karyawan->email }}</td>
+                    <td class="px-1 sm:px-4 py-[10px]">{{ $karyawan->phone_no }}</td>
+                    <td class="px-1 sm:px-4 py-[10px] text-center">
                         {{ $karyawan->status ? 'Aktif' : 'Tidak Aktif' }}</td>
                 </tr>
             @endforeach

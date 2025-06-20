@@ -1,5 +1,5 @@
 @include('dashboard.header')
-<main class="main-content position-relative border-radius-lg mt-8">
+<main class="main-content position-relative border-radius-lg mt-2">
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
@@ -8,7 +8,7 @@
                         <div class="row">
                             <div class="col-6">
                                 <span
-                                    class="text-uppercase font-bold text-4xl border-b-[4px] border-red-700 text-red-700">List
+                                    class="text-uppercase text-3xl font-bold text-red-700">List
                                     Menu</span>
                             </div>
                             <div class="col-6 text-end">
@@ -45,16 +45,16 @@
                                     @foreach ($menus as $index => $menu)
                                         <tr class="text-center">
                                             <td
-                                                class="text-secondary border-[1px] border-red-700 px-3 py-2">
+                                                class="border-[1px] border-red-700 px-3 py-2">
                                                 {{ $index + 1 }}</td>
                                             <td
-                                                class="text-secondary border-[1px] border-red-700 px-3 py-2">
+                                                class="border-[1px] border-red-700 px-3 py-2">
                                                 {{ $menu->menu_category->name }}</td>
                                             <td
-                                                class="text-secondary border-[1px] border-red-700 px-3 py-2">
+                                                class="border-[1px] border-red-700 px-3 py-2">
                                                 {{ $menu->name }}</td>
                                             <td
-                                                class="text-secondary text-wrap text-start border-[1px] border-red-700 px-3 py-2">
+                                                class="text-wrap text-start border-[1px] border-red-700 px-3 py-2">
                                                 {{ $menu->description }}</td>
                                             <td class="border-[1px] border-red-700 px-3 py-2">
                                                 <div class="flex flex-row justify-center">

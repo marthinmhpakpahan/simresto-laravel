@@ -8,7 +8,7 @@
                     <div class="card-header pb-0">
                         <div class="row">
                             <div class="col-6">
-                            <h4>{{ $page_title }}</h4>
+                            <h4 class="text-uppercase text-3xl font-bold text-red-700">{{ $page_title }}</h4>
                             </div>
                             <div class="col-6 text-end">
                                 <a href="{{ route("karyawan.index") }}">

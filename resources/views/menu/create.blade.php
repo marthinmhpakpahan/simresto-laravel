@@ -8,11 +8,10 @@
                     <div class="card-header pb-0">
                         <div class="row">
                             <div class="col-6">
-                            <h4>{{ $page_title }}</h4>
+                            <h4 class="text-uppercase text-3xl font-bold text-red-700">{{ $page_title }}</h4>
                             </div>
                             <div class="col-6 text-end">
-                                <a href="{{ route("material.index") }}">
-                                    <div class="btn btn-success">List Menu</div>
+                                <a class="font-bold text-red-800 w-max px-3 py-2 border-2 border-red-700 rounded-lg mt-2 hover:bg-red-900 hover:text-white cursor-pointer" href="{{ route("material.index") }}"><i class="fa fa-list"></i> List Menu
                                 </a>
                             </div>
                         </div>
@@ -104,7 +103,7 @@
                                     </div>
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Create</button>
+                                    <button type="submit" class="font-bold text-red-800 w-max px-6 py-2 border-2 border-red-700 rounded-lg mt-2 hover:bg-red-900 hover:text-white">Simpan</button>
                                 </div>
                             </form>
                         </div>

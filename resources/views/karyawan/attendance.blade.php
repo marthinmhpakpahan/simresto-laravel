@@ -6,11 +6,11 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <div class="row">
-                            <div class="col-md-6 col-lg-6 col-xs-12">
-                                <h3 class="text-uppercase {{ !$attendance ? "text-danger" : ($attendance->finished_at ? "text-success" : "text-danger")  }}">{{ !$attendance ? "Anda belum checkin hari ini !!!" : ($attendance->finished_at ? "Absensi hari ini sudah lengkap!" : "Anda belum checkout hari ini !!!") }}</h3>
+                            <div class="col-md-6 col-lg-6 col-xs-12 items-center.">
+                                <h3 class="text-uppercase {{ !$attendance ? "text-red-700 font-bold text-2xl" : ($attendance->finished_at ? "text-green-700 font-bold text-2xl" : "text-red-700 font-bold text-2xl")  }}">{{ !$attendance ? "Anda belum checkin hari ini !!!" : ($attendance->finished_at ? "Absensi hari ini sudah lengkap!" : "Anda belum checkout hari ini !!!") }}</h3>
                             </div>
                             <div class="col-md-6 col-lg-6 col-xs-12 text-end {{ $attendance && $attendance->finished_at ? "d-none" : "" }}">
-                                <div class="btn btn-danger" data-bs-toggle="collapse" data-bs-target="#collapseFormAdd" aria-expanded="false" aria-controls="collapseFormAdd">{{ !$attendance ? "Check In Sekarang" : "Check Out Sekarang"  }}</div>
+                                <div class="btn btn-danger btn-check-in-out">{{ !$attendance ? "Check In Sekarang" : "Check Out Sekarang"  }}</div>
                             </div>
                         </div>
                     </div>
@@ -105,6 +105,20 @@
         $(".btn-detail-image").on("click", function() {
             var data_image = $(this).data("image");
             $(".modal-detail-image-image").attr("src", data_image);
+        });
+
+        $(".btn-check-in-out").on("click", function() {
+            console.log("btn-check-in-out clicked!");
+            var element = $("#collapseFormAdd");
+            console.log(element);
+            var collapsed = element.hasClass("collapse");
+            if(collapsed) {
+                element.removeClass("collapse");
+                element.addClass("show");
+            } else {
+                element.removeClass("show");
+                element.addClass("collapse");
+            }
         });
     });
 </script>

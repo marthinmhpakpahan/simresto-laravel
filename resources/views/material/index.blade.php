@@ -1,5 +1,5 @@
 @include('dashboard.header')
-<main class="main-content position-relative border-radius-lg mt-8">
+<main class="relative rounded-lg h-screen">
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
@@ -8,7 +8,7 @@
                         <div class="row">
                             <div class="col-6">
                                 <h3 class=""><span
-                                        class="text-uppercase font-bold text-4xl border-b-[4px] border-red-700 text-red-700">List
+                                        class="text-uppercase text-3xl font-bold text-red-700">List
                                         Bahan</span></h3>
                             </div>
                             <div class="col-6 text-end">

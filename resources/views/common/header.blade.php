@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
 
 <head>
     <meta charset="utf-8" />
@@ -28,7 +28,11 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}" />
     <link href="{{ asset('assets/css/calendar.css') }}" rel="stylesheet" type="text/css">
+
+    {{-- Bootstrap --}}
+    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> --}}
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" crossorigin="anonymous"></script> --}}
     @vite('resources/css/app.css')
 </head>
 
-<body class="bg-primary">
+<body class="bg-red-900 h-screen text-black">

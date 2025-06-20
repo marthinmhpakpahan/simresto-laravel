@@ -7,7 +7,7 @@
                     <div class="card-header pb-0">
                         <div class="row">
                             <div class="col-md-6 col-xs-12">
-                                <h3 class="text-uppercase">Data Karyawan #{{ $karyawan->id }}</h3>
+                                <h3 class="text-uppercase font-bold text-2xl text-red-700 mb-2">Data Karyawan #{{ $karyawan->id }}</h3>
                             </div>
                         </div>
                     </div>
@@ -125,17 +125,17 @@
                                         <td>
                                             {{ new DateTime($attendance->started_at)->format('H:i:s') }}
                                             @if ($attendance->started_at)
-                                            &nbsp; <i class="fa fa-photo btn btn-primary btn-xs btn-detail-image"
+                                            &nbsp; <a target="_blank" href="/{{ $attendance->started_path }}"><i class="fa fa-eye btn btn-primary btn-xs btn-detail-image"
                                                 data-image="/{{ $attendance->started_path }}" data-bs-toggle="modal"
-                                                data-bs-target="#modalDetailImage"></i>
+                                                data-bs-target="#modalDetailImage"></i></a>
                                             @endif
                                         </td>
                                         <td>
                                             {{ $attendance && $attendance->finished_at ? new DateTime($attendance->finished_at)->format('H:i:s') : "-" }}
                                             @if ($attendance->finished_at)
-                                            &nbsp; <i class="fa fa-photo btn btn-primary btn-xs btn-detail-image"
+                                            &nbsp; <a target="_blank" href="/{{ $attendance->finished_path }}"><i class="fa fa-eye btn btn-primary btn-xs btn-detail-image"
                                                 data-image="/{{ $attendance->finished_path }}" data-bs-toggle="modal"
-                                                data-bs-target="#modalDetailImage"></i>
+                                                data-bs-target="#modalDetailImage"></i></a>
                                             @endif
                                         </td>
                                         <td class="font-weight-bolder">{{ $attendance->status }}</td>

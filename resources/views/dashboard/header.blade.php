@@ -1,7 +1,6 @@
 @include('common.header')
-  <div class="min-height-300 bg-primary position-absolute w-100"></div>
   <aside
-    class="sidenav bg-primary navbar navbar-vertical navbar-expand-xs border border-white border-radius-xl my-3 fixed-start ms-4 "
+    class="sidenav bg-primary navbar navbar-vertical navbar-expand-xs border border-white border-radius-xl my-3 fixed-start ms-4"
     id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
@@ -16,7 +15,7 @@
     <div class="sidenav-footer mx-3 ">
     </div>
   </aside>
-  <main class="main-content position-relative border-radius-lg ">
+  <main class="main-content position-relative border-radius-lg">
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
       data-scroll="false">
