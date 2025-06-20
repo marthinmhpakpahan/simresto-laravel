@@ -38,10 +38,12 @@
                                             <td>{{ $karyawan->email }}</td>
                                             <td>{{ $karyawan->joined_since }}</td>
                                             <td class="">
-                                                <a href="{{ route('karyawan.show', $karyawan->id) }}"><i class="btn btn-success btn-xs text-md fa fa-eye" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Detail Data Karyawan"></i></a>
-                                                <a href="{{ route('karyawan.edit', $karyawan->id) }}"><i class="btn btn-primary btn-xs text-md fa fa-edit" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Ubah Data Karyawan"></i></a>
-                                                <i class="btn btn-danger btn-xs text-md fa fa-trash btn-delete-karyawan" data-full_name="{{ $karyawan->full_name }}" data-phone_no="{{ $karyawan->phone_no }}" data-email="{{ $karyawan->email }}" data-url="{{ route('karyawan.delete', $karyawan->id) }}" data-bs-toggle="modal"
-                                                    data-bs-target="#modalDeleteConfirmation"></i>
+                                                <a class="rounded-xl border border-red-800 px-3 py-[2px] bg-red-700 text-white hover:bg-red-800 cursor-pointer text-sm" href="{{ route('karyawan.show', $karyawan->id) }}"><i class="fa fa-search"></i></a>
+                                                <a class="rounded-xl border border-red-800 px-3 py-[2px] bg-red-700 text-white hover:bg-red-800 cursor-pointer text-sm" href="{{ route('karyawan.edit', $karyawan->id) }}"><i class="fa fa-edit"></i></a>
+                                                <a class="rounded-xl border border-red-800 px-3 py-[2px] bg-red-700 text-white hover:bg-red-800 cursor-pointer text-sm btn-delete-karyawan" data-full_name="{{ $karyawan->full_name }}" data-phone_no="{{ $karyawan->phone_no }}" data-email="{{ $karyawan->email }}" data-url="{{ route('karyawan.delete', $karyawan->id) }}" data-bs-toggle="modal"
+                                                    data-bs-target="#modalDeleteConfirmation">
+                                                <i class="fa fa-trash"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach

@@ -36,8 +36,8 @@
                                             class="text-uppercase text-sm border-[1px] border-red-700 py-3">
                                             {{ $index + 1 }}</td>
                                         <td class="text-uppercase text-sm border-[1px] border-red-700">
-                                            <a class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 btn-detail-image" data-image="{{ asset($material->image) }}" data-bs-toggle="modal" data-bs-target="#modalDetailImage"><i
-                                                class="fa fa-eye"></i></a>
+                                            <a class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 btn-detail-image cursor-pointer" data-image="{{ asset($material->image) }}" data-bs-toggle="modal" data-bs-target="#modalDetailImage"><i
+                                                class="fa fa-image"></i></a>
                                         </td>
                                         <td class="text-uppercase text-sm border-[1px] border-red-700">
                                             {{ $material->name }}</td>
@@ -47,11 +47,11 @@
                                             Rp. {{ $material->price }}</td>
                                         <td class="border-[1px] border-red-700">
                                             <a href="{{ route('material.show', $material->id) }}"
-                                                class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 cursor-pointer" class="">
+                                                class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 cursor-pointer">
                                                 <i class="fa fa-search"></i>&nbsp;&nbsp;Detail
                                             </a>
                                             <a href="{{ route('material.edit', $material->id) }}"
-                                                class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 cursor-pointer" class="">
+                                                class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 cursor-pointer">
                                                 <i class="fa fa-edit"></i>&nbsp;&nbsp;Edit
                                             </a>
                                             <a class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 cursor-pointer"
