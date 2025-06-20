@@ -62,16 +62,16 @@
                                     @foreach ($attendances as $index => $attendance)
                                         <tr class="text-center text-sm  {{ $attendance->status == 'Confirmed' ? "table-success" : ($attendance->status == "Declined" ? 'table-danger' : '') }}">
                                             <td>{{ ($index+1) }}</td>
-                                            <td>{{ new DateTime($attendance->created_at)->format('d F Y') }}</td>
+                                            <td>{{ (new DateTime($attendance->created_at))->format('d F Y') }}</td>
                                             <td>
-                                                {{ new DateTime($attendance->started_at)->format('H:i:s') }} 
+                                                {{ (new DateTime($attendance->started_at))->format('H:i:s') }} 
                                                 @if ($attendance->started_at)
                                                     &nbsp; <i class="fa fa-image btn btn-primary btn-xs btn-detail-image" data-image="/{{ $attendance->started_path }}" data-bs-toggle="modal"
                                                         data-bs-target="#modalDetailImage"></i>
                                                 @endif
                                             </td>
                                             <td>
-                                                {{ $attendance && $attendance->finished_at ? new DateTime($attendance->finished_at)->format('H:i:s') : "-" }}
+                                                {{ $attendance && $attendance->finished_at ? (new DateTime($attendance->finished_at))->format('H:i:s') : "-" }}
                                                 @if ($attendance->finished_at)
                                                     &nbsp; <i class="fa fa-image btn btn-primary btn-xs btn-detail-image" data-image="/{{ $attendance->finished_path }}" data-bs-toggle="modal"
                                                         data-bs-target="#modalDetailImage"></i>

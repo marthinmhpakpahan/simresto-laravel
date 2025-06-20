@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.5-10.4.28-MariaDB)
 # Database: simresto
-# Generation Time: 2025-06-14 08:48:21 +0000
+# Generation Time: 2025-06-20 13:38:36 +0000
 # ************************************************************
 
 
@@ -36,7 +36,7 @@ CREATE TABLE `attendance` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 LOCK TABLES `attendance` WRITE;
 /*!40000 ALTER TABLE `attendance` DISABLE KEYS */;
@@ -44,7 +44,10 @@ LOCK TABLES `attendance` WRITE;
 INSERT INTO `attendance` (`id`, `user_id`, `started_at`, `started_path`, `finished_at`, `finished_path`, `status`, `created_at`, `updated_at`)
 VALUES
 	(1,7,'2025-03-03 17:47:51','assets/img/karyawan/attendances/J3tE8M4ER11740998871.png','2025-03-03 06:05:19','assets/img/karyawan/attendances/xdXv6yJhH71740999919.jpg','Confirmed','2025-03-03 17:47:51','2025-03-04 04:27:14'),
-	(2,7,'2025-03-04 09:25:05','assets/img/karyawan/attendances/urIEbOoaZ71741055105.jpg','2025-03-04 11:03:46','assets/img/karyawan/attendances/gSd129EVJ81741061026.png','Declined','2025-03-04 09:25:05','2025-03-04 04:28:21');
+	(2,7,'2025-03-04 09:25:05','assets/img/karyawan/attendances/urIEbOoaZ71741055105.jpg','2025-03-04 11:03:46','assets/img/karyawan/attendances/gSd129EVJ81741061026.png','Declined','2025-03-04 09:25:05','2025-03-04 04:28:21'),
+	(3,7,'2025-06-14 16:18:49','assets/img/karyawan/attendances/Ykw6OhbuQC1749892729.jpg','2025-06-14 04:19:18','assets/img/karyawan/attendances/9ofX9Ff2MK1749892758.jpg','Pending','2025-06-14 16:18:49','2025-06-14 16:19:18'),
+	(4,7,'2025-06-20 13:14:36','assets/img/karyawan/attendances/zIxPENgSA61750400076.jpg','2025-06-20 01:15:04','assets/img/karyawan/attendances/JCvjqSvcSB1750400104.jpg','Pending','2025-06-20 13:14:36','2025-06-20 13:15:04'),
+	(5,2,'2025-06-20 19:59:17','assets/img/karyawan/attendances/okI18A6N3r1750424357.jpg',NULL,NULL,'Pending','2025-06-20 19:59:17','2025-06-20 19:59:17');
 
 /*!40000 ALTER TABLE `attendance` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -155,7 +158,7 @@ CREATE TABLE `leave` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 LOCK TABLES `leave` WRITE;
 /*!40000 ALTER TABLE `leave` DISABLE KEYS */;
@@ -165,7 +168,9 @@ VALUES
 	(1,7,NULL,'Ijin Sakit','2025-03-10','2025-03-12','Maaf pak saya ijin sakit, terlampir surat dokter saya pak.\r\nTerima kasih pak.','assets/img/karyawan/leaves/3bfBHXjZxr1741071885.jpg','Canceled','2025-03-04 07:04:45','2025-03-04 07:22:14'),
 	(2,7,1,'Cuti Melahirkan','2025-03-28','2025-03-30','Saya mau ijin cuti melahirkan pak, suami saya nungguin','assets/img/karyawan/leaves/HPBHlOOSPy1741073016.pdf','Accepted','2025-03-04 07:23:36','2025-03-04 07:37:52'),
 	(3,7,1,'Ijin Sakit','2025-03-13','2025-03-15','Maaf pak saya sakit\r\nJadi ijin dulu ya hehe','assets/img/karyawan/leaves/8GDcCEeAKm1741076133.pdf','Accepted','2025-03-04 08:15:33','2025-03-04 08:15:56'),
-	(4,2,1,'Cuti Tahunan','2025-03-11','2025-03-15','Cuti tahunan boss mau liburan','assets/img/karyawan/leaves/hMHADX5TG31741076222.pdf','Accepted','2025-03-04 08:17:02','2025-03-04 08:17:15');
+	(4,2,1,'Cuti Tahunan','2025-03-11','2025-03-15','Cuti tahunan boss mau liburan','assets/img/karyawan/leaves/hMHADX5TG31741076222.pdf','Accepted','2025-03-04 08:17:02','2025-03-04 08:17:15'),
+	(5,7,1,'Cuti Liburan Tahunan','2025-06-23','2025-06-27','Mau cuti pakkkkkk','assets/img/karyawan/leaves/DwdKGL9F561750418367.pdf','Accepted','2025-06-20 11:19:27','2025-06-20 11:19:55'),
+	(6,2,1,'Cuti Tahunan','2025-06-26','2025-06-29','Mau cuti dong boss, capek guaaa','assets/img/karyawan/leaves/m8UFJTLdBv1750424488.pdf','Accepted','2025-06-20 13:01:28','2025-06-20 13:02:00');
 
 /*!40000 ALTER TABLE `leave` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -304,7 +309,7 @@ CREATE TABLE `menu_recipe` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 LOCK TABLES `menu_recipe` WRITE;
 /*!40000 ALTER TABLE `menu_recipe` DISABLE KEYS */;
@@ -316,7 +321,8 @@ VALUES
 	(3,1,7,'G',60,'2025-02-27 09:42:56','2025-06-05 10:39:53'),
 	(4,1,6,'G',150,'2025-02-27 09:56:52','2025-02-27 09:56:52'),
 	(5,1,4,'G',30,'2025-02-27 14:37:41','2025-02-27 14:38:53'),
-	(6,1,3,'G',10,'2025-02-27 16:06:30','2025-02-27 16:06:30');
+	(6,1,3,'G',10,'2025-02-27 16:06:30','2025-02-27 16:06:30'),
+	(8,2,8,'G',20,'2025-06-20 13:05:52','2025-06-20 13:05:52');
 
 /*!40000 ALTER TABLE `menu_recipe` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -394,13 +400,7 @@ LOCK TABLES `sessions` WRITE;
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`)
 VALUES
-	('DMUQgHhlsqvUEsDsvWESJayeoUROiKfxslxBzN1L',NULL,'127.0.0.1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoieVVwblVNQkJBb3Qwa3gzcEYxbVVQMWZCVW90RzhIbWdndFJsMWlZYSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1749801346),
-	('JOsrqNirfL2s6YihDDNPZ3NtC1gdnEP9wRb01Y2d',NULL,'127.0.0.1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36','YTo0OntzOjY6Il90b2tlbiI7czo0MDoiOGU5azhZdnpTTXJCNGhGeENDVk5BZWR4QmxLSUp5WFpXM0tNUm9wUSI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czoyNjoiaHR0cDovLzEyNy4wLjAuMTo4MDAwL21lbnUiO31zOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czoyNzoiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2xvZ2luIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1749731025),
-	('KzZsg5MP0ykM5mURDlYdWIvwTT9PihbprYJs5Ace',NULL,'127.0.0.1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoicDh4Vkl5YmxaZzBGeTRRNDRVZ1FVN1MxeDhFN3NjV2hiUzdKZjEySSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1749819189),
-	('PGK2LgzZ6CUVduSH42lrEqzXXouqyEGUIYKp7yG0',NULL,'127.0.0.1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiNVJMRGhuUEVSbEVJOVFqTUhGSkxiZjJmZjQyUU9VNGl6MVVISmM5TSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1749746810),
-	('qc5RKSAwu3CPr4LtxwR0NDGlJ4nlztdO39VyRGmr',1,'127.0.0.1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36','YTo0OntzOjY6Il90b2tlbiI7czo0MDoidXYzUnNjTEMxY3JsTjhPRGd6dGhYaEpKc29KdnV3UXFzVTU2c2pGdSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9tZW51Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9',1749666827),
-	('tbMVxbuf43OPFzdnt7wnDPmuTVKdYKZsBZs7NVQq',NULL,'127.0.0.1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiOXY2QXljNmE5aWpWd0l2Rml4RmJjRVh6NWZFdzZDWFhNenVIUE5XSyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1749836067),
-	('V9kLasnm2op5t0M6lohW7YGxtkdvZzAG2Q5OV5fQ',NULL,'127.0.0.1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiUWFQTTdwM016cFZWRFp4VDZ5Y2xLTzFCc0JkblVhcUdqMFdvM2pwbiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1749883193);
+	('1FhMUjraDY31UcjlzpPpX0PClFIFjc7ndnnzmxTj',1,'127.0.0.1','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36','YTo0OntzOjY6Il90b2tlbiI7czo0MDoiSk4wRUtXelNJZXpyRmF0c0hQYmxnTG95N2FmQms3c09yTVV5MVJnNyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9iYWhhbi9lZGl0LzEiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=',1750426655);
 
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -470,9 +470,9 @@ INSERT INTO `users` (`id`, `role_id`, `email`, `full_name`, `username`, `passwor
 VALUES
 	(1,1,'admin@gmail.com','Administrator','admin','$2y$12$aa6I9geq74X2.VtBvGEkVulCwVV43FgsO.Ou4cqhQSyMt4AGCdM12','082208220822',NULL,NULL,NULL,'2025-02-17',1,'','2025-02-17 17:28:28','2025-02-17 17:28:28'),
 	(2,2,'marthinmhpakpahan@gmail.com','Marthin Pakpahan','marthin','$2y$12$RgU1i4t8H6j/RTmIqiM.a.qE8loqgHVHXr.Z3iL7oLpFIIHCtRIZa','082167969321','assets/img/karyawan/photos/05gxRkip4i1739796045.png','assets/img/karyawan/identity_cards/0Vx418SKFC1739796045.jpeg',3000000,'2025-02-01',1,NULL,'2025-02-17 12:40:45','2025-02-17 12:40:45'),
-	(3,2,'yohanasitumorang73@gmail.com','Yohana Situmorang','yohana','$2y$12$OwIkjFmJZqKcatIgmyZUv.C4GVCEUqqPamkyp6InWoqQ9D0pXeiHq','082371814375','assets/img/karyawan/photos/Ymu5NqdSdZ1739866431.png','assets/img/karyawan/identity_cards/KsozM76We31739866431.jpeg',10000000,'2025-01-01',1,NULL,'2025-02-18 08:13:51','2025-02-18 08:13:51'),
+	(3,2,'yohanasitumorang73@gmail.com','Yohana Situmorang','yohana','$2y$12$OwIkjFmJZqKcatIgmyZUv.C4GVCEUqqPamkyp6InWoqQ9D0pXeiHq','082371814375','assets/img/karyawan/photos/mHu0Zie1lg1750426375.jpg','assets/img/karyawan/identity_cards/KsozM76We31739866431.jpeg',10000000,'2025-01-01',1,NULL,'2025-02-18 08:13:51','2025-06-20 13:32:55'),
 	(4,2,'testingkaryawan@gmail.com','Testing Karyawan','testing','$2y$12$yKtn2TKL89lLsuiWOW/63e3Thnk4Ev1U/rlc4SRCi1X17equgqDzG','082208220822','assets/img/karyawan/photos/34mVxlthCy1739866498.webp','assets/img/karyawan/identity_cards/SttCOrjEiQ1739866498.jpeg',1000000,'2025-01-31',1,NULL,'2025-02-18 08:14:58','2025-02-18 08:14:58'),
-	(7,2,'karyawan@gmail.com','Karyawan','karyawan','$2y$12$aQvLj6U6ZUyvE278eHhpEeCnoBVdJpM3QCKp8HCJBiKt2Qx2wQjYe','089908220833','assets/img/karyawan/photos/IAZMdwFWP31740733550.jpg','assets/img/karyawan/identity_cards/235OuuLoj01740733550.jpeg',4000000,'2025-02-01',1,NULL,'2025-02-28 09:05:50','2025-02-28 09:05:50');
+	(7,2,'karyawan@gmail.com','Bill Gates','karyawan','$2y$12$aQvLj6U6ZUyvE278eHhpEeCnoBVdJpM3QCKp8HCJBiKt2Qx2wQjYe','089908220833','assets/img/karyawan/photos/IAZMdwFWP31740733550.jpg','assets/img/karyawan/identity_cards/235OuuLoj01740733550.jpeg',4000000,'2025-02-01',1,NULL,'2025-02-28 09:05:50','2025-06-20 13:00:06');
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
