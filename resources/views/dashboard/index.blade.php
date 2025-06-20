@@ -1,88 +1,56 @@
 @include('dashboard.header')
-<div class="flex flex-row bg-white mx-4 p-5 rounded-lg">
-    <div class="border-2 border-red-700 py-3 px-4 mx-3 rounded-lg w-1/4">
-        <div class="flex flex-row">
-            <div class="mr-[5px] w-2/3 items-center">
-                <div class="number">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Karyawan</p>
-                    <h5 class="font-weight-bolder text-3xl">
-                        {{ $total_karyawan }} Orang
-                    </h5>
-                    {{-- <p class="mb-0">
-                        <span class="text-success text-sm font-weight-bolder">+15%</span>
-                        sejak tahun lalu
-                    </p> --}}
+<div class="flex flex-row bg-white mx-4 p-5 rounded-lg justify-center">
+    <div class="border-2 border-red-700 py-3 px-4 mx-3 rounded-lg tracking-wider">
+        <div class="flex flex-col text-center">
+            <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Karyawan</p>
+                <div class="text-end flex items-center justify-center my-2">
+                    <div class="icon icon-shape bg-red-700 shadow-primary text-center rounded-circle">
+                        <i class="fa fa-users text-md opacity-10" aria-hidden="true"></i>
+                    </div>
                 </div>
-            </div>
-            <div class="text-end flex items-center justify-center ml-3 w-1/3">
-                <div class="icon icon-shape bg-red-700 shadow-primary text-center rounded-circle">
-                    <i class="fa fa-users text-md opacity-10" aria-hidden="true"></i>
-                </div>
-            </div>
+                <h5 class="font-weight-bolder text-xl">
+                    {{ $total_karyawan }} Orang
+                </h5>
         </div>
     </div>
-    <div class="border-2 border-green-700 py-3 px-4 mx-3 rounded-lg w-1/4">
-        <div class="flex flex-row">
-            <div class="mr-[5px] w-2/3">
-                <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Bahan</p>
-                    <h5 class="font-weight-bolder text-3xl">
-                        {{ $total_material }} Bahan
-                    </h5>
-                    {{-- <p class="mb-0">
-                        <span class="text-success text-sm font-weight-bolder">+15%</span>
-                        sejak tahun lalu
-                    </p> --}}
-                </div>
-            </div>
-            <div class="text-end flex items-center justify-center ml-3 w-1/3">
+    <div class="border-2 border-green-700 py-3 px-4 mx-3 rounded-lg tracking-wider">
+        <div class="flex flex-col text-center">
+            <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Bahan</p>
+            <div class="text-end flex items-center justify-center my-2">
                 <div class="icon icon-shape bg-green-700 shadow-primary text-center rounded-circle">
                     <i class="fa fa-layer-group text-md opacity-10" aria-hidden="true"></i>
                 </div>
             </div>
+            <h5 class="font-weight-bolder text-xl">
+                {{ $total_material }} Bahan
+            </h5>
         </div>
     </div>
-    <div class="border-2 border-yellow-700 py-3 px-4 mx-3 rounded-lg w-1/4">
-        <div class="flex flex-row">
-            <div class="mr-[5px] w-2/3">
-                <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Menu</p>
-                    <h5 class="font-weight-bolder text-3xl">
-                        {{ $total_menu }} Menu
-                    </h5>
-                    {{-- <p class="mb-0">
-                        <span class="text-success text-sm font-weight-bolder">+15%</span>
-                        sejak tahun lalu
-                    </p> --}}
-                </div>
-            </div>
-            <div class="text-end flex items-center justify-center ml-3 w-1/3">
+    <div class="border-2 border-yellow-700 py-3 px-4 mx-3 rounded-lg tracking-wider">
+        <div class="flex flex-col text-center">
+            <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Menu</p>
+            <div class="text-end flex items-center justify-center my-2">
                 <div
                     class="icon icon-shape bg-yellow-700 shadow-primary justify-center items-center text-center rounded-circle">
                     <i class="fa fa-list text-md opacity-10" aria-hidden="true"></i>
                 </div>
             </div>
+            <h5 class="font-weight-bolder text-xl">
+                {{ $total_menu }} Menu
+            </h5>
         </div>
     </div>
-    <div class="border-2 border-blue-700 py-3 px-4 mx-3 rounded-lg w-1/4">
-        <div class="flex flex-row">
-            <div class="mr-[5px] w-2/3">
-                <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Total User Aktif</p>
-                    <h5 class="font-weight-bolder text-2xl">
-                        {{ $total_active_karyawan }} Orang
-                    </h5>
-                    {{-- <p class="mb-0">
-                        <span class="text-success text-sm font-weight-bolder">+15%</span>
-                        sejak tahun lalu
-                    </p> --}}
-                </div>
-            </div>
-            <div class="text-end flex items-center justify-center ml-3 w-1/3">
+    <div class="border-2 border-blue-700 py-3 px-4 mx-3 rounded-lg tracking-wider">
+        <div class="flex flex-col text-center">
+            <p class="text-sm mb-0 text-uppercase font-weight-bold">Total User Aktif</p>
+            <div class="text-end flex items-center justify-center my-2">
                 <div class="icon icon-shape bg-blue-700 shadow-primary text-center rounded-circle">
                     <i class="fa fa-user text-md opacity-10" aria-hidden="true"></i>
                 </div>
             </div>
+            <h5 class="font-weight-bolder text-xl">
+                {{ $total_active_karyawan }} Orang
+            </h5>
         </div>
     </div>
 </div>
