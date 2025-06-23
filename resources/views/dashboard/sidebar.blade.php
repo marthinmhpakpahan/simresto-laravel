@@ -53,7 +53,7 @@
                     class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                     <i class="fa fa-list text-white text-lg opacity-10"></i>
                 </div>
-                <span class="nav-link-text text-white ms-1">List Karyawan</span>
+                <span class="nav-link-text text-white ms-1">Daftar Karyawan</span>
             </a>
         </li>
         <li class="nav-item {{ auth()->user()->role_id == 2 ? "d-none" : "" }}">
@@ -90,7 +90,7 @@
                     class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                     <i class="fa fa-list text-white text-lg opacity-10"></i>
                 </div>
-                <span class="nav-link-text text-white ms-1">Manage Bahan</span>
+                <span class="nav-link-text text-white ms-1">Daftar Bahan</span>
             </a>
         </li>
         <li class="nav-item {{ auth()->user()->role_id == 2 ? "d-none" : "" }}">
@@ -109,7 +109,7 @@
                     class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                     <i class="fa fa-sticky-note text-white text-lg opacity-10"></i>
                 </div>
-                <span class="nav-link-text text-white ms-1">Manage Resep</span>
+                <span class="nav-link-text text-white ms-1">Daftar Resep</span>
             </a>
         </li>
         <li class="nav-item {{ auth()->user()->role_id == 2 ? "d-none" : "" }}">
