@@ -68,8 +68,10 @@
                                                         data-bs-placement="top" data-bs-title="Ubah Data Bahan">
                                                         <i class="text-md fa fa-edit"></i>
                                                     </a>
-                                                    <a class="border text-white bg-red-700 hover:bg-red-800 px-2 py-1 rounded-lg text-md btn-delete-karyawan mx-[1px]"
+                                                    <a class="border text-white bg-red-700 hover:bg-red-800 px-2 py-1 rounded-lg text-md btn-delete-menu mx-[1px]"
                                                         data-name="{{ $menu->name }}"
+                                                        data-category="{{ $menu->menu_category->name }}"
+                                                        data-description="{{ $menu->description }}"
                                                         data-url="{{ route('menu.delete', $menu->id) }}"
                                                         data-bs-toggle="modal" data-bs-target="#modalDeleteConfirmation">
                                                         <i class="fa fa-trash"></i>
@@ -99,22 +101,16 @@
                 <h4>Apakah anda yakin ingin menghapus data Menu ini?</h4><br />
                 <table>
                     <tr>
+                        <td>Kategori</td>
+                        <td>&nbsp;&nbsp;&nbsp;</td>
+                        <td>&nbsp;:&nbsp;</td>
+                        <td><span class="modal-menu-category"></span></td>
+                    </tr>
+                    <tr>
                         <td>Nama</td>
                         <td>&nbsp;&nbsp;&nbsp;</td>
                         <td>&nbsp;:&nbsp;</td>
-                        <td><span class="modal-karyawan-full_name"></span></td>
-                    </tr>
-                    <tr>
-                        <td>No Telepon</td>
-                        <td>&nbsp;&nbsp;&nbsp;</td>
-                        <td>&nbsp;:&nbsp;</td>
-                        <td><span class="modal-karyawan-phone_no"></span></td>
-                    </tr>
-                    <tr>
-                        <td>Email</td>
-                        <td>&nbsp;&nbsp;&nbsp;</td>
-                        <td>&nbsp;:&nbsp;</td>
-                        <td><span class="modal-karyawan-email"></span></td>
+                        <td><span class="modal-menu-name"></span></td>
                     </tr>
                 </table>
             </div>
@@ -128,14 +124,12 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function() {
-        console.log("Index Karyawan Page!");
-        $(".btn-delete-karyawan").on("click", function() {
-            var data_fullname = $(this).data("full_name");
-            $(".modal-karyawan-full_name").text(data_fullname);
-            var data_phone_no = $(this).data("phone_no");
-            $(".modal-karyawan-phone_no").text(data_phone_no);
-            var data_email = $(this).data("email");
-            $(".modal-karyawan-email").text(data_email);
+        console.log("Index Menu Page!");
+        $(".btn-delete-menu").on("click", function() {
+            var data_category = $(this).data("category");
+            $(".modal-menu-category").text(data_category);
+            var data_name = $(this).data("name");
+            $(".modal-menu-name").text(data_name);
             var data_url = $(this).data("url");
             $(".modal-btn-confirm-delete").attr("href", data_url);
         });

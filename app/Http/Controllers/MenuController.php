@@ -144,11 +144,9 @@ class MenuController extends Controller
         }
     }
 
-    public function delete($karyawan_id)
+    public function delete($menu_id)
     {
-        $karyawan = User::where('id', $karyawan_id)->first();
-        $karyawan->status = 0;
-        $karyawan->save();
-        return redirect('/karyawan')->with('success', 'Berhasil menghapus data karyawan!');
+        $menu_recipe = Menu::where("id", $menu_id)->delete();
+        return redirect()->route('menu.show', $menu_id);
     }
 }
