@@ -1,6 +1,6 @@
 <div class="bg-primary border-white h-max">
     <ul class="navbar-nav bg-primary mt-6">
-        <div class="mx-4 my-2 font-weight-bolder text-uppercase text-white">Menu</div>
+        <div class="mx-4 my-2 font-weight-bolder text-uppercase text-white hidden sm:inline">Menu</div>
         <li class="nav-item {{ auth()->user()->role_id == 2 ? "d-none" : "" }}">
             <a class="nav-link {{ Route::current()->getName() == "dashboard.index" ? "active" : "" }}" href="{{ route('dashboard.index') }}">
                 <div
@@ -19,31 +19,22 @@
                 <span class="nav-link-text text-white ms-1">Profile</span>
             </a>
         </li>
-        <li class="nav-item {{ auth()->user()->role_id == 1 ? "d-none" : "" }}">
-            <a class="nav-link {{ Route::current()->getName() == "karyawan.attendance" ? "active" : "" }}" href="{{ route('karyawan.attendance') }}">
-                <div
-                    class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="fa fa-calendar text-white text-lg opacity-10"></i>
-                </div>
-                <span class="nav-link-text text-white ms-1">Daftar Hadir</span>
+        <li class="nav-item hover:bg-red-900 p-2 rounded-xl {{ auth()->user()->role_id == 1 ? "d-none" : "" }}">
+            <a class="nav-link mx-2 flex flex-row items-center justify-center sm:justify-start {{ Route::current()->getName() == "karyawan.attendance" ? "active" : "" }}" href="{{ route('karyawan.attendance') }}">
+                <i class="fa fa-calendar text-white text-lg opacity-10"></i>
+                <span class="ml-3 nav-link-text text-white hidden sm:inline">Daftar Hadir</span>
             </a>
         </li>
-        <li class="nav-item {{ auth()->user()->role_id == 1 ? "d-none" : "" }}">
-            <a class="nav-link {{ Route::current()->getName() == "karyawan.leave" ? "active" : "" }}" href="{{ route('karyawan.leave') }}">
-                <div
-                    class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="fa fa-list text-white text-lg opacity-10"></i>
-                </div>
-                <span class="nav-link-text text-white ms-1">Manajemen Cuti</span>
+        <li class="nav-item hover:bg-red-900 p-2 rounded-xl {{ auth()->user()->role_id == 1 ? "d-none" : "" }}">
+            <a class="nav-link mx-2 flex flex-row items-center justify-center sm:justify-start {{ Route::current()->getName() == "karyawan.leave" ? "active" : "" }}" href="{{ route('karyawan.leave') }}">
+                <i class="fa fa-list text-white text-lg opacity-10"></i>
+                <span class="ml-3 nav-link-text text-white hidden sm:inline">Manajemen Cuti</span>
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link {{ Route::current()->getName() == "logout" ? "active" : "" }}" href="{{ route('logout') }}">
-                <div
-                    class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="fa fa-sign-out  text-white text-lg opacity-10"></i>
-                </div>
-                <span class="nav-link-text text-white ms-1">Logout</span>
+        <li class="nav-item hover:bg-red-900 p-2 rounded-xl">
+            <a class="nav-link mx-2 flex flex-row items-center justify-center sm:justify-start {{ Route::current()->getName() == "logout" ? "active" : "" }}" href="{{ route('logout') }}">
+                <i class="fa fa-sign-out  text-white text-lg opacity-10"></i>
+                <span class="ml-3 nav-link-text text-white hidden sm:inline">Logout</span>
             </a>
         </li>
         <div class="mx-4 my-2 mt-4 font-weight-bolder text-uppercase text-white {{ auth()->user()->role_id == 2 ? "d-none" : "" }}">Manajemen Karyawan</div>

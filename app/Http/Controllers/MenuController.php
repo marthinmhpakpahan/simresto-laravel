@@ -88,7 +88,7 @@ class MenuController extends Controller
             if (!$result) {
                 return back()->withInput()->with('failed', 'Gagal menambahkan Menu!');
             }
-            return redirect('/resep')->with('success', 'Berhasil menambahkan Menu baru!');
+            return redirect('/menu')->with('success', 'Berhasil menambahkan Menu baru!');
         } else {
             return view('menu.create', [
                 "title" => env("APP_NAME") . " - Manage Menu",

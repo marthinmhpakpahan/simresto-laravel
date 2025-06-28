@@ -7,8 +7,8 @@
           <div class="border border-white rounded-lg col-xl-4 col-lg-5 col-md-7 mx-auto mt-4">
             <div class="card card-plain">
               <div class="card-header bg-primary pb-0 text-start">
-                <h4 class="font-weight-bolder text-white font-mono text-2xl">Sign In</h4>
-                <p class="mb-0 text-white">Enter your email and password to sign in</p>
+                <h4 class="font-weight-bolder text-white font-mono text-2xl text-center">Sign In</h4>
+                <p class="mb-0 text-white text-center">Masukkan username dan password anda untuk Login</p>
               </div>
               <div class="card-body">
                 @if(session()->has('success'))
