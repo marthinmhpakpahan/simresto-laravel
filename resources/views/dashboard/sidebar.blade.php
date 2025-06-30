@@ -38,7 +38,7 @@
             </a>
         </li>
         <div
-            class="mx-2 mt-4 mb-2 font-weight-bolder text-uppercase text-white hidden sm:inline {{ auth()->user()->role_id == 2 ? 'd-none' : '' }}">
+            class="mx-2 mt-4 mb-2 font-weight-bolder text-uppercase text-white hidden sm:inline w-max {{ auth()->user()->role_id == 2 ? 'd-none' : '' }}">
             Manajemen Karyawan</div>
         <li class="nav-item hover:bg-red-900 p-2 rounded-xl {{ auth()->user()->role_id == 2 ? 'd-none' : '' }}">
             <a class="nav-link mx-2 flex flex-row items-center justify-center sm:justify-start {{ Route::current()->getName() == 'karyawan.index' ? 'active' : '' }}"
@@ -69,7 +69,7 @@
             </a>
         </li>
         <div
-            class="mx-2 mt-4 mb-2 font-weight-bolder text-uppercase text-white hidden sm:inline {{ auth()->user()->role_id == 2 ? 'd-none' : '' }}">
+            class="mx-2 mt-4 mb-2 font-weight-bolder text-uppercase text-white hidden sm:inline w-max {{ auth()->user()->role_id == 2 ? 'd-none' : '' }}">
             Manajemen Bahan / Material</div>
         <li class="nav-item hover:bg-red-900 p-2 rounded-xl {{ auth()->user()->role_id == 2 ? 'd-none' : '' }}">
             <a class="nav-link mx-2 flex flex-row items-center justify-center sm:justify-start {{ Route::current()->getName() == 'material.index' ? 'active' : '' }}"
@@ -86,7 +86,7 @@
             </a>
         </li>
         <div
-            class="mx-2 mt-4 mb-2 font-weight-bolder text-uppercase text-white hidden sm:inline {{ auth()->user()->role_id == 2 ? 'd-none' : '' }}">
+            class="mx-2 mt-4 mb-2 font-weight-bolder text-uppercase text-white hidden sm:inline w-max {{ auth()->user()->role_id == 2 ? 'd-none' : '' }}">
             Manajemen Menu / Resep</div>
         <li class="nav-item hover:bg-red-900 p-2 rounded-xl {{ auth()->user()->role_id == 2 ? 'd-none' : '' }}">
             <a class="nav-link mx-2 flex flex-row items-center justify-center sm:justify-start {{ Route::current()->getName() == 'menu.index' ? 'active' : '' }}"
