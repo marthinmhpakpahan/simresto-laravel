@@ -6,8 +6,8 @@ License - nucleoapp.com/license/
 -------------------------------- */
 @font-face {
   font-family: 'NucleoIcons';
-  src: url('http://127.0.0.1:8000/assets/fonts/nucleo-icons.eot');
-  src: url('http://127.0.0.1:8000/assets/fonts/nucleo-icons.eot') format('embedded-opentype'), url('http://127.0.0.1:8000/assets/fonts/nucleo-icons.woff2') format('woff2'), url('http://127.0.0.1:8000/assets/fonts/nucleo-icons.woff') format('woff'), url('http://127.0.0.1:8000/assets/fonts/nucleo-icons.ttf') format('truetype'), url('http://127.0.0.1:8000/assets/fonts/nucleo-icons.svg') format('svg');
+  src: url('https://simresto.mmhp.tech/assets/fonts/nucleo-icons.eot');
+  src: url('https://simresto.mmhp.tech/assets/fonts/nucleo-icons.eot') format('embedded-opentype'), url('https://simresto.mmhp.tech/assets/fonts/nucleo-icons.woff2') format('woff2'), url('https://simresto.mmhp.tech/assets/fonts/nucleo-icons.woff') format('woff'), url('https://simresto.mmhp.tech/assets/fonts/nucleo-icons.ttf') format('truetype'), url('https://simresto.mmhp.tech/assets/fonts/nucleo-icons.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
