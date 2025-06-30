@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Material;
+use App\Models\MaterialPurchaseHistory;
 use App\Models\Unit;
 
 class MaterialController extends Controller
@@ -101,11 +102,15 @@ class MaterialController extends Controller
         $user_id = Auth::id();
         $user = User::where('id', $user_id)->first();
         $material = Material::where('id', $material_id)->first();
+        $material_purchase_histories = MaterialPurchaseHistory::where("material_id", $material_id)->orderBy('created_at', 'desc')->get();
+        $units = Unit::get();
 
         return view('material.view', [
             "title" => env("APP_NAME") . " - Detail Bahan",
             "page_title" => "Detail Bahan",
             "material" => $material,
+            "material_purchase_histories" => $material_purchase_histories,
+            "units" => $units,
             "user_id" => $user_id
         ]);
     }

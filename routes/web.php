@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\MaterialPurchaseHistoryController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\MenuImageController;
 
@@ -62,6 +63,10 @@ Route::get('/menu/image/delete/{menu_id}/{menu_image_id}', [MenuImageController:
 
 // Menu Recipe
 Route::get('/menu/recipe/delete/{menu_id}/{menu_image_id}', [MenuRecipeController::class, 'delete'])->name('menu_recipe.delete')->middleware('auth');
+
+// Material Purchase History
+Route::post('/material-purchase-history/create/{material_id}', [MaterialPurchaseHistoryController::class, 'create'])->name('material_purchase_history.create')->middleware('auth');
+Route::get('/material-purchase-history/delete/{material_purchase_history_id}', [MaterialPurchaseHistoryController::class, 'delete'])->name('material_purchase_history.delete')->middleware('auth');
 
 // Dashboard
 Route::resource('dashboard', 'DashboardController')->except(['show'])->middleware('auth');

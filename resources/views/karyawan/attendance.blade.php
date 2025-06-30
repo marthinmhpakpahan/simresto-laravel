@@ -4,6 +4,9 @@
         <div class="row">
             <div class="col-12">
                 <div class="card mb-4">
+                    <div class="flex justify-center">
+                        <span class="px-3 border-[1px] border-red-800 border-b-[6px] border-r-[6px] border-l-[6px] font-bold text-xl text-red-700 my-3" id="currentTime"></span>
+                    </div>
                     <div class="card-header pb-0 flex flex-col sm:flex-row justify-center">
                         <div class="col-md-6 col-lg-6 col-xs-12 items-center">
                             <h3
@@ -130,6 +133,19 @@
                 element.removeClass("show");
                 element.addClass("collapse");
             }
+        });
+
+        var timestamp = '<?= time() ?>';
+        function updateTime() {
+            const date = new Date(timestamp * 1000);
+            const month = [
+                "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+            ]
+            $('#currentTime').html(date.getDate() + " " + (month[date.getMonth()]) + " " + date.getFullYear() + ", " + date.getHours() + ":" + date.getMinutes() + ":" +date.getSeconds());
+            timestamp++;
+        }
+        $(function() {
+            setInterval(updateTime, 1000);
         });
     });
 </script>
