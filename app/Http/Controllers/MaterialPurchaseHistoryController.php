@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\MenuImages;
 use App\Models\MenuRecipe;
+use App\Models\Material;
 use App\Models\Unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,6 +42,11 @@ class MaterialPurchaseHistoryController extends Controller
             if (!$result) {
                 return back()->withInput()->with('failed', 'Gagal menambahkan Menu!');
             }
+            $material = Material::where("id", $request->material_id)->first();
+            $material->price = $request->price;
+            $material->weight = $request->weight;
+            $material->unit = $request->unit;
+            $material->save();
             return redirect()->route('material.show', $request->material_id);
         }
     }
