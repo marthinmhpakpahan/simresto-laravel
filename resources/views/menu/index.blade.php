@@ -7,9 +7,7 @@
                     <div class="card-header pb-0">
                         <div class="row">
                             <div class="col-6">
-                                <span
-                                    class="text-uppercase text-3xl font-bold text-red-700">List
-                                    Menu</span>
+                                <span class="text-uppercase text-3xl font-bold text-red-700"><i class="fa fa-list"></i>&nbsp;List Menu</span>
                             </div>
                             <div class="col-6 text-end">
                                 <a href="{{ route('menu.create') }}"

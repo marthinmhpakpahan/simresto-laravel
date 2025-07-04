@@ -1,6 +1,6 @@
-<div class="bg-primary border-white h-max">
-    <nav id="navbarBlur" class="hidden"></nav>
-    <ul class="navbar-nav bg-primary mt-6">
+<div class="bg-primary  h-max">
+    <div id="navbarBlur" class="hidden"></div>
+    <ul class="navbar-nav bg-primary mt-8">
         <div class="mx-2 mt-4 mb-2 font-weight-bolder text-uppercase text-white hidden sm:inline">Menu</div>
         <li class="nav-item hover:bg-red-900 p-2 rounded-xl {{ auth()->user()->role_id == 2 ? 'd-none' : '' }}">
             <a class="nav-link mx-2 flex flex-row items-center justify-center sm:justify-start {{ Route::current()->getName() == 'dashboard.index' ? 'active' : '' }}"

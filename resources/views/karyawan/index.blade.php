@@ -7,7 +7,7 @@
                     <div class="card-header pb-0">
                         <div class="row">
                             <div class="col-6">
-                                <h3 class="text-uppercase text-3xl font-bold text-red-700">List Karyawan</h3>
+                                <h3 class="text-uppercase text-3xl font-bold text-red-700"><i class="fa fa-list"></i>&nbsp;List Karyawan</h3>
                             </div>
                             <div class="col-6 text-end">
                                 <a class="font-bold border-2 border-red-700 rounded-lg px-3 py-[3px] bg-red-700 text-white hover:bg-red-800 cursor-pointer" href="{{ route('karyawan.create') }}">

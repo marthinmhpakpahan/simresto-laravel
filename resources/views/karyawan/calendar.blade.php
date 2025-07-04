@@ -7,7 +7,7 @@
                     <div class="card-header pb-0">
                         <div class="row">
                             <div class="col-12">
-                                <h3 class="text-uppercase text-3xl font-bold text-red-700 text-center">Daftar Hadir Karyawan</h3>
+                                <h3 class="text-uppercase text-3xl font-bold text-red-700 text-center"><i class="fa fa-list"></i>&nbsp;Daftar Hadir Karyawan</h3>
                             </div>
                         </div>
                     </div>

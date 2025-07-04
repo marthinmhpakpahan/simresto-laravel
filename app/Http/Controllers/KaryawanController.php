@@ -259,7 +259,12 @@ class KaryawanController extends Controller
 
     public function calendar() {
         $user_id = Auth::id();
+        $custom_date = isset($_GET["date"]) ? $_GET["date"] : "";
         $current_date = date("Y-m-d");
+        if($custom_date != "") {
+            $str_date = strtotime($custom_date);
+            $current_date = date("Y-m-d", $str_date);
+        }
         $calendar = new Calendar($current_date);
 
         $attendances = Attendance::whereYear('created_at', '=', date("Y"))->whereMonth('created_at', '=', date("m"))->get();
@@ -279,7 +284,8 @@ class KaryawanController extends Controller
             "title" => env("APP_NAME") . " - Manage Karyawan",
             "page_title" => "Manage Karyawan",
             "user_id" => $user_id,
-            "calendar" => $calendar
+            "calendar" => $calendar,
+            "current_date" => $current_date
         ]);
     }
 }

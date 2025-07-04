@@ -72,7 +72,7 @@
                     <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">
                         Status</td>
                     <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">
-                        #</td>
+                        Action</td>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
@@ -110,7 +110,7 @@
                     </td>
                     <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">Berat</td>
                     <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">Gambar</td>
-                    <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">#</td>
+                    <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">Action</td>
                 </tr>
             </thead>
             <tbody>
@@ -148,7 +148,7 @@
                     <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">No</td>
                     <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">Nama</td>
                     <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">Deskripsi</td>
-                    <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">#</td>
+                    <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">Action</td>
                 </tr>
             </thead>
             <tbody>

@@ -1,5 +1,5 @@
 @include('dashboard.header')
-<main class="relative rounded-lg h-screen">
+<main class="relative rounded-lg">
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
@@ -8,7 +8,7 @@
                         <div class="row">
                             <div class="col-6">
                                 <h3 class=""><span
-                                        class="text-uppercase text-3xl font-bold text-red-700">List
+                                        class="text-uppercase text-3xl font-bold text-red-700"><i class="fa fa-list"></i>&nbsp;List
                                         Bahan</span></h3>
                             </div>
                             <div class="col-6 text-end">
@@ -28,7 +28,7 @@
                                     <td class="text-uppercase text-sm font-weight-bolder border-[2px] border-red-700 tracking-wider">Nama</td>
                                     <td class="text-uppercase text-sm font-weight-bolder border-[2px] border-red-700 tracking-wider">Berat</td>
                                     <td class="text-uppercase text-sm font-weight-bolder border-[2px] border-red-700 tracking-wider">Harga</td>
-                                    <td class="text-uppercase text-sm font-weight-bolder border-[2px] border-red-700 tracking-wider">#</td>
+                                    <td class="text-uppercase text-sm font-weight-bolder border-[2px] border-red-700 tracking-wider">Action</td>
                                 </tr>
                                 @foreach ($materials as $index => $material)
                                     <tr class="text-center">

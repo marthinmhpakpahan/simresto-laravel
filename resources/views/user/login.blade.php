@@ -1,10 +1,10 @@
 @include('common.header')
-  <main class="main-content  mt-0 bg-primary">
+  <main class="main-content mt-0">
     <section>
       <div class="page-header min-vh-100">
         <div class="container">
-          <img class="mx-auto" src="{{ asset('assets/img/icon_restaurant_white.png') }}" />
-          <div class="border border-white rounded-lg col-xl-4 col-lg-5 col-md-7 mx-auto mt-4">
+          <img class="mx-auto w-[350px]" src="{{ asset('assets/img/logos/dimxue.png') }}" />
+          <div class="border border-white rounded-lg col-xl-4 col-lg-5 col-md-7 mx-auto mt-4 bg-primary">
             <div class="card card-plain">
               <div class="card-header bg-primary pb-0 text-start">
                 <h4 class="font-weight-bolder text-white font-mono text-2xl text-center">Sign In</h4>

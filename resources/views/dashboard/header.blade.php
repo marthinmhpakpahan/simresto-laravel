@@ -5,7 +5,7 @@
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
                 aria-hidden="true" id="iconSidenav"></i>
             <a class="flex flex-col mt-3 sm:mb-6 ml-2 justify-center" href="#">
-                <img src="/assets/img/icon_restaurant_white.png" class="sm:mx-auto w-12 sm:w-[80px]" alt="main_logo">
+                <img class="mx-auto w-[64px] sm:w-[160px]" src="{{ asset('assets/img/logos/dimxue.png') }}" />
                 <span class="font-weight-bold text-white text-2xl mt-2 mx-auto hidden sm:px-10 sm:block w-max">{{ env('APP_NAME') }}
                     Dashboard</span>
             </a>

@@ -152,8 +152,8 @@
                                             <a class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 btn-detail-image cursor-pointer" data-image="{{ asset($history->invoice) }}" data-bs-toggle="modal" data-bs-target="#modalDetailImage"><i
                                                 class="fa fa-image"></i></a>
                                         </td>
-                                        <td
-                                            class="border-[1px] border-red-700 px-4 py-1 font-weight-bolder text-uppercase text-sm">
+                                        <td class="border-[1px] border-red-700 px-4 py-1 font-weight-bolder text-uppercase text-sm">
+                                            <a class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 btn-delete-history cursor-pointer" data-quantity="{{ ($history->weight) }} {{ $history->unit }}" data-store-name="{{ $history->store_name }}" data-price="{{ $history->price }}" data-bs-toggle="modal" data-bs-target="#modalDeleteConfirmation" data-url="{{ route('material_purchase_history.delete', $history->id) }}"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -175,6 +175,45 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="modalDeleteConfirmation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-center">
+                <h1 class="modal-title fs-5 text-center text-white" id="staticBackdropLabel">Konfirmasi</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4>Apakah anda yakin ingin menghapus histori pembelian bahan ini?</h4><br />
+                <table>
+                    <tr>
+                        <td>Nama Toko</td>
+                        <td>&nbsp;&nbsp;&nbsp;</td>
+                        <td>&nbsp;:&nbsp;</td>
+                        <td><span class="modal-purchase-store-name"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Kuantitas</td>
+                        <td>&nbsp;&nbsp;&nbsp;</td>
+                        <td>&nbsp;:&nbsp;</td>
+                        <td><span class="modal-purchase-quantity"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Total Biaya</td>
+                        <td>&nbsp;&nbsp;&nbsp;</td>
+                        <td>&nbsp;:&nbsp;</td>
+                        <td><span class="modal-purchase-price"></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <a class="modal-btn-confirm-delete" href=""><button type="button"
+                        class="btn btn-danger">Yakin!</button></a>
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript">
     $(document).ready(function() {
         console.log("View Material Page!");
@@ -191,6 +230,17 @@
             console.log("btn-add-purchase", data_target)
             $(data_target).removeClass("collapse");
             $(data_target).addClass("show");
+        });
+
+        $(".btn-delete-history").on("click", function() {
+            var data_store_name = $(this).data("store-name");
+            $(".modal-purchase-store-name").text(data_store_name);
+            var data_quantity = $(this).data("quantity");
+            $(".modal-purchase-quantity").text(data_quantity);
+            var data_price = $(this).data("price");
+            $(".modal-purchase-price").text(data_price);
+            var data_url = $(this).data("url");
+            $(".modal-btn-confirm-delete").attr("href", data_url);
         });
     });
 </script>

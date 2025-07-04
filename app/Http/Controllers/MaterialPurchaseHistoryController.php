@@ -54,6 +54,6 @@ class MaterialPurchaseHistoryController extends Controller
     public function delete($material_purchase_history_id)
     {
         $material_purchase_history = MaterialPurchaseHistory::where("id", $material_purchase_history_id)->delete();
-        return redirect()->route('material.show', $$material_purchase_history->material_id);
+        return redirect()->route('material.show', $material_purchase_history->material_id);
     }
 }
