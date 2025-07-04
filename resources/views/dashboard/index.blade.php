@@ -57,7 +57,7 @@
 
 <div class="mt-4 px-4 w-full">
     <div class="flex flex-col bg-white shadow-lg rounded-lg p-4">
-        <span class="font-bold text-2xl text-red-600 my-2">Daftar Karyawan</span>
+        <span class="font-bold text-2xl text-red-600 my-2"><i class="fa fa-list"></i>&nbsp;Daftar Karyawan</span>
         <table class="w-full bg-white rounded-lg">
             <thead>
                 <tr class="text-center bg-slate-200 text-slate-500">
@@ -100,7 +100,7 @@
 
 <div class="mt-3 px-4 w-full">
     <div class="flex flex-col bg-white shadow-lg rounded-lg p-4">
-        <span class="font-bold text-2xl text-green-600 my-2">Daftar Bahan</span>
+        <span class="font-bold text-2xl text-green-600 my-2"><i class="fa fa-list"></i>&nbsp;Daftar Bahan</span>
         <table class="w-full bg-white rounded-lg">
             <thead>
                 <tr class="text-center bg-slate-200 text-slate-500">
@@ -141,7 +141,7 @@
 </div>
 <div class="mt-3 px-4 w-full">
     <div class="flex flex-col bg-white shadow-lg rounded-lg p-4">
-        <span class="font-bold text-2xl text-yellow-600 my-2">Daftar Menu</span>
+        <span class="font-bold text-2xl text-yellow-600 my-2"><i class="fa fa-list"></i>&nbsp;Daftar Menu</span>
         <table class="w-full bg-white rounded-lg">
             <thead>
                 <tr class="text-center bg-slate-200 text-slate-500">
@@ -172,7 +172,7 @@
 </div>
 <div class="mt-3 px-4 w-full">
     <div class="flex flex-col bg-white shadow-lg rounded-lg p-4">
-        <span class="font-bold text-2xl text-blue-600">Daftar Cuti</span>
+        <span class="font-bold text-2xl text-blue-600"><i class="fa fa-list"></i>&nbsp;Daftar Cuti</span>
         <table class="table-auto">
             <tr class="text-center bg-slate-200 text-slate-500">
                 <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">No</td>

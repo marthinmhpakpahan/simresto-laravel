@@ -8,7 +8,7 @@
                     <div class="card-header pb-0">
                         <div class="row">
                             <div class="col-6">
-                            <h4 class="text-uppercase text-3xl font-bold text-red-700">{{ $page_title }}</h4>
+                            <h4 class="text-uppercase text-3xl font-bold text-red-700"><i class="fa fa-plus-square"></i>&nbsp;{{ $page_title }}</h4>
                             </div>
                             <div class="col-6 text-end">
                                 <a class="font-bold text-red-800 w-max px-3 py-2 border-2 border-red-700 rounded-lg mt-2 hover:bg-red-900 hover:text-white cursor-pointer" href="{{ route("menu.index") }}"><i class="fa fa-list"></i> List Menu
