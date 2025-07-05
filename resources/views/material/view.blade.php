@@ -50,7 +50,7 @@
                     <div class="card-header pb-0">
                         <div class="row">
                             <div class="col-6">
-                                <h3 class="text-uppercase font-bold text-red-700 text-xl">Histori Pembelian Material
+                                <h3 class="text-uppercase font-bold text-red-700 text-xl">Histori Pembelian Bahan
                                 </h3>
                             </div>
                             <div class="col-6 text-end">

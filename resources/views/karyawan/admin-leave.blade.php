@@ -28,7 +28,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($leaves as $index => $leave)
-                                        <tr class="text-center text-xs {{ $leave->status == 'Declined' ? 'table-danger' : ($leave->status == 'Accepted' ? 'table-success' : '') }}">
+                                        <tr class="text-center text-xs {{ $leave->status == 'Declined' ? 'table-danger' : ($leave->status == 'Diterima' ? 'table-success' : '') }}">
                                             <td>{{ ($index+1) }}</td>
                                             <td>{{ $leave->title }}</td>
                                             <td>{{ date("d F Y", strtotime($leave->start_date)) }}</td>
@@ -37,9 +37,9 @@
                                             <td><a href="/{{ $leave->attachment }}" target="_blank"><i class="fa fa-download btn btn-xs btn-danger"></i></a></td>
                                             <td class="font-weight-bolder text-uppercase">{{ $leave->status }}</td>
                                             <td>
-                                                @if ($leave->status == "Pending")
-                                                    <a href="{{ route("karyawan.leave_action", [$leave->id, 'Accepted']) }}"><i class="fa fa-check btn btn-xs btn-success"></i></a>
-                                                    <a href="{{ route("karyawan.leave_action", [$leave->id, 'Declined']) }}"><i class="fa fa-close btn btn-xs btn-danger"></i></a>
+                                                @if ($leave->status == "Belum Diproses")
+                                                    <a href="{{ route("karyawan.leave_action", [$leave->id, 'Diterima']) }}"><i class="fa fa-check btn btn-xs btn-success"></i></a>
+                                                    <a href="{{ route("karyawan.leave_action", [$leave->id, 'Ditolak']) }}"><i class="fa fa-close btn btn-xs btn-danger"></i></a>
                                                 @endif
                                             </td>
                                         </tr>

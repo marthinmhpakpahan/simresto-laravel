@@ -35,7 +35,7 @@
                                 <tbody>
                                     @foreach ($leaves as $index => $leave)
                                         <tr
-                                            class="text-center text-xs {{ $leave->status == 'Declined' ? 'table-danger' : ($leave->status == 'Accepted' ? 'table-success' : '') }}">
+                                            class="text-center text-xs {{ $leave->status == 'Declined' ? 'table-danger' : ($leave->status == 'Diterima' ? 'table-success' : '') }}">
                                             <td>{{ $index + 1 }}</td>
                                             <td>{{ $leave->title }}</td>
                                             <td>{{ date('d F Y', strtotime($leave->start_date)) }}</td>
@@ -45,9 +45,9 @@
                                                         class="fa fa-download btn btn-xs btn-danger"></i></a></td>
                                             <td class="font-weight-bolder text-uppercase">{{ $leave->status }}</td>
                                             <td>
-                                                @if ($leave->status == 'Pending')
+                                                @if ($leave->status == 'Belum Diproses')
                                                     <a
-                                                        href="{{ route('karyawan.leave_action', [$leave->id, 'Canceled']) }}"><i
+                                                        href="{{ route('karyawan.leave_action', [$leave->id, 'Ditolak']) }}"><i
                                                             class="fa fa-close btn btn-xs btn-danger"></i></a>
                                                 @endif
                                             </td>

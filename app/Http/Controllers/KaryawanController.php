@@ -165,7 +165,7 @@ class KaryawanController extends Controller
 
     public function admin_leave() {
         $user_id = Auth::id();
-        $leaves = Leave::where("status", "!=", "Canceled")->orderBy("created_at", "desc")->get();
+        $leaves = Leave::where("status", "!=", "Ditolak")->orderBy("created_at", "desc")->get();
 
         return view('karyawan.admin-leave', [
             "title" => env("APP_NAME") . " - Manage Leave",
@@ -223,7 +223,7 @@ class KaryawanController extends Controller
                 'title' => $request->title,
                 'description' => $request->description,
                 'attachment' => CommonFunction::uploadFiles($request->file('attachment'), "LEAVE"),
-                'status' => "Pending"
+                'status' => "Belum Diproses"
             ]);
 
             if(!$result) {
@@ -272,7 +272,7 @@ class KaryawanController extends Controller
             $calendar->add_event("<i class='fa fa-check'></i> " . $attendance->user->full_name, date('Y-m-d', strtotime($attendance->started_at)), 1, 'green');
         }
         
-        $leaves = Leave::where("status", "Accepted")->get();
+        $leaves = Leave::where("status", "Diterima")->get();
         foreach($leaves as $leave) {
             $date_range = CarbonPeriod::create($leave->start_date, $leave->end_date);
             foreach ($date_range as $date) {

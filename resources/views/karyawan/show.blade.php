@@ -140,7 +140,7 @@
                                         </td>
                                         <td class="font-weight-bolder">{{ $attendance->status }}</td>
                                         <td>
-                                            @if($attendance->status == "Pending")
+                                            @if($attendance->status == "Belum Diproses")
                                             <i class="btn btn-success btn-xs text-md fa fa-check btn-confirm-attendance" data-confirm_url="{{ route('karyawan.confirm_attendance', [$attendance->user_id, $attendance->id]) }}" data-no="{{ ($index+1) }}" data-start_time="{{ $attendance->started_at }}" data-finished_time="{{ $attendance->finished_at }}" data-bs-toggle="modal"
                                                 data-bs-target="#modalAttendanceConfirm"></i>
                                             <i class="btn btn-danger btn-xs text-md fa fa-close btn-decline-attendance" data-decline_url="{{ route('karyawan.decline_attendance', [$attendance->user_id, $attendance->id]) }}" data-no="{{ ($index+1) }}" data-start_time="{{ $attendance->started_at }}" data-finished_time="{{ $attendance->finished_at }}" data-bs-toggle="modal"
