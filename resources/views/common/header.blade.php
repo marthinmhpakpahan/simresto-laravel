@@ -33,9 +33,9 @@
         body {
             /* Multiple Backgrounds: Image + Opaque Color Layer */
             background-image:
-                linear-gradient(rgba(159, 41, 46, 0.7), rgba(159, 41, 46, 0.7)),
+                /* linear-gradient(rgba(159, 41, 46, 0.7), rgba(159, 41, 46, 0.7)), */
                 /* Semi-transparent white overlay */
-                url("{{ asset('assets/img/bg-food-clean.png') }}");
+                url("{{ asset('assets/img/bg-food-2.jpg') }}");
             /* Your background image */
             background-size: cover;
             /* Make the image cover the entire body */
