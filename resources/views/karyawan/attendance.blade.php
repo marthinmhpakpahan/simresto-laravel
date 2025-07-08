@@ -4,22 +4,21 @@
         <div class="row">
             <div class="col-12">
                 <div class="card mb-4">
-                    <div class="flex justify-center">
-                        <span class="px-3 border-[1px] border-red-800 border-b-[6px] border-r-[6px] border-l-[6px] font-bold text-xl text-red-700 my-3" id="currentTime"></span>
+                    <div class="flex justify-center mt-4">
+                        <span class="px-5 py-2 border-[1px] border-red-800 border-b-[6px] border-r-[6px] border-l-[6px] font-bold text-5xl text-red-700 my-3" id="currentTime"></span>
                     </div>
-                    <div class="card-header pb-0 flex flex-col sm:flex-row justify-center">
-                        <div class="col-md-6 col-lg-6 col-xs-12 items-center">
+                    <div class="card-header pb-0 flex flex-col sm:flex-col justify-center">
+                        <div class="flex justify-center items-center">
                             <h3
                                 class="text-uppercase text-center sm:text-left text-lg sm:text-2xl {{ !$attendance ? 'text-red-700 font-bold' : ($attendance->finished_at ? 'text-green-700 font-bold' : 'text-red-700 font-bold') }}">
                                 {{ !$attendance ? 'Anda belum checkin hari ini !!!' : ($attendance->finished_at ? 'Absensi hari ini sudah lengkap!' : 'Anda belum checkout hari ini !!!') }}
                             </h3>
                         </div>
                         <div
-                            class="col-md-6 col-lg-6 col-xs-12 flex justify-center sm:justify-end {{ $attendance && $attendance->finished_at ? 'd-none' : '' }}">
+                            class="flex flex-col items-center justify-center sm:justify-center {{ $attendance && $attendance->finished_at ? 'd-none' : '' }}">
                             <div
                                 class="btn-check-in-out font-bold text-red-800 w-max px-3 py-2 border-2 border-red-700 rounded-lg mt-2 hover:bg-red-900 hover:text-white cursor-pointer">
-                                <i class="fa {{ !$attendance ? 'fa-right-to-bracket' : 'fa-right-from-bracket' }}"></i>
-                                {{ !$attendance ? 'Check In Sekarang' : 'Check Out Sekarang' }}
+                                <i class="fa {{ !$attendance ? 'fa-right-to-bracket' : 'fa-right-from-bracket' }}"></i> {{ !$attendance ? 'Check In Sekarang' : 'Check Out Sekarang' }}
                             </div>
                         </div>
                     </div>
@@ -50,8 +49,8 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <div class="row">
-                            <div class="col-md-6 col-xs-12">
-                                <h3 class="text-uppercase text-lg sm:text-3xl font-bold text-red-700">Daftar Hadir</h3>
+                            <div class="col-md-12 col-xs-12">
+                                <h3 class="text-uppercase text-center text-lg sm:text-3xl font-bold text-red-700">Daftar Hadir</h3>
                             </div>
                         </div>
                     </div>

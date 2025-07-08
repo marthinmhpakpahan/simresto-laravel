@@ -144,7 +144,7 @@ class KaryawanController extends Controller
                 'started_path' => CommonFunction::uploadFiles($request->file('image'), "ATTENDANCE")
             ]);
         } else {
-            $attendance->finished_at = date("Y-m-d h:i:s");
+            $attendance->finished_at = date("Y-m-d H:i:s");
             $attendance->finished_path = CommonFunction::uploadFiles($request->file('image'), "ATTENDANCE");
             $attendance->save();
         }

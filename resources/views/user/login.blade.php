@@ -3,11 +3,11 @@
     <section>
       <div class="page-header min-vh-100">
         <div class="container">
-          <img class="mx-auto w-[350px]" src="{{ asset('assets/img/logos/dimxue.png') }}" />
+          {{-- <img class="mx-auto w-[350px]" src="{{ asset('assets/img/logos/dimxue.png') }}" /> --}}
           <div class="border border-white rounded-lg col-xl-4 col-lg-5 col-md-7 mx-auto mt-4 bg-primary">
             <div class="card card-plain">
               <div class="card-header bg-primary pb-0 text-start">
-                <h4 class="font-weight-bolder text-white font-mono text-2xl text-center">Sign In</h4>
+                <h4 class="font-weight-bolder text-white font-mono text-2xl text-center">Selamat datang!</h4>
                 <p class="mb-0 text-white text-center">Masukkan username dan password anda untuk Login</p>
               </div>
               <div class="card-body">
@@ -42,7 +42,7 @@
                       aria-label="Password">
                   </div>
                   <div class="text-center">
-                    <button type="submit" class="btn border border-white btn-lg btn-lg w-100 mt-4 mb-0 text-white">Sign in</button>
+                    <button type="submit" class="btn border border-white btn-lg btn-lg w-100 mt-4 mb-0 text-white">Login</button>
                   </div>
                 </form>
               </div>
