@@ -30,8 +30,8 @@
                                 <form role="form" class="row" method="POST"
                                     action={{ route('karyawan.validate_attendance') }} enctype="multipart/form-data">
                                     @csrf
-                                    <div class="col-md-6 col-xs-12 flex flex-col justify-center mx-auto">
-                                        <img class="form-control visually-hidden img-thumbnail" id="img_checkin"
+                                    <div class="col-md-6 col-xs-12 flex flex-col justify-center items-center mx-auto">
+                                        <img class="form-control visually-hidden img-thumbnail w-48" id="img_checkin"
                                             src="#" alt="" />
                                         <input type="file" name="image" class="form-control my-3"
                                             data-img_element="img_checkin" placeholder="..." aria-label="Image"
