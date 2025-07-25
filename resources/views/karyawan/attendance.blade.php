@@ -69,7 +69,7 @@
                                 <tbody>
                                     @foreach ($attendances as $index => $attendance)
                                         <tr
-                                            class="text-center text-sm  {{ $attendance->status == 'Confirmed' ? 'table-success' : ($attendance->status == 'Declined' ? 'table-danger' : '') }}">
+                                            class="text-center text-sm  {{ $attendance->status == 'Confirmed' ? 'table-success' : ($attendance->status == 'Ditolak' ? 'table-danger' : '') }}">
                                             <td>{{ $index + 1 }}</td>
                                             <td>{{ (new DateTime($attendance->created_at))->format('d F Y') }}</td>
                                             <td>

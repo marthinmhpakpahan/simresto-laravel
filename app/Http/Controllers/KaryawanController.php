@@ -198,7 +198,7 @@ class KaryawanController extends Controller
 
     public function decline_attendance($karyawan_id, $attendance_id) {
         $attendance = Attendance::where('id', $attendance_id)->first();
-        $attendance->status = "Declined";
+        $attendance->status = "Ditolak";
         $attendance->save();
         return redirect()->route('karyawan.show', $karyawan_id);
     }
