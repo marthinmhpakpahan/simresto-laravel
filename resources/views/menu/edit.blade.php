@@ -23,7 +23,7 @@
     <form role="form" method="POST" action="{{ route('menu.edit', $menu->id) }}" enctype="multipart/form-data">
         @csrf
         <div class="flex flex-row justify-between items-center">
-            <p class="font-bold text-red-800 text-4xl">Edit Menu - {{ $menu->name }}</p>
+            <p class="font-bold text-red-800 text-4xl">Ubah Menu - {{ $menu->name }}</p>
             <a href="{{ route('menu.index') }}"
                 class="font-bold text-red-800 w-max px-3 py-2 border-2 border-red-700 rounded-lg mt-2 hover:bg-red-900 hover:text-white cursor-pointer"><i
                     class="fa fa-list"></i>&nbsp;&nbsp;Lihat Daftar Menu</a>
