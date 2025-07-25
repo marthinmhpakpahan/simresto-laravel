@@ -100,7 +100,7 @@
                     <div class="card-header pb-0">
                         <div class="row">
                             <div class="col-md-6 col-xs-12">
-                                <h3 class="text-uppercase">Daftar Hadir</h3>
+                                <h3 class="text-uppercase font-bold text-2xl text-red-700 mb-2">Daftar Hadir</h3>
                             </div>
                         </div>
                     </div>
