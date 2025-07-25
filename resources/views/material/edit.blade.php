@@ -21,7 +21,7 @@
         </div>
     @endif
     <div class="flex flex-row justify-between items-center">
-        <p class="font-bold text-red-800 text-4xl">Edit Bahan - {{ $material->id }}</p>
+        <p class="font-bold text-red-800 text-4xl">Ubah Bahan - {{ $material->name }}</p>
         <a href="{{ route('material.index') }}"
             class="font-bold text-red-800 w-max px-3 py-2 border-2 border-red-700 rounded-lg mt-2 hover:bg-red-900 hover:text-white cursor-pointer"><i
                 class="fa fa-list"></i>&nbsp;&nbsp;Lihat Daftar Bahan</a>
