@@ -71,18 +71,13 @@
                                 </div>
                                 <div class="mb-3 col-12">
                                     <label class="form-label">Foto</label>
-                                    <div class="visually-hidden row mb-2" id="div_img_photo">
-                                        @for($i=1; $i<=10; $i++)
-                                            <div class="col-md-2">
-                                                <img class="visually-hidden img-fluid" id="img_photo_{{ $i }}" src="#" alt="" />
-                                            </div>
-                                        @endfor
-                                    </div>
                                     <input type="file" name="image-multiple[]"
                                         class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}"
                                         placeholder="Image" aria-label="Image"
-                                        data-img_element="div_img_photo" multiple="multiple"
+                                        aria-label="Image" data-img_element="div_img_photo" multiple="multiple"
                                         aria-describedby="invalidCheckImage">
+                                    <div id="imagePreviewContainer" class="image-preview-container flex flex-row flex-wrap mt-1 p-2">
+                                        </div>
                                     @if($errors->has('image'))
                                     <div id="invalidCheckImage" class="invalid-feedback">
                                         {{ $errors->first('image') }}
@@ -113,4 +108,48 @@
         </div>
     </div>
 </main>
+<script type="text/javascript">
+    $(document).ready(function() {
+        const $imageUploader = $("input.imageUploader");
+        const $imagePreviewContainer = $("#imagePreviewContainer");
+
+        console.log("Edit Menu Page!");
+        $imageUploader.on("change", function() {
+            // Clear previous images using jQuery's .empty()
+            $imagePreviewContainer.empty();
+
+            // Get the files from the event object
+            const files = event.target.files;
+
+            $.each(files, function(index, file) {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        // Create a wrapper div for each image and button
+                        const $wrapper = $('<div>')
+                            .addClass(
+                                'relative border border-gray-300 p-2 shadow-md inline-block mr-2'
+                            ); // Tailwind classes for wrapper
+
+                        // Create the image element
+                        $('<img>')
+                            .attr('src', e.target.result)
+                            .addClass(
+                                'max-w-[200px] max-h-[200px] object-cover block'
+                                ) // Tailwind classes for image
+                            .appendTo($wrapper);
+
+                        $wrapper.appendTo($imagePreviewContainer);
+                    };
+
+                    reader.readAsDataURL(file);
+                } else {
+                    console.warn(
+                        `File ${file.name} is not an image and will not be displayed.`);
+                }
+            });
+        });
+    });
+</script>
 @include('dashboard.footer')
