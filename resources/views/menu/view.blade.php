@@ -242,7 +242,7 @@
                                                     <a data-url="{{ route('menu_recipe.delete', [$menu->id, $menu_recipe->id]) }}"
                                                         data-name="{{ $menu_recipe->material->name }}"
                                                         data-weight="{{ $menu_recipe->weight }}"
-                                                        data-total="{{ $menu->total_cost }}"
+                                                        data-total="{{ $menu_recipe->total_cost }}"
                                                         data-bs-toggle="modal" data-bs-target="#modalDeleteConfirmation"
                                                         class="text-md border-2 border-red-700 hover:bg-red-700 hover:text-white text-red-700 px-2 py-[1px] rounded-lg btn-delete-menu-recipe cursor-pointer ml-1">
                                                         <i class="fa fa-trash"></i>&nbsp; Delete
