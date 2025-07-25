@@ -239,8 +239,12 @@
                                                         data-unit="{{ $menu_recipe->unit }}">
                                                         <i class="fa fa-edit"></i>&nbsp; Edit
                                                     </a>
-                                                    <a href="{{ route('menu_recipe.delete', [$menu->id, $menu_recipe->id]) }}"
-                                                        class="text-md border-2 border-red-700 hover:bg-red-700 hover:text-white text-red-700 px-2 py-[1px] rounded-lg btn-delete-recipe cursor-pointer ml-1">
+                                                    <a data-url="{{ route('menu_recipe.delete', [$menu->id, $menu_recipe->id]) }}"
+                                                        data-name="{{ $menu_recipe->material->name }}"
+                                                        data-weight="{{ $menu_recipe->weight }}"
+                                                        data-total="{{ $menu->total_cost }}"
+                                                        data-bs-toggle="modal" data-bs-target="#modalDeleteConfirmation"
+                                                        class="text-md border-2 border-red-700 hover:bg-red-700 hover:text-white text-red-700 px-2 py-[1px] rounded-lg btn-delete-menu-recipe cursor-pointer ml-1">
                                                         <i class="fa fa-trash"></i>&nbsp; Delete
                                                     </a>
                                                 </td>
@@ -265,25 +269,25 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h4>Apakah anda yakin ingin menghapus data Menu ini?</h4><br />
+                <h4>Apakah anda yakin ingin menghapus data Bahan ini?</h4><br />
                 <table>
                     <tr>
                         <td>Nama</td>
                         <td>&nbsp;&nbsp;&nbsp;</td>
                         <td>&nbsp;:&nbsp;</td>
-                        <td><span class="modal-karyawan-full_name"></span></td>
+                        <td><span class="modal-name"></span></td>
                     </tr>
                     <tr>
-                        <td>No Telepon</td>
+                        <td>Berat</td>
                         <td>&nbsp;&nbsp;&nbsp;</td>
                         <td>&nbsp;:&nbsp;</td>
-                        <td><span class="modal-karyawan-phone_no"></span></td>
+                        <td><span class="modal-weight"></span></td>
                     </tr>
                     <tr>
-                        <td>Email</td>
+                        <td>Total Biaya</td>
                         <td>&nbsp;&nbsp;&nbsp;</td>
                         <td>&nbsp;:&nbsp;</td>
-                        <td><span class="modal-karyawan-email"></span></td>
+                        <td><span class="modal-total"></span></td>
                     </tr>
                 </table>
             </div>
@@ -328,6 +332,17 @@
             console.log("btn-add-material", data_target)
             $(data_target).removeClass("collapse");
             $(data_target).addClass("show");
+        });
+
+        $(".btn-delete-menu-recipe").on("click", function() {
+            var data_name = $(this).data("name");
+            $(".modal-name").text(data_name);
+            var data_weight = $(this).data("weight");
+            $(".modal-weight").text(data_weight);
+            var data_total = $(this).data("total");
+            $(".modal-total").text(data_total);
+            var data_url = $(this).data("url");
+            $(".modal-btn-confirm-delete").attr("href", data_url);
         });
     });
 </script>
