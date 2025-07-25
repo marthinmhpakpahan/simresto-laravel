@@ -119,7 +119,9 @@
                                 <div class="row">
                                     <div class="mb-3 col-6">
                                         <label class="form-label text-red-800 font-semibold text-base">Foto</label>
-                                        <img class="form-control visually-hidden img-fluid" id="img_photo" src="#" alt="" />
+                                        <div class="flex justify-center">
+                                            <img class="form-control mb-2 visually-hidden h-96 w-auto" id="img_photo" src="#" alt="" />
+                                        </div>
                                         <input type="file" name="photo"
                                             class="form-control {{ $errors->has('photo') ? 'is-invalid' : '' }}"
                                             placeholder="Photo" aria-label="Photo"
@@ -133,7 +135,9 @@
                                     </div>
                                     <div class="mb-3 col-6">
                                         <label class="form-label text-red-800 font-semibold text-base">Kartu Identitas (KTP/SIM)</label>
-                                        <img class="form-control visually-hidden img-fluid" id="img_identity_card" src="#" alt="" />
+                                        <div class="flex justify-center">
+                                            <img class="form-control mb-2 visually-hidden img-fluid h-96 w-auto" id="img_identity_card" src="#" alt="" />
+                                        </div>
                                         <input type="file" name="identity_card"
                                             class="form-control {{ $errors->has('identity_card') ? 'is-invalid' : '' }}"
                                             data-img_element="img_identity_card"
