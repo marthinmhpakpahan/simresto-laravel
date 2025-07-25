@@ -136,7 +136,7 @@
                                     <div class="mb-3 col-6">
                                         <label class="form-label text-red-800 font-semibold text-base">Kartu Identitas (KTP/SIM)</label>
                                         <div class="flex justify-center">
-                                            <img class="form-control mb-2 visually-hidden img-fluid h-96 w-auto" id="img_identity_card" src="#" alt="" />
+                                            <img class="form-control mb-2 visually-hidden h-96 w-auto" id="img_identity_card" src="#" alt="" />
                                         </div>
                                         <input type="file" name="identity_card"
                                             class="form-control {{ $errors->has('identity_card') ? 'is-invalid' : '' }}"

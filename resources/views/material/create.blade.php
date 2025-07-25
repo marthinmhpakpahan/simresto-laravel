@@ -104,8 +104,9 @@
                             <div class="flex flex-col">
                                 <div class="mb-3 col-12">
                                     <label class="text-red-800 font-semibold text-base">Foto</label>
-                                    <img class="form-control visually-hidden img-fluid" id="img_photo" src="#"
-                                        alt="" />
+                                    <div class="flex justify-center">
+                                        <img class="form-control visually-hidden h-96 w-auto" id="img_photo" src="#" alt="" />
+                                    </div>
                                     <input type="file" name="image"
                                         class="form-control w-full px-3 py-2 mt-1 rounded-lg focus:border-yellow-500 border-gray-500 {{ $errors->has('image') ? 'is-invalid' : '' }}"
                                         placeholder="Image" aria-label="Image" data-img_element="img_photo"
