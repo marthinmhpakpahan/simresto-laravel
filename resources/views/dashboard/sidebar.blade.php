@@ -58,14 +58,14 @@
             <a class="nav-link mx-2 flex flex-row items-center justify-center sm:justify-start {{ Route::current()->getName() == 'karyawan.admin_leave' ? 'active' : '' }}"
                 href="{{ route('karyawan.admin_leave') }}">
                 <i class="fa fa-calendar text-white text-lg opacity-10"></i>
-                <span class="ml-3 nav-link-text text-white hidden sm:inline">Cuti/Ijin Karyawan</span>
+                <span class="ml-3 nav-link-text text-white hidden sm:inline">Daftar Cuti Karyawan</span>
             </a>
         </li>
         <li class="nav-item hover:bg-red-900 p-2 rounded-xl {{ auth()->user()->role_id == 2 ? 'd-none' : '' }}">
             <a class="nav-link mx-2 flex flex-row items-center justify-center sm:justify-start {{ Route::current()->getName() == 'karyawan.calendar' ? 'active' : '' }}"
                 href="{{ route('karyawan.calendar') }}">
                 <i class="fa fa-calendar text-white text-lg opacity-10"></i>
-                <span class="ml-3 nav-link-text text-white hidden sm:inline">Daftar Hadir Karyawan</span>
+                <span class="ml-3 nav-link-text text-white hidden sm:inline">Kalender Absensi Karyawan</span>
             </a>
         </li>
         <div
@@ -92,14 +92,14 @@
             <a class="nav-link mx-2 flex flex-row items-center justify-center sm:justify-start {{ Route::current()->getName() == 'menu.index' ? 'active' : '' }}"
                 href="{{ route('menu.index') }}">
                 <i class="fa fa-sticky-note text-white text-lg opacity-10"></i>
-                <span class="ml-3 nav-link-text text-white hidden sm:inline">Daftar Resep</span>
+                <span class="ml-3 nav-link-text text-white hidden sm:inline">Daftar Menu</span>
             </a>
         </li>
         <li class="nav-item hover:bg-red-900 p-2 rounded-xl {{ auth()->user()->role_id == 2 ? 'd-none' : '' }}">
             <a class="nav-link mx-2 flex flex-row items-center justify-center sm:justify-start {{ Route::current()->getName() == 'menu.create' ? 'active' : '' }}"
                 href="{{ route('menu.create') }}">
                 <i class="fa fa-plus-square text-white text-lg opacity-10"></i>
-                <span class="ml-3 nav-link-text text-white hidden sm:inline">Tambah Resep</span>
+                <span class="ml-3 nav-link-text text-white hidden sm:inline">Tambah Menu</span>
             </a>
         </li>
     </ul>
