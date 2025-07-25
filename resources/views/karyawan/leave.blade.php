@@ -46,8 +46,13 @@
                                             <td class="font-weight-bolder text-uppercase">{{ $leave->status }}</td>
                                             <td>
                                                 @if ($leave->status == 'Belum Diproses')
-                                                    <a
-                                                        href="{{ route('karyawan.leave_action', [$leave->id, 'Ditolak']) }}"><i
+                                                    <a class="btn-cancel-leave"
+                                                        data-url="{{ route("karyawan.leave_action", [$leave->id, 'Dibatalkan']) }}"
+                                                        data-title="{{ $leave->title }}"
+                                                        data-start-date="{{ date('d F Y', strtotime($leave->start_date)) }}"
+                                                        data-end-date="{{ date('d F Y', strtotime($leave->end_date)) }}"
+                                                        data-bs-toggle="modal" data-bs-target="#modalCancelConfirmation"
+                                                        href="#"><i
                                                             class="fa fa-close btn btn-xs btn-danger"></i></a>
                                                 @endif
                                             </td>
@@ -62,4 +67,58 @@
         </div>
     </div>
 </main>
+<div class="modal fade" id="modalCancelConfirmation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-center">
+                <h1 class="modal-title fs-5 text-center text-white" id="staticBackdropLabel">Konfirmasi</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4>Apakah anda yakin ingin membatalkan data Cuti ini?</h4><br />
+                <table>
+                    <tr>
+                        <td>Judul</td>
+                        <td>&nbsp;&nbsp;&nbsp;</td>
+                        <td>&nbsp;:&nbsp;</td>
+                        <td><span class="modal-cancel-title"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Tanggal Mulai</td>
+                        <td>&nbsp;&nbsp;&nbsp;</td>
+                        <td>&nbsp;:&nbsp;</td>
+                        <td><span class="modal-cancel-start-date"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Tanggal Selesai</td>
+                        <td>&nbsp;&nbsp;&nbsp;</td>
+                        <td>&nbsp;:&nbsp;</td>
+                        <td><span class="modal-cancel-end-date"></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <a class="modal-btn-confirm-cancel" href=""><button type="button"
+                        class="btn btn-danger">Yakin!</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        console.log("Leave Karyawan Page!");
+        $(".btn-cancel-leave").on("click", function() {
+            var data_title = $(this).data("title");
+            $(".modal-cancel-title").text(data_title);
+            var data_start_date = $(this).data("start-date");
+            $(".modal-cancel-start-date").text(data_start_date);
+            var data_end_date = $(this).data("end-date");
+            $(".modal-cancel-end-date").text(data_end_date);
+            var data_url = $(this).data("url");
+            $(".modal-btn-confirm-cancel").attr("href", data_url);
+        });
+    });
+</script>
 @include('dashboard.footer')

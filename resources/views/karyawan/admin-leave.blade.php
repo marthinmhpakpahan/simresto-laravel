@@ -28,7 +28,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($leaves as $index => $leave)
-                                        <tr class="text-center text-xs {{ $leave->status == 'Declined' ? 'table-danger' : ($leave->status == 'Diterima' ? 'table-success' : '') }}">
+                                        <tr class="text-center text-xs {{ $leave->status == 'Ditolak' ? 'table-danger' : ($leave->status == 'Diterima' ? 'table-success' : '') }}">
                                             <td>{{ ($index+1) }}</td>
                                             <td>{{ $leave->title }}</td>
                                             <td>{{ date("d F Y", strtotime($leave->start_date)) }}</td>
