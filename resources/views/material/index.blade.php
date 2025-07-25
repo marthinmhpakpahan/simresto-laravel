@@ -54,9 +54,9 @@
                                                 class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 cursor-pointer">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            <a class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 cursor-pointer"
-                                                data-name="{{ $material->name }}"
-                                                data-url="{{ route('karyawan.delete', $material->id) }}"
+                                            <a class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 cursor-pointer btn-confirm-delete"
+                                                data-name="{{ $material->name }}" data-size="{{ $material->weight }} {{ $material->unit }}"
+                                                data-price="{{ $material->price }}" data-url="{{ route('material.delete', $material->id) }}"
                                                 data-bs-toggle="modal" data-bs-target="#modalDeleteConfirmation">
                                                 <i class="fa fa-trash"></i>
                                             </a>
@@ -96,19 +96,19 @@
                         <td>Nama</td>
                         <td>&nbsp;&nbsp;&nbsp;</td>
                         <td>&nbsp;:&nbsp;</td>
-                        <td><span class="modal-karyawan-full_name"></span></td>
+                        <td><span class="modal-name"></span></td>
                     </tr>
                     <tr>
-                        <td>No Telepon</td>
+                        <td>Ukuran</td>
                         <td>&nbsp;&nbsp;&nbsp;</td>
                         <td>&nbsp;:&nbsp;</td>
-                        <td><span class="modal-karyawan-phone_no"></span></td>
+                        <td><span class="modal-size"></span></td>
                     </tr>
                     <tr>
-                        <td>Email</td>
+                        <td>Harga</td>
                         <td>&nbsp;&nbsp;&nbsp;</td>
                         <td>&nbsp;:&nbsp;</td>
-                        <td><span class="modal-karyawan-email"></span></td>
+                        <td><span class="modal-price"></span></td>
                     </tr>
                 </table>
             </div>
@@ -128,13 +128,13 @@
             $(".modal-detail-image-image").attr("src", data_image);
         });
 
-        $(".btn-delete-karyawan").on("click", function() {
-            var data_fullname = $(this).data("full_name");
-            $(".modal-karyawan-full_name").text(data_fullname);
-            var data_phone_no = $(this).data("phone_no");
-            $(".modal-karyawan-phone_no").text(data_phone_no);
-            var data_email = $(this).data("email");
-            $(".modal-karyawan-email").text(data_email);
+        $(".btn-confirm-delete").on("click", function() {
+            var data_name = $(this).data("name");
+            $(".modal-name").text(data_name);
+            var data_size = $(this).data("size");
+            $(".modal-size").text(data_size);
+            var data_price = $(this).data("price");
+            $(".modal-price").text(data_price);
             var data_url = $(this).data("url");
             $(".modal-btn-confirm-delete").attr("href", data_url);
         });
