@@ -57,6 +57,8 @@
                         </div>
                     @endif
                 </div>
+            </div>
+            <div class="flex flex-col w-full ml-2">
                 <div class="flex flex-col mt-3">
                     <div class="text-red-800 font-semibold">Harga</div>
                     <div><input type="text" name="price" value="{{ old('price', $material->price) }}"
@@ -101,8 +103,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="flex flex-col w-full ml-2">
                 <div class="flex flex-col">
                     <div class="text-red-800 font-semibold">Deskripsi</div>
                     <div>
