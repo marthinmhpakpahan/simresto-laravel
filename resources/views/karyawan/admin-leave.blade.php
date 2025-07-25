@@ -68,7 +68,7 @@
                         <td>Nama Karyawan</td>
                         <td>&nbsp;&nbsp;&nbsp;</td>
                         <td>&nbsp;:&nbsp;</td>
-                        <td><span class="modal-accept-title"></span></td>
+                        <td><span class="modal-accept-full-name"></span></td>
                     </tr>
                     <tr>
                         <td>Judul</td>
@@ -113,7 +113,7 @@
                         <td>Nama Karyawan</td>
                         <td>&nbsp;&nbsp;&nbsp;</td>
                         <td>&nbsp;:&nbsp;</td>
-                        <td><span class="modal-decline-title"></span></td>
+                        <td><span class="modal-decline-full-name"></span></td>
                     </tr>
                     <tr>
                         <td>Judul</td>
