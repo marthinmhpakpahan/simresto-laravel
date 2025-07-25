@@ -44,7 +44,11 @@
                 </div>
                 <div class="flex flex-col mt-3">
                     <div class="text-red-800 font-semibold">Gambar Bahan</div>
-                    <div><input type="file" name="image"
+                    <div class="flex justify-center">
+                        <img class="form-control mb-2 visually-hidden h-96 w-auto" id="img_photo" src="#"
+                            alt="" />
+                    </div>
+                    <div><input type="file" name="image" data-img_element="img_photo"
                             class="form-control w-full px-3 py-2 mt-1 rounded-lg focus:border-yellow-500 border-gray-500" />
                     </div>
                     @if ($errors->has('image'))
