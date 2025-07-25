@@ -106,7 +106,7 @@ class KaryawanController extends Controller
         } else {
             return view('karyawan.edit', [
                 "title" => env("APP_NAME") . " - Manage karyawan",
-                "page_title" => "Edit Data Karyawan",
+                "page_title" => "Ubah Data Karyawan",
                 "karyawan" => $karyawan
             ]);
         }
