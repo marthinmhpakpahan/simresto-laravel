@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Material;
 use App\Models\Menu;
+use App\Models\Leave;
 
 use Illuminate\Http\Request;
 
@@ -14,6 +15,7 @@ class DashboardController extends Controller
         $all_karyawan = User::where('role_id', 2)->get();
         $materials = Material::get();
         $menus = Menu::get();
+        $leaves = Leave::get();
 
         //Tampilan index di dalam folder dashboard
         return view('dashboard.index', [
@@ -26,7 +28,9 @@ class DashboardController extends Controller
             "total_material" => count($materials),
             "menus" => $menus,
             "total_menu" => count($menus),
-            "total_active_karyawan" => count($active_karyawans)
+            "total_active_karyawan" => count($active_karyawans),
+            "leaves" => $leaves,
+            "total_leave" => count($leaves)
         ]);
     }
 }

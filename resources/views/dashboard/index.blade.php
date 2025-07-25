@@ -177,18 +177,17 @@
             <tr class="text-center bg-slate-200 text-slate-500">
                 <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">No</td>
                 <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">Nama</td>
-                <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">Email</td>
-                <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">No Telepon</td>
-                <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">Status</td>
+                <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">Alasan Pengajuan</td>
+                <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">Mulai</td>
+                <td class="py-3 px-1 sm:px-4 text-black text-xs font-semibold uppercase tracking-wider">Selesai</td>
             </tr>
-            @foreach ($karyawans as $index => $karyawan)
+            @foreach ($leaves as $index => $leave)
                 <tr class="text-slate-500 border-t border-slate-400 bg-white text-center">
                     <td class="px-1 sm:px-4 py-[10px]">{{ $index + 1 }}</td>
-                    <td class="px-1 sm:px-4 py-[10px]">{{ $karyawan->full_name }}</td>
-                    <td class="px-1 sm:px-4 py-[10px]">{{ $karyawan->email }}</td>
-                    <td class="px-1 sm:px-4 py-[10px]">{{ $karyawan->phone_no }}</td>
-                    <td class="px-1 sm:px-4 py-[10px] text-center">
-                        {{ $karyawan->status ? 'Aktif' : 'Tidak Aktif' }}</td>
+                    <td class="px-1 sm:px-4 py-[10px]">{{ $leave->user->full_name }}</td>
+                    <td class="px-1 sm:px-4 py-[10px]">{{ $leave->title }}</td>
+                    <td class="px-1 sm:px-4 py-[10px]">{{ date('d F Y', strtotime($leave->start_date)) }}</td>
+                    <td class="px-1 sm:px-4 py-[10px]">{{ date('d F Y', strtotime($leave->end_date)) }}</td>
                 </tr>
             @endforeach
         </table>
