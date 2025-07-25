@@ -27,7 +27,7 @@ class SecurityHeaders
             'Content-Security-Policy',
             "default-src 'self'; " .
                 "style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; " .
-                "font-src https://fonts.gstatic.com; " .
+                "font-src 'self' https://fonts.gstatic.com data:; " .
                 "script-src 'self' https://buttons.github.io 'unsafe-inline';"
         );
         return $response;
