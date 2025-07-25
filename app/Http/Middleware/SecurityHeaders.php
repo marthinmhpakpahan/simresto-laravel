@@ -18,12 +18,18 @@ class SecurityHeaders
         $response = $next($request);
 
         $response->headers->set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
-        $response->headers->set('Content-Security-Policy', "default-src 'self'");
         $response->headers->set('X-Frame-Options', 'SAMEORIGIN');
         $response->headers->set('X-Content-Type-Options', 'nosniff');
         $response->headers->set('Referrer-Policy', 'no-referrer-when-downgrade');
         $response->headers->set('Permissions-Policy', 'geolocation=(), microphone=()');
 
+        $response->headers->set(
+            'Content-Security-Policy',
+            "default-src 'self'; " .
+                "style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; " .
+                "font-src https://fonts.gstatic.com; " .
+                "script-src 'self' https://buttons.github.io 'unsafe-inline';"
+        );
         return $response;
     }
 }
