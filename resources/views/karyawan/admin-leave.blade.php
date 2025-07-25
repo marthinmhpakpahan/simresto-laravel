@@ -38,8 +38,8 @@
                                             <td class="font-weight-bolder text-uppercase">{{ $leave->status }}</td>
                                             <td>
                                                 @if ($leave->status == "Belum Diproses")
-                                                    <a class="btn-accept" data-bs-toggle="modal" data-bs-target="#modalAcceptConfirmation" data-url="{{ route("karyawan.leave_action", [$leave->id, 'Diterima']) }}" href="#"><i class="fa fa-check btn btn-xs btn-success"></i></a>
-                                                    <a class="btn-decline" data-bs-toggle="modal" data-bs-target="#modalDeclineConfirmation" data-url="{{ route("karyawan.leave_action", [$leave->id, 'Ditolak']) }}" href="#"><i class="fa fa-close btn btn-xs btn-danger"></i></a>
+                                                    <a class="btn-accept" data-bs-toggle="modal" data-bs-target="#modalAcceptConfirmation" data-url="{{ route("karyawan.leave_action", [$leave->id, 'Diterima']) }}" data-full-name="{{ $leave->user->full_name }}" data-title="{{ $leave->title }}" data-start-date="{{ date('d F Y', strtotime($leave->start_date)) }}" data-end-date="{{ date('d F Y', strtotime($leave->end_date)) }}" href="#"><i class="fa fa-check btn btn-xs btn-success"></i></a>
+                                                    <a class="btn-decline" data-bs-toggle="modal" data-bs-target="#modalDeclineConfirmation" data-url="{{ route("karyawan.leave_action", [$leave->id, 'Ditolak']) }}" data-full-name="{{ $leave->user->full_name }}" data-title="{{ $leave->title }}" data-start-date="{{ date('d F Y', strtotime($leave->start_date)) }}" data-end-date="{{ date('d F Y', strtotime($leave->end_date)) }}" href="#"><i class="fa fa-close btn btn-xs btn-danger"></i></a>
                                                 @endif
                                             </td>
                                         </tr>
