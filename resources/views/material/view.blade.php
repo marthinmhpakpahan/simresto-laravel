@@ -27,7 +27,7 @@
                         </div>
                         <div class="flex flex-col ml-10">
                             <div class="col-12 mt-3">
-                                <p class="mt-3 font-bold text-red-800">Nama Menu</p>
+                                <p class="mt-3 font-bold text-red-800">Nama Bahan</p>
                                 <p class="text-5xl text-black font-bold">{{ $material->name }}</p>
                                 <p class="mt-3 font-bold text-red-800">Deskripsi</p>
                                 <p class="text-5xl text-black font-bold">{{ $material->description }}</p>
