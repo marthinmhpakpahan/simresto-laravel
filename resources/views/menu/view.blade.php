@@ -43,22 +43,22 @@
                                 <table>
                                     <tbody>
                                         <tr>
-                                            <th>Nama Menu</th>
+                                            <th class="w-48">Nama Menu</th>
                                             <th>:</th>
                                             <th>{{ $menu->name }}</th>
                                         </tr>
                                         <tr>
-                                            <th>Kategori</th>
+                                            <th class="w-48">Kategori</th>
                                             <th>:</th>
                                             <th>{{ $menu->menu_category->name }}</th>
                                         </tr>
                                         <tr>
-                                            <th>Deskripsi</th>
+                                            <th class="w-48">Deskripsi</th>
                                             <th>:</th>
                                             <th>{{ $menu->description }}</th>
                                         </tr>
                                         <tr>
-                                            <th>Total Biaya</th>
+                                            <th class="w-48">Total Biaya</th>
                                             <th>:</th>
                                             <th>Rp. {{ number_format($total_cost) }}</th>
                                         </tr>
