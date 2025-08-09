@@ -5,7 +5,7 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="flex justify-center mt-4">
-                        <span class="px-5 py-2 border-[1px] border-red-800 border-b-[6px] border-r-[6px] border-l-[6px] font-bold text-5xl text-red-700 my-3" id="currentTime"></span>
+                        <span class="px-5 py-2 border-[1px] text-center mx-1 border-red-800 border-b-[6px] border-r-[6px] border-l-[6px] font-bold sm:text-5xl text-red-700 my-3" id="currentTime"></span>
                     </div>
                     <div class="card-header pb-0 flex flex-col sm:flex-col justify-center">
                         <div class="flex justify-center items-center">

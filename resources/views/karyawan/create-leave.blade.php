@@ -6,10 +6,10 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <div class="row">
-                            <div class="col-6">
-                                <h4 class="text-uppercase text-3xl font-bold text-red-700"><i class="fa fa-plus-square"></i>&nbsp;Buat Cuti Baru</h4>
+                            <div class="col-12 sm:col-6 text-center sm:text-start">
+                                <h4 class="text-uppercase text-xl sm:text-3xl font-bold text-red-700"><i class="fa fa-plus-square"></i>&nbsp;Buat Cuti Baru</h4>
                             </div>
-                            <div class="col-6 text-end">
+                            <div class="col-12 sm:col-6 text-center sm:text-end mt-4 sm:mt-0">
                                 <a class="font-bold text-red-800 w-max px-3 py-2 border-2 border-red-700 rounded-lg mt-2 hover:bg-red-900 hover:text-white cursor-pointer" href="{{ route("karyawan.leave") }}">
                                     <i class="fa fa-list"></i> List Cuti
                                 </a>
@@ -45,7 +45,7 @@
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
-                                    <div class="mb-3 col-6">
+                                    <div class="mb-3 sm:col-6">
                                         <label class="form-label text-red-700 text-base">Tanggal Mulai Cuti</label>
                                         <input type="date" name="start_date"
                                             class="form-control {{ $errors->has('start_date') ? 'is-invalid' : '' }}"
@@ -56,7 +56,7 @@
                                             {{ $errors->first('start_date') }}</div>
                                         @endif
                                     </div>
-                                    <div class="mb-3 col-6">
+                                    <div class="mb-3 sm:col-6">
                                         <label class="form-label text-red-700 text-base">Tanggal Selesai Cuti</label>
                                         <input type="date" name="end_date"
                                             class="form-control {{ $errors->has('end_date') ? 'is-invalid' : '' }}"
@@ -68,7 +68,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="mb-3 col-md-6 col-xs-12">
+                                    <div class="mb-3 sm:col-6">
                                         <label class="form-label text-red-700 text-base">Judul</label>
                                         <input type="text" name="title"
                                             class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}"
