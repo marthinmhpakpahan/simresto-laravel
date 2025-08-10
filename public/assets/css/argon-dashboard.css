@@ -10683,6 +10683,10 @@ fieldset:disabled .btn {
   background-image: var(--bs-gradient) !important;
 }
 
+.bg-size-\[200\%\] {
+  background-size: 200%;
+}
+
 .user-select-all {
   user-select: all !important;
 }

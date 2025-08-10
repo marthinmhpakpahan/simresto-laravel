@@ -54,4 +54,4 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="bg-red-900 h-screen text-black">
+<body class="bg-red-900 h-screen text-black bg-size-[200%] sm:bg-cover">
