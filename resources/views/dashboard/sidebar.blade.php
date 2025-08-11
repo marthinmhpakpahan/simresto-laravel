@@ -1,4 +1,4 @@
-<div class="bg-primary overflow-y-auto h-screen">
+<div class="bg-primary h-screen">
     <div id="navbarBlur" class="hidden"></div>
     <ul class="navbar-nav bg-primary mt-2">
         <div class="mx-2 mt-4 mb-2 font-weight-bolder text-uppercase text-white hidden sm:inline">Menu</div>
