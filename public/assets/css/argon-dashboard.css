@@ -26849,6 +26849,15 @@ pre[class*="language-"] {
   position: absolute;
 }
 
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
 .ps__rail-y {
   display: none;
   opacity: 0;

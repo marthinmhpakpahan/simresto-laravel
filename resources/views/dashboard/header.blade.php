@@ -16,7 +16,7 @@
         <hr class="horizontal dark mt-0">
     
         <!-- Sidebar Menu (scrollable area) -->
-        <div class="flex-1 overflow-y-auto">
+        <div class="flex-1 overflow-y-auto scrollbar-hide">
             @include('dashboard.sidebar')
         </div>
     
