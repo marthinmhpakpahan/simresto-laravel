@@ -191,7 +191,7 @@ class KaryawanController extends Controller
 
     public function confirm_attendance($karyawan_id, $attendance_id) {
         $attendance = Attendance::where('id', $attendance_id)->first();
-        $attendance->status = "Confirmed";
+        $attendance->status = "Diterima";
         $attendance->save();
         return redirect()->route('karyawan.show', $karyawan_id);
     }
