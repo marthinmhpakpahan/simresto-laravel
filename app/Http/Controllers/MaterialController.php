@@ -115,10 +115,8 @@ class MaterialController extends Controller
         ]);
     }
 
-    public function delete($karyawan_id) {
-        $karyawan = User::where('id', $karyawan_id)->first();
-        $karyawan->status = 0;
-        $karyawan->save();
-        return redirect('/karyawan')->with('success', 'Berhasil menghapus data karyawan!');
+    public function delete($material_id) {
+        $material = Material::where("id", $material_id)->delete();
+        return redirect()->route('material.index');
     }
 }

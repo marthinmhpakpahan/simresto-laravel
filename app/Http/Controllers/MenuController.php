@@ -146,7 +146,7 @@ class MenuController extends Controller
 
     public function delete($menu_id)
     {
-        $menu_recipe = Menu::where("id", $menu_id)->delete();
-        return redirect()->route('menu.show', $menu_id);
+        $menu = Menu::where("id", $menu_id)->delete();
+        return redirect()->route('menu.index');
     }
 }
