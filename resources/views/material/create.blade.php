@@ -1,5 +1,5 @@
 @include('dashboard.header')
-<div class="border border-black shadow-[6px_6px_6px_#DA6C6C] mx-5 mt-8 rounded-xl px-4 py-5 bg-white">
+<div class="border border-black shadow-[6px_6px_6px_#DA6C6C] mx-5 mt-2 rounded-xl px-4 py-5 bg-white">
     <div class="flex flex-row justify-between items-center">
         <p class="font-bold text-red-800 text-4xl"><i class="fa fa-plus-square"></i>&nbsp;{{ $page_title }}</p>
         <a href="{{ route('material.index') }}"

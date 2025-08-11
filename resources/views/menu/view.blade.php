@@ -1,5 +1,5 @@
 @include('dashboard.header')
-<main class="main-content position-relative border-radius-lg mt-3">
+<main class="main-content position-relative border-radius-lg mt-2">
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
