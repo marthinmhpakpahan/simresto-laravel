@@ -1,20 +1,31 @@
 @include('common.header')
 <div class="flex flex-row h-screen overflow-y-hidden">
-    <div class="w-max bg-primary px-2 mx-1 sm:mx-3 h-screen sm:rounded-lg sm:my-3" id="sidenav-main">
-        <div class="sidenav-header justify-center">
+    <div class="w-max bg-primary px-2 mx-1 sm:mx-3 h-screen sm:rounded-lg sm:my-3 flex flex-col" id="sidenav-main">
+        <!-- Logo / Header -->
+        <div class="justify-center">
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
                 aria-hidden="true" id="iconSidenav"></i>
             <a class="flex flex-col mt-3 sm:mb-6 ml-2 justify-center" href="#">
                 <img class="mx-auto w-[64px] sm:w-[160px]" src="{{ asset('assets/img/logos/dimxue.png') }}" />
-                <span class="font-weight-bold text-white text-2xl mt-2 mx-auto hidden sm:px-10 sm:block w-max">{{ env('APP_NAME') }}
-                    Dashboard</span>
+                <span class="font-weight-bold text-white text-2xl mt-2 mx-auto hidden sm:px-10 sm:block w-max">
+                    {{ env('APP_NAME') }} Dashboard
+                </span>
             </a>
         </div>
+    
         <hr class="horizontal dark mt-0">
-        @include('dashboard.sidebar')
-        <div class="sidenav-footer mx-3 ">
+    
+        <!-- Sidebar Menu (scrollable area) -->
+        <div class="flex-1 overflow-y-auto">
+            @include('dashboard.sidebar')
+        </div>
+    
+        <!-- Footer -->
+        <div class="sidenav-footer mx-3 mb-3">
+            <!-- Optional footer content -->
         </div>
     </div>
+    
     <div class="w-screen position-relative border-radius-lg overflow-x-auto">
         <!-- Navbar -->
         <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
