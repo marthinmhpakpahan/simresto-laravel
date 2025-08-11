@@ -34,6 +34,8 @@ class MenuRecipe extends Model
     public function convertWeight($total, $unit_source, $total_target, $unit_target) {
         if($unit_source == "KG" && $unit_target == "G") {
             $new_total = $total * 1000;
+        } else if($unit_source == "KG" && $unit_target == "MG") {
+            $new_total = $total * 100000;
         } else if($unit_source == "OZ" && $unit_target == "G") {
             $new_total = $total * 100;
         } else if($unit_source == "KW" && $unit_target == "G") {
