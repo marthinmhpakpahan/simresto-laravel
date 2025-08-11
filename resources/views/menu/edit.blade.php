@@ -1,5 +1,5 @@
 @include('dashboard.header')
-<div class="border border-black shadow-[6px_6px_6px_#DA6C6C] mx-5 mt-2 rounded-xl px-4 py-5 bg-white">
+<div class="border border-black shadow-[6px_6px_6px_#DA6C6C] mx-4 mt-2 rounded-xl px-4 py-5 bg-white">
     @if (session()->has('success'))
         <div class="alert alert-success alert-dismissible show fade">
             <strong>{!! session('success') !!}</strong>

@@ -22,8 +22,8 @@
                         </div>
                     </div>
                     <div class="card-body px-4 pt-5 pb-4 flex flex-row">
-                        <div class="flex w-1/4">
-                            <img src="/{{ $material->image }}" class="w-max" alt="...">
+                        <div class="flex w-1/4 items-center">
+                            <img src="/{{ $material->image }}" class="w-max h-max" alt="...">
                         </div>
                         <div class="flex flex-col ml-10">
                             <div class="col-12 mt-3">
@@ -46,7 +46,7 @@
     <div class="container-fluid mt-2">
         <div class="row">
             <div class="col-12">
-                <div class="card mb-4 border shadow-[6px_6px_6px_#991b1b]">
+                <div class="card mb-4 border shadow-[6px_6px_6px_#991b1b] overflow-y-auto">
                     <div class="card-header pb-0">
                         <div class="row">
                             <div class="col-6">

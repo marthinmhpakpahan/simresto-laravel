@@ -129,27 +129,27 @@
                     </div>
                     <div class="card-body px-4 pb-4">
                         <div class="row">
-                            <div class="col-12">
-                                <table class="">
+                            <div class="col-12 overflow-x-auto">
+                                <table class="w-max">
                                     <thead class="text-center">
                                         <tr class="text-red-700">
                                             <th
-                                                class="border-[1px] border-red-700 px-4 py-1 font-weight-bolder text-uppercase text-lg">
+                                                class="border-[1px] border-red-700 px-2 py-1 font-weight-bolder text-uppercase text-lg">
                                                 No</th>
                                             <th
-                                                class="border-[1px] border-red-700 px-4 py-1 font-weight-bolder text-uppercase text-lg">
+                                                class="border-[1px] border-red-700 px-2 py-1 font-weight-bolder text-uppercase text-lg w-72">
                                                 Nama</th>
                                             <th
-                                                class="border-[1px] border-red-700 px-4 py-1 font-weight-bolder text-uppercase text-lg">
+                                                class="border-[1px] border-red-700 px-2 py-1 font-weight-bolder text-uppercase text-lg">
                                                 Berat</th>
                                             <th
-                                                class="border-[1px] border-red-700 px-4 py-1 font-weight-bolder text-uppercase text-lg">
+                                                class="border-[1px] border-red-700 px-2 py-1 font-weight-bolder text-uppercase text-lg">
                                                 Total Biaya</th>
                                             <th
-                                                class="border-[1px] border-red-700 px-4 py-1 font-weight-bolder text-uppercase text-lg">
+                                                class="border-[1px] border-red-700 px-2 py-1 font-weight-bolder text-uppercase text-lg">
                                                 Harga Dasar</th>
                                             <th
-                                                class="border-[1px] border-red-700 px-4 py-1 font-weight-bolder text-uppercase text-lg">
+                                                class="border-[1px] border-red-700 px-2 py-1 font-weight-bolder text-uppercase text-lg">
                                                 Action</th>
                                         </tr>
                                     </thead>
@@ -212,32 +212,32 @@
                                                 </th>
                                             </tr>
                                             <tr>
-                                                <td class="border-[1px] border-red-700 px-4 py-2 text-sm">
+                                                <td class="border-[1px] px-2 border-red-700 py-2 text-sm">
                                                     {{ $index + 1 }}</td>
-                                                <td class="border-[1px] border-red-700 px-6 py-1 text-sm">
-                                                    {{ $menu_recipe->material->name }}
+                                                <td class="border-[1px] px-2 border-red-700 py-1 text-sm">
+                                                    {{ $menu_recipe->material->name }} {{ $menu_recipe->material->name }} {{ $menu_recipe->material->name }}
                                                     <a href="{{ route('material.show', $menu_recipe->material_id) }}"
                                                         class="text-md border-2 border-red-700 hover:bg-red-700 hover:text-white text-red-700 px-2 rounded-lg btn-delete-recipe cursor-pointer ml-1">
                                                         <i class="fa fa-search"></i>
                                                     </a>
                                                 </td>
-                                                <td class="border-[1px] border-red-700 px-6 py-1 text-sm">
+                                                <td class="border-[1px] px-2 border-red-700 py-1 text-sm">
                                                     {{ $menu_recipe->weight }} {{ $menu_recipe->unit }}</td>
-                                                <td class="border-[1px] border-red-700 px-4 py-1 text-sm">
+                                                <td class="border-[1px] px-2 border-red-700 py-1 text-sm">
                                                     Rp.
                                                     {{ number_format($menu_recipe->total_cost) }}</td>
-                                                <td class="border-[1px] border-red-700 px-4 py-1 text-sm">
+                                                <td class="border-[1px] px-2 border-red-700 py-1 text-sm">
                                                     {{ $menu_recipe->material->weight }} {{ $menu_recipe->material->unit }} / Rp. {{ number_format($menu_recipe->material->price) }}
                                                 </td>
                                                 <td
-                                                    class="border-[1px] border-red-700 px-4 py-1 font-weight-bolder text-uppercase text-sm">
+                                                    class="border-[1px] px-2 border-red-700 py-1 font-weight-bolder text-uppercase text-sm">
                                                     <a class="text-md btn-edit-recipe border-2 border-red-700 hover:bg-red-700 hover:text-white text-red-700 px-2 py-[1px] rounded-lg cursor-pointer"
                                                         data-target="collapseFormAdd-{{ $menu_recipe->id }}"
                                                         data-menu-id="{{ $menu_recipe->menu_id }}"
                                                         data-material-id="{{ $menu_recipe->material_id }}"
                                                         data-weight={{ $menu_recipe->weight }}
                                                         data-unit="{{ $menu_recipe->unit }}">
-                                                        <i class="fa fa-edit"></i>&nbsp; Edit
+                                                        <i class="fa fa-edit"></i>
                                                     </a>
                                                     <a data-url="{{ route('menu_recipe.delete', [$menu->id, $menu_recipe->id]) }}"
                                                         data-name="{{ $menu_recipe->material->name }}"
@@ -245,7 +245,7 @@
                                                         data-total="Rp. {{ number_format($menu_recipe->total_cost) }}"
                                                         data-bs-toggle="modal" data-bs-target="#modalDeleteConfirmation"
                                                         class="text-md border-2 border-red-700 hover:bg-red-700 hover:text-white text-red-700 px-2 py-[1px] rounded-lg btn-delete-menu-recipe cursor-pointer ml-1">
-                                                        <i class="fa fa-trash"></i>&nbsp; Delete
+                                                        <i class="fa fa-trash"></i>
                                                     </a>
                                                 </td>
                                             </tr>
