@@ -36,6 +36,7 @@ class CommonFunction
     }
 
     public static function convertWeight($total, $unit_source, $unit_target) {
+        $new_total = 0;
         if($unit_source == "KG" && $unit_target == "G") {
             $new_total = $total * 1000;
         } else if($unit_source == "OZ" && $unit_target == "G") {
@@ -48,12 +49,9 @@ class CommonFunction
             $new_total = $total * 1000000;
         } else if($unit_source == "G" && $unit_target == "MG") {
             $new_total = $total * 10;
-        }
-
-        if($unit_source == "L" && $unit_target == "ML") {
+        } if($unit_source == "L" && $unit_target == "ML") {
             $new_total = $total * 1000;
-        } 
-        $new_total = 0;
+        }
 
         return $new_total;
     }
