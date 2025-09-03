@@ -50,8 +50,10 @@ class CommonFunction
     public static function getFullNameUnit($abbreviation) {
         $data = [
             "G" => "Gram",
+            "MG" => "MiliGram",
             "KG" => "Kilogram",
-            "ML" => "Mililiter",
+            "T" => "Ton",
+            "ML" => "MiliLiter",
             "L" => "Liter",
         ];
         return $data[$abbreviation];
