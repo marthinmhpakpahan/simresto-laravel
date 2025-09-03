@@ -61,11 +61,26 @@ class CommonFunction
         $unit_source = ($unit_source);
         $unit_target = ($unit_target);
 
-        // convert to base (g or L)
-        $inBase = $value * self::$conversionMap[$unit_source]["factor"];
+        // if both units have the same base (weight→weight OR volume→volume)
+        if (self::$conversionMap[$unit_source]["base"] === self::$conversionMap[$unit_target]["base"]) {
+            $inBase = $value * self::$conversionMap[$unit_source]["factor"];
+            return $inBase / self::$conversionMap[$unit_target]["factor"];
+        }
 
-        // convert base → target
-        return $inBase / self::$conversionMap[$unit_target]["factor"];
+        // if converting between weight and volume → assume water density (1g = 1ml)
+        if (self::$conversionMap[$unit_source]["base"] === "g" && self::$conversionMap[$unit_target]["base"] === "l") {
+            // weight → volume
+            $grams = $value * self::$conversionMap[$unit_source]["factor"];
+            return $grams / 1000; // convert grams → liters
+        }
+
+        if (self::$conversionMap[$unit_source]["base"] === "l" && self::$conversionMap[$unit_target]["base"] === "g") {
+            // volume → weight
+            $liters = $value * self::$conversionMap[$unit_source]["factor"];
+            return $liters * 1000; // convert liters → grams
+        }
+
+        return 0;
     }
 
     public static function calculateNewPrice($beforePrice, $beforeWeight, $beforeUnit, $afterWeight, $afterUnit) {

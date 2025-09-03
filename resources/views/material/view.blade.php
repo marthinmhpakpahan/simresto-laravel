@@ -34,7 +34,7 @@
                                 <p class="mt-3 font-bold text-red-800">Harga</p>
                                 <p class="text-5xl text-black font-bold">Rp. {{ $material->price }}</p>
                                 <p class="mt-3 font-bold text-red-800">Ukuran</p>
-                                <p class="text-5xl text-black font-bold">{{ $material->weight }} {{ $material->unit }}
+                                <p class="text-5xl text-black font-bold">{{ $material->weight }} {{ $material->unit_label }}
                                 </p>
                             </div>
                         </div>

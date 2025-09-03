@@ -109,6 +109,7 @@ class MaterialController extends Controller
         $combined_materials = CombinedMaterial::where('material_id', $material_id)->get();
         $material_total_price = 0;
         $material_total_weight = 0;
+        $latest_material_unit = $material->unit;
         foreach($combined_materials as $index => $combined_material) {
             $new_price = 0;
             $new_unit = $combined_material->unit;
@@ -118,6 +119,7 @@ class MaterialController extends Controller
 
             $material_total_weight += $combined_material->weight;
             $material_total_price += $combined_material->price;
+            $latest_material_unit = $new_unit;
         }
 
         if($material_total_weight > 0) {
@@ -128,9 +130,13 @@ class MaterialController extends Controller
             $material->price = $material_total_price;
         }
 
+        $material->unit = $latest_material_unit;
+
         $material->save();
 
         $units = Unit::get();
+
+        $material->unit_label = CommonFunction::getFullNameUnit($material->unit);
 
         return view('material.view', [
             "title" => env("APP_NAME") . " - Detail Bahan",
