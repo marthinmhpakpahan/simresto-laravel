@@ -44,6 +44,8 @@ Route::get('/bahan/edit/{material_id}', [MaterialController::class, 'edit'])->na
 Route::post('/bahan/edit/{material_id}', [MaterialController::class, 'edit'])->name('material.edit')->middleware('auth');
 Route::get('/bahan/show/{material_id}', [MaterialController::class, 'show'])->name('material.show')->middleware('auth');
 Route::get('/bahan/delete/{material_id}', [MaterialController::class, 'delete'])->name('material.delete')->middleware('auth');
+Route::post('/bahan/create-combined-material', [MaterialController::class, 'create_combined_material'])->name('material.create_combined_material')->middleware('auth');
+Route::get('/bahan/delete-combined-material/{material_id}/{combined_material_id}', [MaterialController::class, 'delete_combined_material'])->name('material.delete_combined_material')->middleware('auth');
 
 // Menu / Resep
 Route::get('/menu', [MenuController::class, 'index'])->name('menu.index')->middleware('auth');

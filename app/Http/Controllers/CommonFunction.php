@@ -4,6 +4,18 @@ namespace App\Http\Controllers;
 
 class CommonFunction
 {
+    private static $conversionMap = [
+        // weight
+        "MG"  => ["base" => "G", "factor" => 0.001],
+        "G"   => ["base" => "G", "factor" => 1],
+        "KG"  => ["base" => "G", "factor" => 1000],
+        "TON" => ["base" => "G", "factor" => 1000000],
+
+        // volume
+        "ML"  => ["base" => "L", "factor" => 0.001],
+        "L"   => ["base" => "L", "factor" => 1]
+    ];
+
     public static function uploadFiles($files, $type, $additional="") {
         $multiple_files = true;
         if(!is_array($files)) {
@@ -33,6 +45,38 @@ class CommonFunction
             return $file_paths;
         }
         return $file_paths[0];
+    }
+
+    public static function getFullNameUnit($abbreviation) {
+        $data = [
+            "G" => "Gram",
+            "KG" => "Kilogram",
+            "ML" => "Mililiter",
+            "L" => "Liter",
+        ];
+        return $data[$abbreviation];
+    }
+
+    private static function convertUnit($value, $unit_source, $unit_target) {
+        $unit_source = ($unit_source);
+        $unit_target = ($unit_target);
+
+        // convert to base (g or L)
+        $inBase = $value * self::$conversionMap[$unit_source]["factor"];
+
+        // convert base → target
+        return $inBase / self::$conversionMap[$unit_target]["factor"];
+    }
+
+    public static function calculateNewPrice($beforePrice, $beforeWeight, $beforeUnit, $afterWeight, $afterUnit) {
+        // normalize both weights to base unit (g or L)
+        $beforeWeightInBase = self::convertUnit($beforeWeight, $beforeUnit, self::$conversionMap[$beforeUnit]["base"]);
+        $afterWeightInBase  = self::convertUnit($afterWeight, $afterUnit, self::$conversionMap[$afterUnit]["base"]);
+
+        // calculate price proportionally
+        $newPrice = $beforePrice * ($afterWeightInBase / $beforeWeightInBase);
+
+        return floor($newPrice);
     }
 
     public static function convertWeight($total, $unit_source, $unit_target) {

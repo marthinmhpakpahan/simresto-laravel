@@ -50,6 +50,119 @@
                     <div class="card-header pb-0">
                         <div class="row">
                             <div class="col-6">
+                                <h3 class="text-uppercase font-bold text-red-700 text-xl">Kombinasi Bahan
+                                </h3>
+                            </div>
+                            <div class="col-6 text-end">
+                                <a class="ml-3 font-bold text-red-800 w-max px-3 py-2 border-2 border-red-700 rounded-lg mt-2 hover:bg-red-900 hover:text-white cursor-pointer btn-add-purchase"
+                                    href="#" data-target="#collapseFormAdd"><i
+                                        class="fa fa-list"></i>&nbsp;&nbsp;Tambah Bahan Kombinasi
+                                </a>
+                            </div>
+                        </div>
+                        <div class="collapse col-12 mt-2" id="collapseFormAdd">
+                            <div class="card card-body border">
+                                <h5 class="text-uppercase text-center font-bold mb-3 text-red-700">Form Bahan</h5>
+                                <form role="form" class="row" method="POST" enctype="multipart/form-data"
+                                    action={{ route('material.create_combined_material', $material->id) }}>
+                                    @csrf
+                                    <input type="hidden" name="material_id" value="{{ $material->id }}"
+                                        aria-label="Weight">
+                                    <div class="col-3">
+                                        <label class="form-label">Bahan</label>
+                                        <select class="form-control" name="material_combined" id="select-material">
+                                            @foreach ($materials as $material)
+                                                <option value="{{ $material->id }}"
+                                                    data-price="{{ $material->price }}"
+                                                    data-weight="{{ $material->weight }}"
+                                                    data-unit="{{ $material->unit }}">{{ $material->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-3">
+                                        <label class="form-label">Berat</label>
+                                        <input type="text" name="material_weight" id="material-weight"
+                                            class="form-control" placeholder="..." aria-label="Weight"
+                                            aria-describedby="invalidCheckWeight">
+                                    </div>
+                                    <div class="col-3">
+                                        <label class="form-label">Satuan</label>
+                                        <select class="form-control" name="material_unit" id="material-unit">
+                                            @foreach ($units as $unit)
+                                                <option value="{{ $unit->code }}"
+                                                    {{ $unit->code == 'G' ? 'selected' : '' }}>{{ $unit->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-3">
+                                        <label class="form-label">&nbsp;&nbsp;</label>
+                                        <button type="submit"
+                                            class="form-control border-2 border-red-700 rounded-lg px-4 py-2 bg-red-700 text-white font-bold cursor-pointer hover:bg-red-800">Simpan</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body px-4 pt-5 pb-4 flex flex-row">
+                        <table class="">
+                            <thead class="text-center">
+                                <tr class="text-red-700">
+                                    <th
+                                        class="border-[1px] border-red-700 px-4 py-1 font-weight-bolder text-uppercase text-lg">
+                                        No</th>
+                                    <th
+                                        class="border-[1px] border-red-700 px-4 py-1 font-weight-bolder text-uppercase text-lg">
+                                        Nama Bahan</th>
+                                    <th
+                                        class="border-[1px] border-red-700 px-4 py-1 font-weight-bolder text-uppercase text-lg">
+                                        Berat</th>
+                                    <th
+                                        class="border-[1px] border-red-700 px-4 py-1 font-weight-bolder text-uppercase text-lg">
+                                        Harga</th>
+                                    <th
+                                        class="border-[1px] border-red-700 px-4 py-1 font-weight-bolder text-uppercase text-lg">
+                                        Unit</th>
+                                    <th
+                                        class="border-[1px] border-red-700 px-4 py-1 font-weight-bolder text-uppercase text-lg">
+                                        Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center text-xs">
+                                @foreach ($combined_materials as $index => $combined_material)
+                                    <tr>
+                                        <td class="border-[1px] border-red-700 px-4 py-2 text-sm">{{ $index + 1 }}
+                                        </td>
+                                        <td class="border-[1px] border-red-700 px-6 py-1 text-sm">
+                                            {{ $combined_material->material->name ?: '-' }}</td>
+                                        <td class="border-[1px] border-red-700 px-6 py-1 text-sm">
+                                            {{ $combined_material->weight ?: '-' }}</td>
+                                        <td class="border-[1px] border-red-700 px-6 py-1 text-sm">Rp.
+                                            {{ $combined_material->price ?: '-' }}</td>
+                                        <td class="border-[1px] border-red-700 px-6 py-1 text-sm">
+                                            {{ $combined_material->unit_label ?: '-' }}</td>
+                                        <td class="border-[1px] border-red-700 px-6 py-1 text-sm">
+                                            <a href="{{ route('material.show', $combined_material->material_combined) }}" class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 btn-delete-history cursor-pointer">
+                                                <i class="fa fa-search"></i></a>
+                                            <a href="{{ route('material.delete_combined_material', [$combined_material->material_id, $combined_material->id]) }}" class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 btn-delete-history cursor-pointer">
+                                                    <i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid mt-2">
+        <div class="row">
+            <div class="col-12">
+                <div class="card mb-4 border shadow-[6px_6px_6px_#991b1b] overflow-y-auto">
+                    <div class="card-header pb-0">
+                        <div class="row">
+                            <div class="col-6">
                                 <h3 class="text-uppercase font-bold text-red-700 text-xl">Histori Pembelian Bahan
                                 </h3>
                             </div>
@@ -95,8 +208,9 @@
                                     </div>
                                     <div class="col-3">
                                         <label class="form-label">Nama Toko</label>
-                                        <input type="text" name="store_name" class="form-control" placeholder="..."
-                                            aria-label="Weight" aria-describedby="invalidCheckWeight">
+                                        <input type="text" name="store_name" class="form-control"
+                                            placeholder="..." aria-label="Weight"
+                                            aria-describedby="invalidCheckWeight">
                                     </div>
                                     <div class="col-3">
                                         <label class="form-label">Keterangan Toko</label>
@@ -143,17 +257,30 @@
                             <tbody class="text-center text-xs">
                                 @foreach ($material_purchase_histories as $index => $history)
                                     <tr>
-                                        <td class="border-[1px] border-red-700 px-4 py-2 text-sm">{{$index + 1}}</td>
-                                        <td class="border-[1px] border-red-700 px-6 py-1 text-sm">{{ $history->store_name ?: "-" }}</td>
-                                        <td class="border-[1px] border-red-700 px-6 py-1 text-sm">{{ $history->store_details ?: "-" }}</td>
-                                        <td class="border-[1px] border-red-700 px-4 py-1 text-sm">{{ $history->weight }} {{ $history->unit }}</td>
-                                        <td class="border-[1px] border-red-700 px-4 py-1 text-sm">Rp. {{ number_format($history->price) }}</td>
-                                        <td class="border-[1px] border-red-700 px-4 py-1 text-sm">
-                                            <a class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 btn-detail-image cursor-pointer" data-image="{{ asset($history->invoice) }}" data-bs-toggle="modal" data-bs-target="#modalDetailImage"><i
-                                                class="fa fa-image"></i></a>
+                                        <td class="border-[1px] border-red-700 px-4 py-2 text-sm">{{ $index + 1 }}
                                         </td>
-                                        <td class="border-[1px] border-red-700 px-4 py-1 font-weight-bolder text-uppercase text-sm">
-                                            <a class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 btn-delete-history cursor-pointer" data-quantity="{{ ($history->weight) }} {{ $history->unit }}" data-store-name="{{ $history->store_name }}" data-price="{{ $history->price }}" data-bs-toggle="modal" data-bs-target="#modalDeleteConfirmation" data-url="{{ route('material_purchase_history.delete', $history->id) }}"><i class="fa fa-trash"></i></a>
+                                        <td class="border-[1px] border-red-700 px-6 py-1 text-sm">
+                                            {{ $history->store_name ?: '-' }}</td>
+                                        <td class="border-[1px] border-red-700 px-6 py-1 text-sm">
+                                            {{ $history->store_details ?: '-' }}</td>
+                                        <td class="border-[1px] border-red-700 px-4 py-1 text-sm">
+                                            {{ $history->weight }} {{ $history->unit }}</td>
+                                        <td class="border-[1px] border-red-700 px-4 py-1 text-sm">Rp.
+                                            {{ number_format($history->price) }}</td>
+                                        <td class="border-[1px] border-red-700 px-4 py-1 text-sm">
+                                            <a class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 btn-detail-image cursor-pointer"
+                                                data-image="{{ asset($history->invoice) }}" data-bs-toggle="modal"
+                                                data-bs-target="#modalDetailImage"><i class="fa fa-image"></i></a>
+                                        </td>
+                                        <td
+                                            class="border-[1px] border-red-700 px-4 py-1 font-weight-bolder text-uppercase text-sm">
+                                            <a class="rounded-xl border border-red-800 px-3 py-[1px] bg-red-700 text-white hover:bg-red-800 btn-delete-history cursor-pointer"
+                                                data-quantity="{{ $history->weight }} {{ $history->unit }}"
+                                                data-store-name="{{ $history->store_name }}"
+                                                data-price="{{ $history->price }}" data-bs-toggle="modal"
+                                                data-bs-target="#modalDeleteConfirmation"
+                                                data-url="{{ route('material_purchase_history.delete', $history->id) }}"><i
+                                                    class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -175,8 +302,8 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="modalDeleteConfirmation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="modalDeleteConfirmation" data-bs-backdrop="static" data-bs-keyboard="false"
+    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header bg-danger text-center">
@@ -217,6 +344,42 @@
 <script type="text/javascript">
     $(document).ready(function() {
         console.log("View Material Page!");
+
+        var select_material_selected = $("#select-material option:selected");
+        $("input[name='material_price']").val(select_material_selected.data("price"));
+        $("#material-unit").val(select_material_selected.data("unit"));
+
+        $('#select-material').on('change', function(e) {
+            var optionSelected = $("option:selected", this);
+            var valueSelected = this.value;
+            var sel_price = optionSelected.data("price");
+            var sel_unit = optionSelected.data("unit");
+            var sel_weight = optionSelected.data("weight");
+            $("#material-unit").val(sel_unit);
+            console.log(optionSelected.data("price"), valueSelected)
+        });
+
+        $("#material-weight").on('change', function(e) {
+            console.log("on change material-weight");
+            var select_material_selected = $("#select-material option:selected");
+            var sel_price = select_material_selected.data("price");
+            var sel_unit = select_material_selected.data("unit");
+            var sel_weight = select_material_selected.data("weight");
+
+            var select_unit_selected = $("#material-unit option:selected");
+            console.log(sel_price, sel_unit, select_unit_selected.val());
+        });
+
+        $("#material-unit").on('change', function(e) {
+            console.log("on change material-unit");
+            var select_material_selected = $("#select-material option:selected");
+            var sel_price = select_material_selected.data("price");
+            var sel_unit = select_material_selected.data("unit");
+            var sel_weight = select_material_selected.data("weight");
+
+            var select_unit_selected = $("#material-unit option:selected");
+            console.log(sel_price, sel_unit, select_unit_selected.val());
+        });
 
         $(".btn-detail-image").on("click", function() {
             var data_image = $(this).data("image");
