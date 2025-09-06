@@ -215,7 +215,7 @@
                                                 <td class="border-[1px] px-2 border-red-700 py-2 text-sm">
                                                     {{ $index + 1 }}</td>
                                                 <td class="border-[1px] px-2 border-red-700 py-1 text-sm">
-                                                    {{ $menu_recipe->material->name }} {{ $menu_recipe->material->name }} {{ $menu_recipe->material->name }}
+                                                    {{ $menu_recipe->material->name }}
                                                     <a href="{{ route('material.show', $menu_recipe->material_id) }}"
                                                         class="text-md border-2 border-red-700 hover:bg-red-700 hover:text-white text-red-700 px-2 rounded-lg btn-delete-recipe cursor-pointer ml-1">
                                                         <i class="fa fa-search"></i>
