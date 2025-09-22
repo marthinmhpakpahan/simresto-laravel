@@ -33,7 +33,8 @@
                                     <div class="col-md-6 col-xs-12 flex flex-col justify-center items-center mx-auto">
                                         <img class="form-control visually-hidden img-thumbnail w-48" id="img_checkin"
                                             src="#" alt="" />
-                                        <input type="file" name="image" class="form-control my-3"
+                                        <a class="form-control btn-trigger-camera font-bold text-blue-800 w-max mx-auto px-5 py-2 mb-2 border-2 border-blue-700 hover:bg-blue-900 hover:text-white cursor-pointer" href="#"><i class="fa fa-camera"></i>&nbsp;Ambil Foto</a>
+                                        <input type="file" name="image" class="form-control my-3 hidden"
                                             data-img_element="img_checkin" placeholder="..." aria-label="Image"
                                             aria-describedby="invalidCheckImage">
                                         <button type="submit"
@@ -118,6 +119,10 @@
         $(".btn-detail-image").on("click", function() {
             var data_image = $(this).data("image");
             $(".modal-detail-image-image").attr("src", data_image);
+        });
+
+        $(".btn-trigger-camera").on("click", function(){
+            $("input[name='image']").trigger("click");
         });
 
         $(".btn-check-in-out").on("click", function() {

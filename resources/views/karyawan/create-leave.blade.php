@@ -80,6 +80,8 @@
                                     </div>
                                     <div class="mb-3 col-md-6 col-xs-12">
                                         <label class="form-label text-red-700 text-base">Lampiran</label>
+                                        <br/>
+                                        <label class="text-sm text-blue-500"><i class="fa fa-download"></i>&nbsp;<a href="{{ asset('assets/doc/SuratPengajuanCuti.docx') }}" download>Download Surat Pengajuan Cuti</a></label>
                                         <input type="file" name="attachment"
                                             class="form-control {{ $errors->has('attachment') ? 'is-invalid' : '' }}"
                                             placeholder="" aria-label="Attachment"
