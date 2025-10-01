@@ -77,7 +77,9 @@ class MaterialController extends Controller
             $material->weight = $request->weight;
             $material->price = $request->price;
             $material->unit = $request->unit;
-            $material->description = $request->description;
+            if($request->description) {
+                $material->description = $request->description;
+            }
 
             if($request->file("image")) {
                 $material->image = CommonFunction::uploadFiles($request->file('image'), "MATERIAL_IMAGE");
